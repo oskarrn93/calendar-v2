@@ -22,3 +22,6 @@ go.work
 
 # built output
 bin/
+
+# local environment variables
+.env
