@@ -7,11 +7,11 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type Config struct {
+type AppConfig struct {
 	rapidApiKey string
 }
 
-func InitializeConfig() Config {
+func InitializeConfig() AppConfig {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
@@ -19,6 +19,6 @@ func InitializeConfig() Config {
 
 	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
 
-	config := Config{rapidApiKey: rapidApiKey}
+	config := AppConfig{rapidApiKey: rapidApiKey}
 	return config
 }
