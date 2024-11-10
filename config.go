@@ -9,16 +9,18 @@ import (
 
 type AppConfig struct {
 	rapidApiKey string
+	s3Bucket    string
 }
 
 func InitializeConfig() AppConfig {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Println("No .env file was provided")
 	}
 
 	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
+	s3Bucket := os.Getenv("S3_BUCKET_ARN")
 
-	config := AppConfig{rapidApiKey: rapidApiKey}
+	config := AppConfig{rapidApiKey: rapidApiKey, s3Bucket: s3Bucket}
 	return config
 }

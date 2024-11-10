@@ -17,7 +17,7 @@ import (
 var NBATeamIds = map[string]int{
 	"celtics": 2,
 }
-var NBASeason = 2023
+var NBASeason = 2024
 
 var NBABaseUrl = "https://api-nba-v1.p.rapidapi.com"
 
