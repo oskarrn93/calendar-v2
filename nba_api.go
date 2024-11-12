@@ -22,8 +22,8 @@ var NBASeason = 2024
 var NBABaseUrl = "https://api-nba-v1.p.rapidapi.com"
 
 type NBAApi struct {
-	httpClient resty.Client
-	appConfig  AppConfig
+	httpClient *resty.Client
+	apiKey     string
 }
 
 func (api NBAApi) getBaseRequest() *resty.Request {
@@ -32,11 +32,10 @@ func (api NBAApi) getBaseRequest() *resty.Request {
 		log.Fatal("Faiiled to parse NBA Api base url")
 	}
 
-	return api.httpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", api.appConfig.rapidApiKey).SetHeader("X-RapidAPI-Host", baseUrl.Hostname())
+	return api.httpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", api.apiKey).SetHeader("X-RapidAPI-Host", baseUrl.Hostname())
 }
 
 func (api NBAApi) getGames() NBAGamesResponse {
-
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(NBATeamIds["celtics"]),
 		"season": strconv.Itoa(NBASeason),

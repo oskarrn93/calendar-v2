@@ -31,7 +31,15 @@ func readGamesTestData() []byte {
 
 func TestParseGames(t *testing.T) {
 	//Arrange
-	nbaApi := NBAApi{httpClient: *resty.New(), appConfig: InitializeConfig()}
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpClient := resty.New()
+	httpmock.ActivateNonDefault(httpClient.GetClient())
+
+	fakeApikey := "fake-api-key"
+
+	nbaApi := NBAApi{httpClient: httpClient, apiKey: fakeApikey}
 
 	// Act
 	nbaGames, err := nbaApi.parseGames(readGamesTestData())
@@ -64,15 +72,16 @@ func TestGetGames(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
+	httpClient := resty.New()
+	httpmock.ActivateNonDefault(httpClient.GetClient())
+
 	// Mock http request
 	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", NBABaseUrl, NBASeason, NBATeamIds["celtics"])
 	httpmock.RegisterResponder("GET", expectedUrl,
 		httpmock.NewStringResponder(200, string(readGamesTestData())))
 
-	httpClient := *resty.New()
-	httpmock.ActivateNonDefault(httpClient.GetClient())
-
-	nbaApi := NBAApi{httpClient: httpClient, appConfig: InitializeConfig()}
+	fakeApikey := "fake-api-key"
+	nbaApi := NBAApi{httpClient: httpClient, apiKey: fakeApikey}
 
 	// Act
 	result := nbaApi.getGames()

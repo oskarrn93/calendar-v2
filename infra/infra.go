@@ -32,7 +32,6 @@ func ReadRequiredEnvironmentVariables() AppConfig {
 	return AppConfig{
 		RapidApiKey: rapidApiKey,
 	}
-
 }
 
 type InfraStackProps struct {
