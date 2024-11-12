@@ -10,21 +10,25 @@ import (
 )
 
 func handler(ctx context.Context, event json.RawMessage) error {
+	log.Println("Received Event", "event", event)
+
 	appConfig := InitializeConfig()
 	httpClient := resty.New()
 	s3Client := getS3Client()
 
-	nbaApi := NBAApi{httpClient: httpClient, apiKey: appConfig.rapidApiKey}
+	rapidApi := RapidApi{httpClient: httpClient, config: appConfig.rapidApi}
 	storage := S3Storage{
 		s3Client: s3Client,
 		s3Bucket: appConfig.s3Bucket,
 	}
 
-	if err := NbaHandler(ctx, nbaApi, storage); err != nil {
+	nbaHandler := NbaHandler{rapidApi: rapidApi, storage: &storage}
+	if err := nbaHandler.handler(ctx); err != nil {
+		log.Println("NBA handler failed", "error", err)
 		return err
 	}
-	log.Println("Successfully updated NBA calendar")
 
+	log.Println("Event successfully processed")
 	return nil
 }
 

@@ -7,9 +7,19 @@ import (
 	"github.com/joho/godotenv"
 )
 
+type NBARapidApiConfig struct {
+	baseUrl string
+	season  int
+}
+
+type RapidApiConfig struct {
+	nba    NBARapidApiConfig
+	apiKey string
+}
+
 type AppConfig struct {
-	rapidApiKey string
-	s3Bucket    string
+	rapidApi RapidApiConfig
+	s3Bucket string
 }
 
 func InitializeConfig() AppConfig {
@@ -21,6 +31,16 @@ func InitializeConfig() AppConfig {
 	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
 	s3Bucket := os.Getenv("S3_BUCKET_ARN")
 
-	config := AppConfig{rapidApiKey: rapidApiKey, s3Bucket: s3Bucket}
+	config := AppConfig{
+		rapidApi: RapidApiConfig{
+			nba: NBARapidApiConfig{
+				baseUrl: "https://api-nba-v1.p.rapidapi.com",
+				season:  2024,
+			},
+			apiKey: rapidApiKey,
+		},
+		s3Bucket: s3Bucket,
+	}
+
 	return config
 }
