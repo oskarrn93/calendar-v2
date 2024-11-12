@@ -1,10 +1,11 @@
 module oskarrn93/calendar-v2
 
-go 1.22.2
+go 1.23.3
 
 require (
 	github.com/arran4/golang-ical v0.2.8
 	github.com/aws/aws-lambda-go v1.47.0
+	github.com/aws/aws-sdk-go-v2 v1.32.3
 	github.com/aws/aws-sdk-go-v2/config v1.28.1
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.66.2
 	github.com/go-resty/resty/v2 v2.12.0
@@ -13,7 +14,6 @@ require (
 )
 
 require (
-	github.com/aws/aws-sdk-go-v2 v1.32.3 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.6 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.42 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.18 // indirect
