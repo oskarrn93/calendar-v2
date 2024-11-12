@@ -52,6 +52,7 @@ func TestGetGames(t *testing.T) {
 	nbaHandler := NbaHandler{
 		rapidApi: rapidApi,
 		storage:  &mockStorage,
+		logger:   NewLogger(),
 	}
 
 	// Mock http request
@@ -72,7 +73,7 @@ func TestGetGames(t *testing.T) {
 	}
 
 	if reflect.DeepEqual(result, expectedTestData.Response) == false {
-		log.Fatalf("Does not match expected data")
+		t.Fatalf("Does not match expected data")
 	}
 
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/url"
 
 	"github.com/go-resty/resty/v2"
@@ -14,11 +14,13 @@ type RapidApi struct {
 	config     RapidApiConfig
 }
 
-func (ra RapidApi) getBaseRequest(baseUrl string) *resty.Request {
+func (ra RapidApi) getBaseRequest(baseUrl string) (*resty.Request, error) {
 	parsedUrl, err := url.Parse(baseUrl)
 	if err != nil {
-		log.Fatalf("Faiiled to parse RapidApi base url: %s", baseUrl)
+		return nil, fmt.Errorf("Faiiled to parse RapidApi base url: %s: %w", baseUrl, err)
 	}
 
-	return ra.httpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", ra.config.apiKey).SetHeader("X-RapidAPI-Host", parsedUrl.Hostname())
+	baseRequest := ra.httpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", ra.config.apiKey).SetHeader("X-RapidAPI-Host", parsedUrl.Hostname())
+
+	return baseRequest, nil
 }

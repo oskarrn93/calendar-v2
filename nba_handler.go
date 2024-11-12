@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
+	"log/slog"
 	"net/url"
 	"strconv"
 	"time"
@@ -51,6 +51,7 @@ type Storage interface {
 type NbaHandler struct {
 	rapidApi RapidApi
 	storage  Storage
+	logger   *slog.Logger
 }
 
 func (n *NbaHandler) handler(ctx context.Context) error {
@@ -79,16 +80,20 @@ func (n *NbaHandler) getGamesByTeam(teamId int) (NBAGamesResponse, error) {
 
 	apiUrl, err := url.Parse(fmt.Sprintf("%s/games", n.rapidApi.config.nba.baseUrl))
 	if err != nil {
-		log.Fatal("Faiiled to parse NBA Api games url")
+		return NBAGamesResponse{}, fmt.Errorf("Faiiled to parse NBA Api games url: %w", err)
 	}
 
-	request := n.rapidApi.getBaseRequest(n.rapidApi.config.nba.baseUrl)
+	request, err := n.rapidApi.getBaseRequest(n.rapidApi.config.nba.baseUrl)
+	if err != nil {
+		return NBAGamesResponse{}, fmt.Errorf("Failed to get base request: %w", err)
+	}
+
 	response, err := request.SetQueryParams(queryParams).Get(apiUrl.String())
 	if err != nil {
-		log.Fatal("Request failed to retrieve NBA games", err)
+		return NBAGamesResponse{}, fmt.Errorf("Request failed to retrieve NBA games: %w", err)
 	}
 
-	log.Printf("response: %v", response)
+	n.logger.Debug("NBA Api response", "response", response)
 
 	return n.parseGamesResponse(response.Body())
 

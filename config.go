@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"log/slog"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -22,10 +22,10 @@ type AppConfig struct {
 	s3Bucket string
 }
 
-func InitializeConfig() AppConfig {
+func InitializeConfig(logger *slog.Logger) AppConfig {
 	err := godotenv.Load()
 	if err != nil {
-		log.Println("No .env file was provided")
+		logger.Debug("No .env file was provided")
 	}
 
 	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
