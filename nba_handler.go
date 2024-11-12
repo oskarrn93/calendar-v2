@@ -44,10 +44,6 @@ var nbaTeams = NBATeams{
 	Celtics: 2,
 }
 
-type Storage interface {
-	upload(ctx context.Context, filename string, data []byte) error
-}
-
 type NbaHandler struct {
 	rapidApi RapidApi
 	storage  Storage
@@ -83,12 +79,7 @@ func (n *NbaHandler) getGamesByTeam(teamId int) (NBAGamesResponse, error) {
 		return NBAGamesResponse{}, fmt.Errorf("Faiiled to parse NBA Api games url: %w", err)
 	}
 
-	request, err := n.rapidApi.getBaseRequest(n.rapidApi.config.nba.baseUrl)
-	if err != nil {
-		return NBAGamesResponse{}, fmt.Errorf("Failed to get base request: %w", err)
-	}
-
-	response, err := request.SetQueryParams(queryParams).Get(apiUrl.String())
+	response, err := n.rapidApi.getBaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
 	if err != nil {
 		return NBAGamesResponse{}, fmt.Errorf("Request failed to retrieve NBA games: %w", err)
 	}

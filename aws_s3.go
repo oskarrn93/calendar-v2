@@ -23,6 +23,10 @@ func getS3Client() (*s3.Client, error) {
 	return client, nil
 }
 
+type Storage interface {
+	upload(ctx context.Context, filename string, data []byte) error
+}
+
 type S3Storage struct {
 	s3Client *s3.Client
 	s3Bucket string
