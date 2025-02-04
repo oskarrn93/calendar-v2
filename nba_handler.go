@@ -36,13 +36,10 @@ type NBAGamesResponse struct {
 	Response []NBAGame `json:"response"`
 }
 
-type NBATeams struct {
-	Celtics int
-}
-
-var nbaTeams = NBATeams{
-	Celtics: 2,
-}
+var (
+	CELTICS_TEAM_ID = 2
+	LAKERS_TEAM_ID  = 17
+)
 
 type NbaHandler struct {
 	rapidApi RapidApi
@@ -51,7 +48,9 @@ type NbaHandler struct {
 }
 
 func (n *NbaHandler) handler(ctx context.Context) error {
-	games, err := n.getGames()
+	var nbaTeamsIds = []int{CELTICS_TEAM_ID, LAKERS_TEAM_ID}
+
+	games, err := n.getGames(nbaTeamsIds)
 	if err != nil {
 		return err
 	}
@@ -76,12 +75,12 @@ func (n *NbaHandler) getGamesByTeam(teamId int) (NBAGamesResponse, error) {
 
 	apiUrl, err := url.Parse(fmt.Sprintf("%s/games", n.rapidApi.config.nba.baseUrl))
 	if err != nil {
-		return NBAGamesResponse{}, fmt.Errorf("Faiiled to parse NBA Api games url: %w", err)
+		return NBAGamesResponse{}, fmt.Errorf("faiiled to parse NBA Api games url: %w", err)
 	}
 
 	response, err := n.rapidApi.getBaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
 	if err != nil {
-		return NBAGamesResponse{}, fmt.Errorf("Request failed to retrieve NBA games: %w", err)
+		return NBAGamesResponse{}, fmt.Errorf("request failed to retrieve NBA games: %w", err)
 	}
 
 	n.logger.Debug("NBA Api response", "response", response)
@@ -93,23 +92,24 @@ func (n *NbaHandler) getGamesByTeam(teamId int) (NBAGamesResponse, error) {
 func (n *NbaHandler) parseGamesResponse(input []byte) (NBAGamesResponse, error) {
 	var data NBAGamesResponse
 	if err := json.Unmarshal(input, &data); err != nil {
-		return data, fmt.Errorf("Failed to unmarshall nba games: %w", err)
+		return data, fmt.Errorf("failed to unmarshall nba games: %w", err)
 	}
 
 	return data, nil
 }
 
-func (n *NbaHandler) getGames() ([]NBAGame, error) {
-	var data = make([]NBAGame, 0)
+func (n *NbaHandler) getGames(teamIds []int) ([]NBAGame, error) {
+	var games = make([]NBAGame, len(teamIds))
 
-	celticsData, err := n.getGamesByTeam(nbaTeams.Celtics)
-	if err != nil {
-		return data, err
+	for _, teamId := range teamIds {
+		data, err := n.getGamesByTeam(teamId)
+		if err != nil {
+			return nil, fmt.Errorf("failed to retrieve games for team id: %d", teamId)
+		}
+		games = append(games, data.Response...)
 	}
 
-	data = append(data, celticsData.Response...)
-
-	return data, nil
+	return games, nil
 
 }
 

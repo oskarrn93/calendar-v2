@@ -1,0 +1,876 @@
+
+[TestGetGames - 1]
+[]main.NBAGame{
+    {},
+    {
+        Id:   12482,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 8, 22, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:27, Name:"Philadelphia 76ers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12486,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 9, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:24, Name:"New York Knicks"},
+        },
+    },
+    {
+        Id:   12498,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 11, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:27, Name:"Philadelphia 76ers"},
+        },
+    },
+    {
+        Id:   12526,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 17, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:24, Name:"New York Knicks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12535,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 19, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:5, Name:"Charlotte Hornets"},
+        },
+    },
+    {
+        Id:   12553,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 25, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:24, Name:"New York Knicks"},
+        },
+    },
+    {
+        Id:   12568,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 27, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:20, Name:"Miami Heat"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12591,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.October, 30, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:41, Name:"Washington Wizards"},
+        },
+    },
+    {
+        Id:   12606,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 1, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:15, Name:"Indiana Pacers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12631,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 5, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:4, Name:"Brooklyn Nets"},
+        },
+    },
+    {
+        Id:   12649,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 7, 1, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:22, Name:"Minnesota Timberwolves"},
+        },
+    },
+    {
+        Id:   12654,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 9, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:27, Name:"Philadelphia 76ers"},
+        },
+    },
+    {
+        Id:   12670,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 11, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:4, Name:"Brooklyn Nets"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12678,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 12, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:38, Name:"Toronto Raptors"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12692,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 14, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:24, Name:"New York Knicks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12708,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 16, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:27, Name:"Philadelphia 76ers"},
+        },
+    },
+    {
+        Id:   12720,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 18, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:38, Name:"Toronto Raptors"},
+        },
+    },
+    {
+        Id:   12738,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 20, 1, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:19, Name:"Memphis Grizzlies"},
+        },
+    },
+    {
+        Id:   12742,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 21, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:5, Name:"Charlotte Hornets"},
+        },
+    },
+    {
+        Id:   12758,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 23, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:21, Name:"Milwaukee Bucks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12769,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 24, 19, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:26, Name:"Orlando Magic"},
+        },
+    },
+    {
+        Id:   12786,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 26, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:1, Name:"Atlanta Hawks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12798,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.November, 29, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:6, Name:"Chicago Bulls"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12823,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 2, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:27, Name:"Philadelphia 76ers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12853,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 13, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:7, Name:"Cleveland Cavaliers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12867,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 15, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:7, Name:"Cleveland Cavaliers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12877,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 16, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:26, Name:"Orlando Magic"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12892,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 17, 20, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:26, Name:"Orlando Magic"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12910,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 20, 3, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:11, Name:"Golden State Warriors"},
+        },
+    },
+    {
+        Id:   12921,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 21, 3, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:30, Name:"Sacramento Kings"},
+        },
+    },
+    {
+        Id:   12937,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 23, 20, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:16, Name:"LA Clippers"},
+        },
+    },
+    {
+        Id:   12951,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 25, 22, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:17, Name:"Los Angeles Lakers"},
+        },
+    },
+    {
+        Id:   12969,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 29, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:10, Name:"Detroit Pistons"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12980,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 30, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:38, Name:"Toronto Raptors"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   12996,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 1, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:31, Name:"San Antonio Spurs"},
+        },
+    },
+    {
+        Id:   13010,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 3, 1, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:25, Name:"Oklahoma City Thunder"},
+        },
+    },
+    {
+        Id:   13027,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 6, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:40, Name:"Utah Jazz"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13041,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 7, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:15, Name:"Indiana Pacers"},
+        },
+    },
+    {
+        Id:   13055,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 9, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:15, Name:"Indiana Pacers"},
+        },
+    },
+    {
+        Id:   13065,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 11, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:22, Name:"Minnesota Timberwolves"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13076,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 12, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:21, Name:"Milwaukee Bucks"},
+        },
+    },
+    {
+        Id:   13090,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 14, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:14, Name:"Houston Rockets"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13111,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 16, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:38, Name:"Toronto Raptors"},
+        },
+    },
+    {
+        Id:   13119,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 18, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:31, Name:"San Antonio Spurs"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13134,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 20, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:9, Name:"Denver Nuggets"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13151,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 22, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:14, Name:"Houston Rockets"},
+        },
+    },
+    {
+        Id:   13159,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 23, 1, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:8, Name:"Dallas Mavericks"},
+        },
+    },
+    {
+        Id:   13178,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 26, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:20, Name:"Miami Heat"},
+        },
+    },
+    {
+        Id:   13194,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 28, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:16, Name:"LA Clippers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13207,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 30, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:23, Name:"New Orleans Pelicans"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13218,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.January, 31, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:15, Name:"Indiana Pacers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13232,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 2, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:17, Name:"Los Angeles Lakers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13254,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 4, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:19, Name:"Memphis Grizzlies"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13277,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 8, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:1, Name:"Atlanta Hawks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13291,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 10, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:41, Name:"Washington Wizards"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13307,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 11, 19, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:20, Name:"Miami Heat"},
+        },
+    },
+    {
+        Id:   13319,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 14, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:4, Name:"Brooklyn Nets"},
+        },
+    },
+    {
+        Id:   13328,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 15, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:4, Name:"Brooklyn Nets"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13345,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 23, 1, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:6, Name:"Chicago Bulls"},
+        },
+    },
+    {
+        Id:   13364,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 25, 1, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:24, Name:"New York Knicks"},
+        },
+    },
+    {
+        Id:   13384,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.February, 28, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:27, Name:"Philadelphia 76ers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13407,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 2, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:8, Name:"Dallas Mavericks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13420,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 3, 20, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:11, Name:"Golden State Warriors"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13434,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 6, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:7, Name:"Cleveland Cavaliers"},
+        },
+    },
+    {
+        Id:   13454,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 8, 3, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:9, Name:"Denver Nuggets"},
+        },
+    },
+    {
+        Id:   13468,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 10, 1, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:28, Name:"Phoenix Suns"},
+        },
+    },
+    {
+        Id:   13486,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 12, 2, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:29, Name:"Portland Trail Blazers"},
+        },
+    },
+    {
+        Id:   13491,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 13, 1, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:40, Name:"Utah Jazz"},
+        },
+    },
+    {
+        Id:   13503,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 14, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:28, Name:"Phoenix Suns"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13528,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 17, 22, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:41, Name:"Washington Wizards"},
+        },
+    },
+    {
+        Id:   13532,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 18, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:10, Name:"Detroit Pistons"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13546,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 20, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:21, Name:"Milwaukee Bucks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13559,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 22, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:10, Name:"Detroit Pistons"},
+        },
+    },
+    {
+        Id:   13571,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 24, 0, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:6, Name:"Chicago Bulls"},
+        },
+    },
+    {
+        Id:   13582,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 25, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:1, Name:"Atlanta Hawks"},
+        },
+    },
+    {
+        Id:   13608,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 28, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:1, Name:"Atlanta Hawks"},
+        },
+    },
+    {
+        Id:   13622,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.March, 30, 21, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:23, Name:"New Orleans Pelicans"},
+        },
+    },
+    {
+        Id:   13635,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 1, 23, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:5, Name:"Charlotte Hornets"},
+        },
+    },
+    {
+        Id:   13653,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 3, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:25, Name:"Oklahoma City Thunder"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13666,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 5, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:30, Name:"Sacramento Kings"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13682,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 7, 22, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:29, Name:"Portland Trail Blazers"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13696,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 9, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:21, Name:"Milwaukee Bucks"},
+        },
+    },
+    {
+        Id:   13715,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 11, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:24, Name:"New York Knicks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13721,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 12, 23, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:5, Name:"Charlotte Hornets"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13734,
+        Date: main.NBAGameDate{
+            Start: time.Date(2024, time.April, 14, 17, 0, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:41, Name:"Washington Wizards"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+    {
+        Id:   13749,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 5, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:2, Name:"Boston Celtics"},
+            Home:     main.NBATeam{Id:15, Name:"Indiana Pacers"},
+        },
+    },
+    {
+        Id:   13777,
+        Date: main.NBAGameDate{
+            Start: time.Date(2023, time.December, 9, 0, 30, 0, 0, time.UTC),
+        },
+        Teams: main.NBAGameTeams{
+            Visitors: main.NBATeam{Id:24, Name:"New York Knicks"},
+            Home:     main.NBATeam{Id:2, Name:"Boston Celtics"},
+        },
+    },
+}
+---
