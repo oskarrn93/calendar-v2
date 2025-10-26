@@ -1,26 +1,25 @@
 FROM golang:1.25.3-alpine3.22 AS builder
 
+RUN apk update && apk add --no-cache make git
+
 WORKDIR /app
 
-RUN apk update && apk add --no-cache make
+RUN mkdir ./bin
 
-COPY go.mod go.sum ./
 COPY Makefile ./
+COPY go.mod ./
+COPY go.sum ./
 
 RUN make install
 
-COPY cmd/* ./cmd/
-COPY internal/* ./internal/
-
-RUN mkdir -p ./bin
+COPY . ./
 
 RUN make build
-
 
 FROM golang:1.25.3-alpine3.22
 
 WORKDIR /app
 
-COPY --from=builder /app/bin/lambda ./lambda
+COPY --from=builder /app/bin/lambda ./
 
 CMD [ "./lambda" ]
