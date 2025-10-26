@@ -14,6 +14,10 @@ run: build
 test:
 	go test -v ./...
 
+.PHONY: test-ci
+test-ci:
+	go test --failfast ./...
+
 .PHONY: update
 update:
 	go get -u ./...
