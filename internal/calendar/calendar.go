@@ -1,4 +1,4 @@
-package main
+package calendar
 
 import (
 	"bytes"
@@ -9,11 +9,11 @@ import (
 )
 
 type Calendar interface {
-	AddEvent(event CalendarEvent)
+	AddEvent(event Event)
 	Export() []byte
 }
 
-type CalendarEvent struct {
+type Event struct {
 	Id        string
 	Title     string
 	StartDate time.Time
@@ -24,7 +24,7 @@ type ICSCalendar struct {
 	calendar *ics.Calendar
 }
 
-func (cal ICSCalendar) AddEvent(newEvent CalendarEvent) {
+func (cal ICSCalendar) AddEvent(newEvent Event) {
 	icsEvent := cal.calendar.AddEvent(newEvent.Id)
 
 	icsEvent.SetSummary(newEvent.Title)
@@ -38,7 +38,7 @@ func (cal ICSCalendar) Export() []byte {
 	return data.Bytes()
 }
 
-func NewCalendar(name string) Calendar {
+func New(name string) Calendar {
 	calendar := *ics.NewCalendar()
 	calendar.SetProductId(fmt.Sprintf("-//%s", name))
 	calendar.SetName(name)

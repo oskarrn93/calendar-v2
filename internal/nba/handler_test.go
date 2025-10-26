@@ -1,10 +1,14 @@
-package main
+package nba_test
 
 import (
 	"context"
 	"fmt"
 	"io"
 	"log"
+	"log/slog"
+	"oskarrn93/calendar-v2/internal/logging"
+	"oskarrn93/calendar-v2/internal/nba"
+	"oskarrn93/calendar-v2/internal/rapidapi"
 	"oskarrn93/calendar-v2/internal/testdata"
 	"oskarrn93/calendar-v2/internal/testutil"
 	"testing"
@@ -12,6 +16,7 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
 
@@ -32,10 +37,13 @@ func readGamesTestData() []byte {
 	return data
 }
 
-type MockStorage struct{}
+type MockStorage struct {
+	mock.Mock
+}
 
-func (m *MockStorage) upload(ctx context.Context, filename string, data []byte) error {
-	return nil
+func (m *MockStorage) Upload(ctx context.Context, filename string, data []byte, logger *slog.Logger) error {
+	args := m.Called(ctx, filename, data, logger)
+	return args.Error(0)
 }
 
 func TestGetGames(t *testing.T) {
@@ -48,31 +56,27 @@ func TestGetGames(t *testing.T) {
 
 	mockConfig := testutil.GetMockAppConfig()
 
-	rapidApi := RapidApi{httpClient: httpClient, config: mockConfig.RapidApi}
+	rapidApi := rapidapi.New(httpClient, mockConfig.RapidApi)
 	mockStorage := MockStorage{}
 
-	nbaHandler := NbaHandler{
-		rapidApi: rapidApi,
-		storage:  &mockStorage,
-		logger:   NewLogger(),
-	}
+	nbaHandler := nba.NewHandler(rapidApi, &mockStorage, logging.New())
 
 	gamesTestData := string(readGamesTestData())
 
 	// Mock http request
-	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, mockConfig.RapidApi.NBA.Season, CELTICS_TEAM_ID)
+	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, mockConfig.RapidApi.NBA.Season, nba.CELTICS_TEAM_ID)
 	httpmock.RegisterResponder("GET", expectedUrl,
 		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := nbaHandler.getGames([]NBATeamID{CELTICS_TEAM_ID})
+	result, err := nbaHandler.GetGames([]nba.TeamID{nba.CELTICS_TEAM_ID})
 	require.NoError(t, err)
 
 	// Assert
 	assert.Len(t, result, 87)
 
 	for _, game := range result {
-		if game.Teams.Home.Id != int(CELTICS_TEAM_ID) && game.Teams.Visitors.Id != int(CELTICS_TEAM_ID) {
+		if game.Teams.Home.Id != int(nba.CELTICS_TEAM_ID) && game.Teams.Visitors.Id != int(nba.CELTICS_TEAM_ID) {
 			t.Errorf("Expected either home or visitor team to be CELTICS_TEAM_ID, but got home: %d, visitor: %d", game.Teams.Home.Id, game.Teams.Visitors.Id)
 		}
 	}

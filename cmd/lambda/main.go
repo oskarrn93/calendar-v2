@@ -1,37 +1,40 @@
-package main
+package lambda
 
 import (
 	"context"
 	"encoding/json"
 	"fmt"
 
+	"oskarrn93/calendar-v2/internal/awsutil"
 	"oskarrn93/calendar-v2/internal/config"
+	"oskarrn93/calendar-v2/internal/logging"
+	"oskarrn93/calendar-v2/internal/nba"
+	"oskarrn93/calendar-v2/internal/rapidapi"
 
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/go-resty/resty/v2"
 )
 
 func handler(ctx context.Context, event json.RawMessage) error {
-	logger := NewLogger()
+	logger := logging.New()
 
 	logger.Info("Received Event", "event", event)
 
 	appConfig := config.Initialize(logger)
 	httpClient := resty.New()
-	s3Client, err := getS3Client()
+	s3Client, err := awsutil.S3Client()
 	if err != nil {
 		return fmt.Errorf("Failed to get S3 client: %w", err)
 	}
 
-	rapidApi := RapidApi{httpClient: httpClient, config: appConfig.RapidApi}
-	storage := S3Storage{
-		s3Client: s3Client,
-		s3Bucket: appConfig.S3Bucket,
-		logger:   logger,
+	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
+	storage := awsutil.S3Storage{
+		S3Client: s3Client,
+		S3Bucket: appConfig.S3Bucket,
 	}
 
-	nbaHandler := NbaHandler{rapidApi: rapidApi, storage: &storage, logger: logger}
-	if err := nbaHandler.handler(ctx); err != nil {
+	nbaHandler := nba.NewHandler(rapidApi, &storage, logger)
+	if err := nbaHandler.Handler(ctx); err != nil {
 		logger.Error("NBA handler failed", "error", err)
 		return err
 	}
