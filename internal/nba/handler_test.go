@@ -6,12 +6,13 @@ import (
 	"io"
 	"log"
 	"log/slog"
-	"oskarrn93/calendar-v2/internal/logging"
-	"oskarrn93/calendar-v2/internal/nba"
-	"oskarrn93/calendar-v2/internal/rapidapi"
-	"oskarrn93/calendar-v2/internal/testdata"
-	"oskarrn93/calendar-v2/internal/testutil"
 	"testing"
+
+	"github.com/oskarrn93/calendar-v2/internal/logging"
+	"github.com/oskarrn93/calendar-v2/internal/nba"
+	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
+	"github.com/oskarrn93/calendar-v2/internal/testdata"
+	"github.com/oskarrn93/calendar-v2/internal/testutil"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"

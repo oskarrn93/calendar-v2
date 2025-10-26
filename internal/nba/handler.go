@@ -6,10 +6,11 @@ import (
 	"fmt"
 	"log/slog"
 	"net/url"
-	"oskarrn93/calendar-v2/internal/awsutil"
-	"oskarrn93/calendar-v2/internal/calendar"
-	"oskarrn93/calendar-v2/internal/rapidapi"
 	"time"
+
+	"github.com/oskarrn93/calendar-v2/internal/awsutil"
+	"github.com/oskarrn93/calendar-v2/internal/calendar"
+	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 )
 
 type GameDate struct {

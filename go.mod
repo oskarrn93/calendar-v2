@@ -1,4 +1,4 @@
-module oskarrn93/calendar-v2
+module github.com/oskarrn93/calendar-v2
 
 go 1.25.3
 

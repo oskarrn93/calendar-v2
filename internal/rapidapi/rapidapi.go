@@ -1,7 +1,7 @@
 package rapidapi
 
 import (
-	"oskarrn93/calendar-v2/internal/config"
+	"github.com/oskarrn93/calendar-v2/internal/config"
 
 	"github.com/go-resty/resty/v2"
 )

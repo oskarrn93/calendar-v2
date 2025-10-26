@@ -1,6 +1,6 @@
 package testutil
 
-import "oskarrn93/calendar-v2/internal/config"
+import "github.com/oskarrn93/calendar-v2/internal/config"
 
 func GetMockAppConfig() config.App {
 	config := config.App{

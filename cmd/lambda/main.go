@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"oskarrn93/calendar-v2/internal/awsutil"
-	"oskarrn93/calendar-v2/internal/config"
-	"oskarrn93/calendar-v2/internal/logging"
-	"oskarrn93/calendar-v2/internal/nba"
-	"oskarrn93/calendar-v2/internal/rapidapi"
+	"github.com/oskarrn93/calendar-v2/internal/awsutil"
+	"github.com/oskarrn93/calendar-v2/internal/config"
+	"github.com/oskarrn93/calendar-v2/internal/logging"
+	"github.com/oskarrn93/calendar-v2/internal/nba"
+	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/go-resty/resty/v2"
