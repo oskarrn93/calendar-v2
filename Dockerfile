@@ -2,20 +2,25 @@ FROM golang:1.25.3-alpine3.22 AS builder
 
 WORKDIR /app
 
+RUN apk update && apk add --no-cache make
+
 COPY go.mod go.sum ./
-RUN go mod download
+COPY Makefile ./
+
+RUN make install
 
 COPY cmd/* ./cmd/
 COPY internal/* ./internal/
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o ./lambda ./cmd/lambda 
-RUN chmod +x bin/lambda
+RUN mkdir -p ./bin
+
+RUN make build
 
 
 FROM golang:1.25.3-alpine3.22
 
 WORKDIR /app
 
-COPY --from=builder /app/lambda ./lambda
+COPY --from=builder /app/bin/lambda ./lambda
 
 CMD [ "./lambda" ]

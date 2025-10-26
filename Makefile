@@ -1,10 +1,14 @@
+.PHONY: install
+install:
+	go mod download
+
 .PHONY: dev
 dev:
 	go run .
 
 .PHONY: build
 build:
-	go build -o bin/lambda ./cmd/lambda
+	go build -o ./bin ./...
 	chmod +x bin/lambda
 	
 .PHONY: run
