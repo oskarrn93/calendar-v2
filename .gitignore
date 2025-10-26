@@ -8,7 +8,7 @@
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
+# s binary, built with `go test -c`
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
@@ -25,3 +25,6 @@ bin/
 
 # local environment variables
 .env
+
+# MacOS files
+.DS_Store

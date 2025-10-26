@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log/slog"
 	"net/url"
-	"strconv"
 	"time"
 )
 
@@ -36,11 +35,6 @@ type NBAGamesResponse struct {
 	Response []NBAGame `json:"response"`
 }
 
-var (
-	CELTICS_TEAM_ID = 2
-	LAKERS_TEAM_ID  = 17
-)
-
 type NbaHandler struct {
 	rapidApi RapidApi
 	storage  Storage
@@ -48,9 +42,8 @@ type NbaHandler struct {
 }
 
 func (n *NbaHandler) handler(ctx context.Context) error {
-	var nbaTeamsIds = []int{CELTICS_TEAM_ID, LAKERS_TEAM_ID}
 
-	games, err := n.getGames(nbaTeamsIds)
+	games, err := n.getGames(NBATeamIds)
 	if err != nil {
 		return err
 	}
@@ -65,15 +58,15 @@ func (n *NbaHandler) handler(ctx context.Context) error {
 	return nil
 }
 
-func (n *NbaHandler) getGamesByTeam(teamId int) (NBAGamesResponse, error) {
+func (n *NbaHandler) getGamesByTeam(teamId NBATeamID) (NBAGamesResponse, error) {
 
 	// TODO: Add support for multiple teams
 	queryParams := map[string]string{
-		"team":   strconv.Itoa(teamId),
-		"season": strconv.Itoa(n.rapidApi.config.nba.season),
+		"team":   fmt.Sprintf("%d", teamId),
+		"season": fmt.Sprintf("%d", n.rapidApi.config.NBA.Season),
 	}
 
-	apiUrl, err := url.Parse(fmt.Sprintf("%s/games", n.rapidApi.config.nba.baseUrl))
+	apiUrl, err := url.Parse(fmt.Sprintf("%s/games", n.rapidApi.config.NBA.BaseUrl))
 	if err != nil {
 		return NBAGamesResponse{}, fmt.Errorf("faiiled to parse NBA Api games url: %w", err)
 	}
@@ -98,8 +91,8 @@ func (n *NbaHandler) parseGamesResponse(input []byte) (NBAGamesResponse, error) 
 	return data, nil
 }
 
-func (n *NbaHandler) getGames(teamIds []int) ([]NBAGame, error) {
-	var games = make([]NBAGame, len(teamIds))
+func (n *NbaHandler) getGames(teamIds []NBATeamID) ([]NBAGame, error) {
+	var games = []NBAGame{}
 
 	for _, teamId := range teamIds {
 		data, err := n.getGamesByTeam(teamId)

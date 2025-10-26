@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"oskarrn93/calendar-v2/internal/config"
+
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/go-resty/resty/v2"
 )
@@ -14,17 +16,17 @@ func handler(ctx context.Context, event json.RawMessage) error {
 
 	logger.Info("Received Event", "event", event)
 
-	appConfig := InitializeConfig(logger)
+	appConfig := config.Initialize(logger)
 	httpClient := resty.New()
 	s3Client, err := getS3Client()
 	if err != nil {
 		return fmt.Errorf("Failed to get S3 client: %w", err)
 	}
 
-	rapidApi := RapidApi{httpClient: httpClient, config: appConfig.rapidApi}
+	rapidApi := RapidApi{httpClient: httpClient, config: appConfig.RapidApi}
 	storage := S3Storage{
 		s3Client: s3Client,
-		s3Bucket: appConfig.s3Bucket,
+		s3Bucket: appConfig.S3Bucket,
 		logger:   logger,
 	}
 

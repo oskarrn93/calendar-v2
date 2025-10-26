@@ -5,18 +5,20 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"os"
-	"reflect"
+	"oskarrn93/calendar-v2/internal/testdata"
+	"oskarrn93/calendar-v2/internal/testutil"
 	"testing"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func readGamesTestData() []byte {
 	// Use saved api response so we don't need to make an external request
 
-	jsonFile, err := os.Open("tests/data/nba/games/celtics.json")
+	jsonFile, err := testdata.Content.Open("nba/games/celtics.json")
 	if err != nil {
 		log.Fatal("Failed to open games test data", err)
 	}
@@ -44,9 +46,9 @@ func TestGetGames(t *testing.T) {
 	httpClient := resty.New()
 	httpmock.ActivateNonDefault(httpClient.GetClient())
 
-	mockConfig := getMockAppConfig()
+	mockConfig := testutil.GetMockAppConfig()
 
-	rapidApi := RapidApi{httpClient: httpClient, config: mockConfig.rapidApi}
+	rapidApi := RapidApi{httpClient: httpClient, config: mockConfig.RapidApi}
 	mockStorage := MockStorage{}
 
 	nbaHandler := NbaHandler{
@@ -55,25 +57,23 @@ func TestGetGames(t *testing.T) {
 		logger:   NewLogger(),
 	}
 
+	gamesTestData := string(readGamesTestData())
+
 	// Mock http request
-	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.rapidApi.nba.baseUrl, mockConfig.rapidApi.nba.season, nbaTeams.Celtics)
+	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, mockConfig.RapidApi.NBA.Season, CELTICS_TEAM_ID)
 	httpmock.RegisterResponder("GET", expectedUrl,
-		httpmock.NewStringResponder(200, string(readGamesTestData())))
+		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := nbaHandler.getGames()
-	if err != nil {
-		t.Fatalf("Did not expect error when calling nbaHandler.getGames: %v", err)
-	}
+	result, err := nbaHandler.getGames([]NBATeamID{CELTICS_TEAM_ID})
+	require.NoError(t, err)
 
 	// Assert
-	expectedTestData, err := nbaHandler.parseGamesResponse(readGamesTestData())
-	if err != nil {
-		t.Fatalf("Did not expect error when calling nbaHandler.parseGamesResponse: %v", err)
-	}
+	assert.Len(t, result, 87)
 
-	if reflect.DeepEqual(result, expectedTestData.Response) == false {
-		t.Fatalf("Does not match expected data")
+	for _, game := range result {
+		if game.Teams.Home.Id != int(CELTICS_TEAM_ID) && game.Teams.Visitors.Id != int(CELTICS_TEAM_ID) {
+			t.Errorf("Expected either home or visitor team to be CELTICS_TEAM_ID, but got home: %d, visitor: %d", game.Teams.Home.Id, game.Teams.Visitors.Id)
+		}
 	}
-
 }

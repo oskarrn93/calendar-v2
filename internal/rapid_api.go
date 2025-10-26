@@ -1,6 +1,8 @@
 package main
 
 import (
+	"oskarrn93/calendar-v2/internal/config"
+
 	"github.com/go-resty/resty/v2"
 )
 
@@ -8,9 +10,9 @@ import (
 
 type RapidApi struct {
 	httpClient *resty.Client
-	config     RapidApiConfig
+	config     config.RapidApi
 }
 
 func (ra RapidApi) getBaseRequest() *resty.Request {
-	return ra.httpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", ra.config.apiKey)
+	return ra.httpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", ra.config.ApiKey)
 }
