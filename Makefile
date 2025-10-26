@@ -4,7 +4,8 @@ dev:
 
 .PHONY: build
 build:
-	go build -o bin/main
+	go build -o bin/lambda ./cmd/lambda
+	chmod +x bin/lambda
 	
 .PHONY: run
 run: build
