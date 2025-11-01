@@ -172,6 +172,9 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 							jsii.String("lambda:UpdateFunctionCode"),
 							jsii.String("lambda:PublishVersion"),
 						},
+						Resources: &[]*string{
+							lambda.FunctionArn(),
+						},
 					}),
 				},
 			}),
