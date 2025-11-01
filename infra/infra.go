@@ -26,7 +26,6 @@ func (a *AppConfig) Validate() error {
 }
 
 func ReadRequiredEnvironmentVariables() AppConfig {
-
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("No .env file was provided")

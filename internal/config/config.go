@@ -5,7 +5,6 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/joho/godotenv"
 	validator "github.com/oskarrn93/calendar-v2/internal/validation"
 )
 
@@ -29,11 +28,6 @@ func (a *App) Validate() error {
 }
 
 func Initialize(logger *slog.Logger) App {
-	err := godotenv.Load()
-	if err != nil {
-		logger.Debug("No .env file was provided")
-	}
-
 	config := App{
 		RapidApi: RapidApi{
 			NBA: NBARapidApi{

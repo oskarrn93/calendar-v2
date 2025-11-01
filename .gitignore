@@ -25,6 +25,7 @@ bin/
 
 # local environment variables
 .env
+!.env.test
 
 # MacOS files
 .DS_Store

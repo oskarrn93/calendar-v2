@@ -4,7 +4,7 @@ install:
 
 .PHONY: dev
 dev:
-	go run .
+	godotenv -f .env go run .
 
 .PHONY: build
 build:
@@ -15,11 +15,11 @@ build:
 
 .PHONY: run-lambda
 run-lambda: build
-	./bin/lambda
+	godotenv -f .env ./bin/lambda
 
 .PHONY: run-nba
 run-nba: build
-	./bin/nba
+	godotenv -f .env ./bin/nba
 
 .PHONY: deploy
 deploy:
@@ -27,11 +27,11 @@ deploy:
 
 .PHONY: test
 test:
-	go test -v ./...
+	godotenv -f .env.test go test -v ./...
 
 .PHONY: test-ci
 test-ci:
-	go test --failfast ./...
+	godotenv -f .env.test go test --failfast ./...
 
 .PHONY: update
 update:
