@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "The version tag to deploy, e.g. v1.0.0"
+        description: "The version tag (image) to deploy, e.g. v1.0.0"
         required: true
 
 permissions:
@@ -31,4 +31,4 @@ jobs:
         with:
           function-name: ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }}
           region: ${{ secrets.AWS_REGION }}
-          image-uri: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:latest
+          image-uri: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ inputs.version }}
