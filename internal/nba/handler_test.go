@@ -14,6 +14,7 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/testdata"
 	"github.com/oskarrn93/calendar-v2/internal/testutil"
 
+	"github.com/gkampitakis/go-snaps/snaps"
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
@@ -81,4 +82,6 @@ func TestGetGames(t *testing.T) {
 			t.Errorf("Expected either home or visitor team to be CELTICS_TEAM_ID, but got home: %d, visitor: %d", game.Teams.Home.Id, game.Teams.Visitors.Id)
 		}
 	}
+
+	snaps.MatchSnapshot(t, result)
 }
