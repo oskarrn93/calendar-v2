@@ -1,0 +1,369 @@
+
+[TestGetGames - 1]
+[]football.Fixture{
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1202168, Timestamp:1723662000},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:499, Name:"Atalanta"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208496, Timestamp:1724009400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:798, Name:"Mallorca"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208506, Timestamp:1724598000},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:720, Name:"Valladolid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208516, Timestamp:1724959800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:534, Name:"Las Palmas"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208527, Timestamp:1725219000},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:543, Name:"Real Betis"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208538, Timestamp:1726340400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:548, Name:"Real Sociedad"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208556, Timestamp:1727204400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:542, Name:"Alaves"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208558, Timestamp:1727636400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:530, Name:"Atletico Madrid"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208567, Timestamp:1728154800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:533, Name:"Villarreal"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208577, Timestamp:1729364400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:538, Name:"Celta Vigo"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208587, Timestamp:1729969200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:529, Name:"Barcelona"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208600, Timestamp:1730577600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:532, Name:"Valencia"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208608, Timestamp:1731157200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:727, Name:"Osasuna"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208615, Timestamp:1732469400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:537, Name:"Leganes"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208626, Timestamp:1733066100},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:546, Name:"Getafe"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208632, Timestamp:1733601600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:547, Name:"Girona"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208640, Timestamp:1734220800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:728, Name:"Rayo Vallecano"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208651, Timestamp:1734825600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:536, Name:"Sevilla"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208656, Timestamp:1733342400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:531, Name:"Athletic Club"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208672, Timestamp:1737244800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:534, Name:"Las Palmas"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208682, Timestamp:1737849600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:720, Name:"Valladolid"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208697, Timestamp:1739059200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:530, Name:"Atletico Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208704, Timestamp:1739664000},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:727, Name:"Osasuna"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208716, Timestamp:1740268800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:547, Name:"Girona"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208720, Timestamp:1740873600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:543, Name:"Real Betis"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208736, Timestamp:1741478400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:728, Name:"Rayo Vallecano"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208744, Timestamp:1742083200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:533, Name:"Villarreal"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208754, Timestamp:1743292800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:537, Name:"Leganes"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208756, Timestamp:1743897600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:532, Name:"Valencia"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208768, Timestamp:1744502400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:542, Name:"Alaves"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208775, Timestamp:1745107200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:531, Name:"Athletic Club"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208787, Timestamp:1745366400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:546, Name:"Getafe"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208796, Timestamp:1746316800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:538, Name:"Celta Vigo"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208801, Timestamp:1746921600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:529, Name:"Barcelona"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208815, Timestamp:1747180800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:798, Name:"Mallorca"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208824, Timestamp:1747526400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:536, Name:"Sevilla"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1208829, Timestamp:1748131200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:548, Name:"Real Sociedad"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1212915, Timestamp:1726945200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:540, Name:"Espanyol"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1212931, Timestamp:1738454400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:540, Name:"Espanyol"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1230551, Timestamp:1722985200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:49, Name:"Chelsea"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1251557, Timestamp:1736294400},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:798, Name:"Mallorca"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1269029, Timestamp:1722472200},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:489, Name:"AC Milan"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1277934, Timestamp:1722726000},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:529, Name:"Barcelona"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1298989, Timestamp:1726599600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:172, Name:"VfB Stuttgart"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299016, Timestamp:1727895600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:79, Name:"Lille"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299028, Timestamp:1729623600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:165, Name:"Borussia Dortmund"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299046, Timestamp:1730836800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:489, Name:"AC Milan"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299071, Timestamp:1732737600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:40, Name:"Liverpool"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299076, Timestamp:1733860800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:499, Name:"Atalanta"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299109, Timestamp:1737576000},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:571, Name:"Red Bull Salzburg"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1299114, Timestamp:1738180800},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:106, Name:"Stade Brestois 29"},
+            Away: football.Team{Id:541, Name:"Real Madrid"},
+        },
+    },
+    {
+        Fixture: struct { Id int64 "json:\"id\""; Timestamp int64 "json:\"timestamp\"" }{Id:1304571, Timestamp:1726077600},
+        Team:    football.FixtureTeam{
+            Home: football.Team{Id:541, Name:"Real Madrid"},
+            Away: football.Team{Id:91, Name:"Monaco"},
+        },
+    },
+}
+---
