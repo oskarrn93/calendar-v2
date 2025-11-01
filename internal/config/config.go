@@ -38,7 +38,7 @@ func Initialize(logger *slog.Logger) App {
 		RapidApi: RapidApi{
 			NBA: NBARapidApi{
 				BaseUrl: "https://api-nba-v1.p.rapidapi.com",
-				Season:  2024,
+				Season:  2025,
 			},
 			ApiKey: os.Getenv("RAPIDAPI_KEY"),
 		},
