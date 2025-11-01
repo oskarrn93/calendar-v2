@@ -13,7 +13,7 @@ permissions:
   id-token: "write"
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,5 +30,5 @@ jobs:
         uses: aws-actions/aws-lambda-deploy@v1
         with:
           function-name: ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }}
-          region: ${{ secrets.AWS_REGION }}
+          package-type: Image
           image-uri: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ inputs.version }}
