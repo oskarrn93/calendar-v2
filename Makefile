@@ -10,10 +10,15 @@ dev:
 build:
 	go build -o ./bin ./...
 	chmod +x ./bin/lambda
+	chmod +x ./bin/nba
 	
-.PHONY: run
-run: build
-	./bin/main
+.PHONY: run-lambda
+run-lambda: build
+	./bin/lambda
+
+.PHONY: run-nba
+run-nba: build
+	./bin/nba
 
 .PHONY: test
 test:
