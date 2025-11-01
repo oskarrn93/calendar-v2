@@ -66,12 +66,24 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		AccessControl: awss3.BucketAccessControl_PRIVATE,
 	})
 
+	ecrRepository := awsecr.NewRepository(stack, jsii.String("calendar-v2-ecr"), &awsecr.RepositoryProps{
+		RepositoryName: aws.String("calendar-v2"),
+		LifecycleRules: &[]*awsecr.LifecycleRule{
+			{
+				Description:   aws.String("Expire old images"),
+				MaxImageCount: aws.Float64(3),
+			},
+		},
+	})
+
 	lambda := awslambda.NewFunction(stack, jsii.String("calendar-v2-bucket-lambda"), &awslambda.FunctionProps{
-		Runtime: awslambda.Runtime_PROVIDED_AL2(),
-		Handler: jsii.String("bootstrap"),
-		Code: awslambda.Code_FromDockerBuild(aws.String("./"), &awslambda.DockerBuildAssetOptions{
-			File: aws.String("Dockerfile"),
+		Runtime: awslambda.Runtime_FROM_IMAGE(),
+		Handler: awslambda.Handler_FROM_IMAGE(),
+		Code: awslambda.Code_FromEcrImage(ecrRepository, &awslambda.EcrImageCodeProps{
+			TagOrDigest: aws.String("latest"),
 		}),
+		Timeout:    awscdk.Duration_Seconds(jsii.Number(30)),
+		MemorySize: jsii.Number(512),
 		Environment: &map[string]*string{
 			"RAPIDAPI_KEY":   &envConfig.RapidApiKey,
 			"S3_BUCKET_NAME": s3Bucket.BucketName(),
@@ -115,16 +127,6 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 
 	awscloudfront.NewCloudFrontWebDistribution(stack, jsii.String("calendar-v2-cf"), &awscloudfront.CloudFrontWebDistributionProps{
 		OriginConfigs: &originConfigs,
-	})
-
-	ecrRepository := awsecr.NewRepository(stack, jsii.String("calendar-v2-ecr"), &awsecr.RepositoryProps{
-		RepositoryName: aws.String("calendar-v2"),
-		LifecycleRules: &[]*awsecr.LifecycleRule{
-			{
-				Description:   aws.String("Expire old images"),
-				MaxImageCount: aws.Float64(3),
-			},
-		},
 	})
 
 	// https://aws.amazon.com/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/
