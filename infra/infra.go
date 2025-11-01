@@ -14,10 +14,15 @@ import (
 	"github.com/aws/constructs-go/constructs/v3"
 	"github.com/aws/jsii-runtime-go"
 	"github.com/joho/godotenv"
+	validator "github.com/oskarrn93/calendar-v2/internal/validation"
 )
 
 type AppConfig struct {
-	RapidApiKey string
+	RapidApiKey string `validate:"required"`
+}
+
+func (a *AppConfig) Validate() error {
+	return validator.ValidateStruct(a)
 }
 
 func ReadRequiredEnvironmentVariables() AppConfig {
@@ -29,9 +34,15 @@ func ReadRequiredEnvironmentVariables() AppConfig {
 
 	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
 
-	return AppConfig{
+	appConfig := AppConfig{
 		RapidApiKey: rapidApiKey,
 	}
+
+	if err := appConfig.Validate(); err != nil {
+		log.Fatalf("Failed to initialize app config due to missing variables: %v", err)
+	}
+
+	return appConfig
 }
 
 type InfraStackProps struct {
