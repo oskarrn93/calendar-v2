@@ -127,10 +127,20 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		},
 	})
 
-	// Create an IAM Role for GitHub Actions to assume using OIDC
+	// https://aws.amazon.com/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/
+	githubIamOidcProvider := awsiam.NewCfnOIDCProvider(stack, jsii.String("calendar-v2-github-oidc-provider"), &awsiam.CfnOIDCProviderProps{
+		Url: jsii.String("https://token.actions.githubusercontent.com"),
+		ClientIdList: &[]*string{
+			jsii.String("sts.amazonaws.com"),
+		},
+		ThumbprintList: &[]*string{
+			jsii.String("6938fd4d98bab03faadb97b34396831e3780aea1"),
+		},
+	})
+
 	githubActionsRole := awsiam.NewRole(stack, jsii.String("calendar-v2-iam-github-actions-role"), &awsiam.RoleProps{
 		AssumedBy: awsiam.NewFederatedPrincipal(
-			jsii.String(fmt.Sprintf("arn:aws:iam::%s:oidc-provider/token.actions.githubusercontent.com", *stack.Account())),
+			githubIamOidcProvider.AttrArn(),
 			&map[string]interface{}{
 				"StringEquals": map[string]string{
 					"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
