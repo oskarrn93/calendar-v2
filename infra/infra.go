@@ -6,6 +6,7 @@ import (
 
 	"github.com/aws/aws-cdk-go/awscdk"
 	"github.com/aws/aws-cdk-go/awscdk/awscloudfront"
+	"github.com/aws/aws-cdk-go/awscdk/awsecr"
 	"github.com/aws/aws-cdk-go/awscdk/awsevents"
 	"github.com/aws/aws-cdk-go/awscdk/awseventstargets"
 	"github.com/aws/aws-cdk-go/awscdk/awslambda"
@@ -113,6 +114,18 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 	awscloudfront.NewCloudFrontWebDistribution(stack, jsii.String("calendar-v2-cf"), &awscloudfront.CloudFrontWebDistributionProps{
 		OriginConfigs: &originConfigs,
 	})
+
+	ecrRepository := awsecr.NewRepository(stack, jsii.String("calendar-v2-ecr"), &awsecr.RepositoryProps{
+		RepositoryName: aws.String("calendar-v2"),
+		LifecycleRules: &[]*awsecr.LifecycleRule{
+			{
+				Description:   aws.String("Expire old images"),
+				MaxImageCount: aws.Float64(3),
+			},
+		},
+	})
+
+	ecrRepository.GrantPull(lambda.Role())
 
 	return stack
 }
