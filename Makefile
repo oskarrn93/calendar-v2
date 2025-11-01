@@ -23,7 +23,7 @@ run-nba: build
 
 .PHONY: deploy
 deploy:
-	go run ./infra/infra.go
+	cdk deploy
 
 .PHONY: test
 test:

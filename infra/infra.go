@@ -53,7 +53,7 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		AccessControl: awss3.BucketAccessControl_PRIVATE,
 	})
 
-	nbaLambda := awslambda.NewFunction(stack, jsii.String("calendar-v2-bucket-lambda-nba"), &awslambda.FunctionProps{
+	lambda := awslambda.NewFunction(stack, jsii.String("calendar-v2-bucket-lambda"), &awslambda.FunctionProps{
 		Runtime: awslambda.Runtime_PROVIDED_AL2(),
 		Handler: jsii.String("bootstrap"),
 		Code: awslambda.Code_FromDockerBuild(aws.String("./"), &awslambda.DockerBuildAssetOptions{
@@ -65,10 +65,10 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		},
 	})
 
-	awsevents.NewRule(stack, jsii.String("calendar-v2-bucket-lambda-nba-schedule"), &awsevents.RuleProps{
+	awsevents.NewRule(stack, jsii.String("calendar-v2-bucket-lambda-schedule"), &awsevents.RuleProps{
 		Enabled: aws.Bool(true),
 		Targets: &[]awsevents.IRuleTarget{
-			awseventstargets.NewLambdaFunction(nbaLambda, nil),
+			awseventstargets.NewLambdaFunction(lambda, nil),
 		},
 		EventPattern: &awsevents.EventPattern{},
 		Schedule: awsevents.Schedule_Cron(&awsevents.CronOptions{
@@ -79,7 +79,7 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 
 	s3ObjectPatternPermission := "*"
 
-	s3Bucket.GrantReadWrite(nbaLambda.Role(), s3ObjectPatternPermission)
+	s3Bucket.GrantReadWrite(lambda.Role(), s3ObjectPatternPermission)
 
 	originAccessIdentity := awscloudfront.NewOriginAccessIdentity(stack, jsii.String("calendar-v2-cf-oai"), &awscloudfront.OriginAccessIdentityProps{})
 	s3Bucket.GrantRead(originAccessIdentity, s3ObjectPatternPermission)
