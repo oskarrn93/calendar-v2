@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -9,6 +10,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/awsecr"
 	"github.com/aws/aws-cdk-go/awscdk/awsevents"
 	"github.com/aws/aws-cdk-go/awscdk/awseventstargets"
+	"github.com/aws/aws-cdk-go/awscdk/awsiam"
 	"github.com/aws/aws-cdk-go/awscdk/awslambda"
 	"github.com/aws/aws-cdk-go/awscdk/awss3"
 	"github.com/aws/aws-sdk-go/aws"
@@ -19,7 +21,8 @@ import (
 )
 
 type AppConfig struct {
-	RapidApiKey string `validate:"required"`
+	RapidApiKey      string `validate:"required"`
+	GithubRepository string `validate:"required"`
 }
 
 func (a *AppConfig) Validate() error {
@@ -32,10 +35,9 @@ func ReadRequiredEnvironmentVariables() AppConfig {
 		log.Println("No .env file was provided")
 	}
 
-	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
-
 	appConfig := AppConfig{
-		RapidApiKey: rapidApiKey,
+		RapidApiKey:      os.Getenv("RAPIDAPI_KEY"),
+		GithubRepository: os.Getenv("GITHUB_REPOSITORY"),
 	}
 
 	if err := appConfig.Validate(); err != nil {
@@ -125,6 +127,60 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		},
 	})
 
+	// Create an IAM Role for GitHub Actions to assume using OIDC
+	githubActionsRole := awsiam.NewRole(stack, jsii.String("calendar-v2-iam-github-actions-role"), &awsiam.RoleProps{
+		AssumedBy: awsiam.NewFederatedPrincipal(
+			jsii.String(fmt.Sprintf("arn:aws:iam::%s:oidc-provider/token.actions.githubusercontent.com", *stack.Account())),
+			&map[string]interface{}{
+				"StringEquals": map[string]string{
+					"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+					"token.actions.githubusercontent.com:sub": fmt.Sprintf("repo:%s:*", envConfig.GithubRepository),
+				},
+			},
+			jsii.String("sts:AssumeRoleWithWebIdentity"),
+		),
+		RoleName: jsii.String("calendar-v2-iam-github-actions-oidc-deployment-role"),
+
+		InlinePolicies: &map[string]awsiam.PolicyDocument{
+			"ECRUploadImage": awsiam.NewPolicyDocument(&awsiam.PolicyDocumentProps{
+				Statements: &[]awsiam.PolicyStatement{
+					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
+						Actions: &[]*string{
+							jsii.String("ecr:CompleteLayerUpload"),
+							jsii.String("ecr:UploadLayerPart"),
+							jsii.String("ecr:InitiateLayerUpload"),
+							jsii.String("ecr:BatchCheckLayerAvailability"),
+							jsii.String("ecr:PutImage"),
+							jsii.String("ecr:BatchGetImage"),
+						},
+						Resources: &[]*string{
+							ecrRepository.RepositoryArn(),
+						},
+					}),
+					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
+						Actions: &[]*string{
+							jsii.String("ecr:GetAuthorizationToken"),
+						},
+						Resources: &[]*string{aws.String("*")},
+					}),
+				},
+			}),
+			"LambdaDeploy": awsiam.NewPolicyDocument(&awsiam.PolicyDocumentProps{
+				Statements: &[]awsiam.PolicyStatement{
+					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
+						Actions: &[]*string{
+							jsii.String("lambda:UpdateFunctionCode"),
+							jsii.String("lambda:PublishVersion"),
+						},
+					}),
+				},
+			}),
+		},
+	},
+	)
+
+	// Grant the GitHub Actions role permissions to interact with the ECR repository
+	ecrRepository.GrantPullPush(githubActionsRole)
 	ecrRepository.GrantPull(lambda.Role())
 
 	return stack
