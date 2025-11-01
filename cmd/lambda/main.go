@@ -7,6 +7,7 @@ import (
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/config"
+	"github.com/oskarrn93/calendar-v2/internal/football"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/nba"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
@@ -37,14 +38,29 @@ func handler(ctx context.Context, event json.RawMessage) error {
 	// use any for results since we don't care about them
 	wg := util.NewWaitGroup[any](ctx)
 
-	wg.Run(func() (any, error) {
-		nbaHandler := nba.NewHandler(rapidApi, &storage, logger)
-		if err := nbaHandler.Handler(ctx); err != nil {
-			return nil, fmt.Errorf("NBA lambda handler failed: %w", err)
-		}
+	handlers := []struct {
+		name    string
+		handler func(context.Context) error
+	}{
+		{
+			name:    "Football",
+			handler: football.NewHandler(rapidApi, &storage, logger).Handler,
+		},
+		{
+			name:    "NBA",
+			handler: nba.NewHandler(rapidApi, &storage, logger).Handler,
+		},
+	}
 
-		return nil, nil
-	})
+	for _, h := range handlers {
+		wg.Run(func() (any, error) {
+			if err := h.handler(ctx); err != nil {
+				return nil, fmt.Errorf("%s handler failed: %w", h.name, err)
+			}
+
+			return nil, nil
+		})
+	}
 
 	_, err = wg.Wait()
 

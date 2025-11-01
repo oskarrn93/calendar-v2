@@ -8,14 +8,15 @@ import (
 	validator "github.com/oskarrn93/calendar-v2/internal/validation"
 )
 
-type NBARapidApi struct {
+type RapidApiResource struct {
 	BaseUrl string `validate:"required"`
 	Season  int    `validate:"required"`
 }
 
 type RapidApi struct {
-	NBA    NBARapidApi `validate:"required"`
-	ApiKey string      `validate:"required"`
+	NBA      RapidApiResource `validate:"required"`
+	Football RapidApiResource `validate:"required"`
+	ApiKey   string           `validate:"required"`
 }
 
 type App struct {
@@ -30,8 +31,12 @@ func (a *App) Validate() error {
 func Initialize(logger *slog.Logger) App {
 	config := App{
 		RapidApi: RapidApi{
-			NBA: NBARapidApi{
+			NBA: RapidApiResource{
 				BaseUrl: "https://api-nba-v1.p.rapidapi.com",
+				Season:  2025,
+			},
+			Football: RapidApiResource{
+				BaseUrl: "https://api-football-v1.p.rapidapi.com",
 				Season:  2025,
 			},
 			ApiKey: os.Getenv("RAPIDAPI_KEY"),

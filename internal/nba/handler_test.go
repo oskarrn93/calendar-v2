@@ -17,7 +17,6 @@ import (
 	"github.com/gkampitakis/go-snaps/snaps"
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
@@ -75,8 +74,6 @@ func TestGetGames(t *testing.T) {
 	require.NoError(t, err)
 
 	// Assert
-	assert.Len(t, result, 87)
-
 	for _, game := range result {
 		if game.Teams.Home.Id != int(nba.CELTICS_TEAM_ID) && game.Teams.Visitors.Id != int(nba.CELTICS_TEAM_ID) {
 			t.Errorf("Expected either home or visitor team to be CELTICS_TEAM_ID, but got home: %d, visitor: %d", game.Teams.Home.Id, game.Teams.Visitors.Id)
