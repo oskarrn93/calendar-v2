@@ -18,8 +18,8 @@ RUN make build
 
 FROM golang:1.25.3-alpine3.22
 
-WORKDIR /app
+WORKDIR /asset
 
-COPY --from=builder /app/bin/lambda ./
+COPY --from=builder /app/bin/lambda ./bootstrap
 
-CMD [ "./lambda" ]
+CMD [ "./bootstrap" ]

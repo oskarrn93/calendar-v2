@@ -12,6 +12,7 @@ build:
 	chmod +x ./bin/lambda
 	chmod +x ./bin/nba
 	
+
 .PHONY: run-lambda
 run-lambda: build
 	./bin/lambda
@@ -19,6 +20,10 @@ run-lambda: build
 .PHONY: run-nba
 run-nba: build
 	./bin/nba
+
+.PHONY: deploy
+deploy:
+	go run ./infra/infra.go
 
 .PHONY: test
 test:
@@ -32,3 +37,4 @@ test-ci:
 update:
 	go get -u ./...
 	go mod tidy
+

@@ -56,7 +56,7 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 	nbaLambda := awslambda.NewFunction(stack, jsii.String("calendar-v2-bucket-lambda-nba"), &awslambda.FunctionProps{
 		Runtime: awslambda.Runtime_PROVIDED_AL2(),
 		Handler: jsii.String("bootstrap"),
-		Code: awslambda.Code_FromDockerBuild(aws.String("../"), &awslambda.DockerBuildAssetOptions{
+		Code: awslambda.Code_FromDockerBuild(aws.String("./"), &awslambda.DockerBuildAssetOptions{
 			File: aws.String("Dockerfile"),
 		}),
 		Environment: &map[string]*string{
