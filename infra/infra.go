@@ -134,6 +134,8 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 			&map[string]interface{}{
 				"StringEquals": map[string]string{
 					"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+				},
+				"StringLike": map[string]string{
 					"token.actions.githubusercontent.com:sub": fmt.Sprintf("repo:%s:*", envConfig.GithubRepository),
 				},
 			},
