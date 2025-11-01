@@ -17,6 +17,7 @@ require (
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/joho/godotenv v1.5.1
 	github.com/stretchr/testify v1.9.0
+	golang.org/x/sync v0.17.0
 )
 
 require (
