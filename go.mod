@@ -4,10 +4,14 @@ go 1.25.3
 
 require (
 	github.com/arran4/golang-ical v0.3.2
+	github.com/aws/aws-cdk-go/awscdk v1.125.0-devpreview
 	github.com/aws/aws-lambda-go v1.50.0
+	github.com/aws/aws-sdk-go v1.55.5
 	github.com/aws/aws-sdk-go-v2 v1.39.4
 	github.com/aws/aws-sdk-go-v2/config v1.31.15
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.88.7
+	github.com/aws/constructs-go/constructs/v3 v3.3.99
+	github.com/aws/jsii-runtime-go v1.34.0
 	github.com/go-playground/validator/v10 v10.28.0
 	github.com/go-resty/resty/v2 v2.16.5
 	github.com/jarcoal/httpmock v1.3.1
@@ -16,6 +20,7 @@ require (
 )
 
 require (
+	github.com/Masterminds/semver/v3 v3.1.1 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.2 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.18.19 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.11 // indirect
