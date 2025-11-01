@@ -60,8 +60,8 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 			File: aws.String("Dockerfile"),
 		}),
 		Environment: &map[string]*string{
-			"RAPIDAPI_KEY":  &envConfig.RapidApiKey,
-			"S3_BUCKET_ARN": s3Bucket.BucketName(),
+			"RAPIDAPI_KEY":   &envConfig.RapidApiKey,
+			"S3_BUCKET_NAME": s3Bucket.BucketName(),
 		},
 	})
 
