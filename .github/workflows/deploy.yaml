@@ -1,4 +1,4 @@
-name: Build and Deploy to AWS Lambda
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -10,6 +10,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: "read"
+      id-token: "write"
 
     steps:
       - name: Checkout code
