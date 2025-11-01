@@ -1,5 +1,5 @@
 name: Deploy
-run-name: Deploy { inputs.version }
+run-name: Deploy ${{ inputs.version }}
 
 on:
   workflow_dispatch:
