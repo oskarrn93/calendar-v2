@@ -1,25 +1,31 @@
 package config
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 
 	"github.com/joho/godotenv"
+	validator "github.com/oskarrn93/calendar-v2/internal/validation"
 )
 
 type NBARapidApi struct {
-	BaseUrl string
-	Season  int
+	BaseUrl string `validate:"required"`
+	Season  int    `validate:"required"`
 }
 
 type RapidApi struct {
-	NBA    NBARapidApi
-	ApiKey string
+	NBA    NBARapidApi `validate:"required"`
+	ApiKey string      `validate:"required"`
 }
 
 type App struct {
-	RapidApi RapidApi
-	S3Bucket string
+	RapidApi RapidApi `validate:"required"`
+	S3Bucket string   `validate:"required"`
+}
+
+func (a *App) Validate() error {
+	return validator.ValidateStruct(a)
 }
 
 func Initialize(logger *slog.Logger) App {
@@ -28,18 +34,19 @@ func Initialize(logger *slog.Logger) App {
 		logger.Debug("No .env file was provided")
 	}
 
-	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
-	s3Bucket := os.Getenv("S3_BUCKET_ARN")
-
 	config := App{
 		RapidApi: RapidApi{
 			NBA: NBARapidApi{
 				BaseUrl: "https://api-nba-v1.p.rapidapi.com",
 				Season:  2024,
 			},
-			ApiKey: rapidApiKey,
+			ApiKey: os.Getenv("RAPIDAPI_KEY"),
 		},
-		S3Bucket: s3Bucket,
+		S3Bucket: os.Getenv("S3_BUCKET_NAME"),
+	}
+
+	if err := config.Validate(); err != nil {
+		panic(fmt.Errorf("Config validation failed: %w", err))
 	}
 
 	return config
