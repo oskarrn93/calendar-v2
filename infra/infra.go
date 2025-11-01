@@ -83,7 +83,7 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 			TagOrDigest: aws.String("latest"),
 		}),
 		Timeout:    awscdk.Duration_Seconds(jsii.Number(30)),
-		MemorySize: jsii.Number(512),
+		MemorySize: jsii.Number(128),
 		Environment: &map[string]*string{
 			"RAPIDAPI_KEY":   &envConfig.RapidApiKey,
 			"S3_BUCKET_NAME": s3Bucket.BucketName(),
