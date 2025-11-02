@@ -4,8 +4,8 @@ run-name: Deploy ${{ inputs.version }}
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: "The version tag (image) to deploy, e.g. v1.0.0"
+      image_tag:
+        description: "The image tag (version) to deploy, e.g. v1.0.0"
         required: true
 
 permissions:
@@ -17,15 +17,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5.1.0
+      - uses: ./.github/actions/deploy
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Deploy to AWS Lambda
-        uses: aws-actions/aws-lambda-deploy@v1.1.0
-        with:
-          function-name: ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }}
-          package-type: Image
-          image-uri: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ inputs.version }}
+          image_tag: ${{ inputs.image_tag }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          aws_ecr_repository: ${{ secrets.AWS_ECR_REPOSITORY }}
+          aws_lambda_function_name: ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }}

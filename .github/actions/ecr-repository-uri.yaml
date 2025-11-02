@@ -1,0 +1,24 @@
+name: "Get ECR Repository URI"
+
+inputs:
+  aws_account_id:
+    description: "The AWS Account ID"
+    required: true
+  aws_region:
+    description: "The AWS region"
+    required: true
+  aws_ecr_repository:
+    description: "The AWS ECR repository name"
+    required: true
+outputs:
+  ecr_repository_uri:
+    description: "The ECR Repository URI"
+    value: ${{ steps.construct.outputs.ecr_repository_uri }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Construct ECR Repository URI
+      id: construct
+      run: |
+        echo "ecr_repository_uri=${{ inputs.aws_account_id }}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com/${{ inputs.aws_ecr_repository }}" >> $GITHUB_OUTPUT
