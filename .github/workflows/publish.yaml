@@ -22,7 +22,8 @@ jobs:
         with:
           ref: ${{ inputs.version }}
 
-      - uses: ./.github/actions/publish
+      - name: Publish
+        uses: ./.github/actions/publish
         with:
           image_tag: ${{ inputs.version }}
           aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}

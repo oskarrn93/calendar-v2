@@ -1,4 +1,5 @@
 name: "Publish image to AWS ECR"
+description: "Publish image to AWS ECR"
 
 inputs:
   image_tag:
@@ -30,6 +31,7 @@ runs:
       uses: aws-actions/amazon-ecr-login@v2.0.1
 
     - name: Build Docker image
+      shell: sh
       run: |
         docker build -t ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} .
 
@@ -42,6 +44,7 @@ runs:
         aws_ecr_repository: ${{ inputs.aws_ecr_repository }}
 
     - name: Push Docker image to ECR
+      shell: sh
       run: |
         docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
         docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:latest

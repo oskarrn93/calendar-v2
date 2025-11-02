@@ -1,4 +1,5 @@
-name: "Get ECR Repository URI"
+name: "Construct ECR Repository URI"
+description: "Helper action to construct the ECR Repository URI"
 
 inputs:
   aws_account_id:
@@ -20,5 +21,6 @@ runs:
   steps:
     - name: Construct ECR Repository URI
       id: construct
+      shell: sh
       run: |
         echo "ecr_repository_uri=${{ inputs.aws_account_id }}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com/${{ inputs.aws_ecr_repository }}" >> $GITHUB_OUTPUT
