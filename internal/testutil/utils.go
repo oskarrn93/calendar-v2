@@ -7,11 +7,12 @@ func GetMockAppConfig() config.App {
 		RapidApi: config.RapidApi{
 			NBA: config.RapidApiResource{
 				BaseUrl: "https://example-nba.com",
-				Season:  2024,
 			},
 			Football: config.RapidApiResource{
 				BaseUrl: "https://example-football.com",
-				Season:  2024,
+			},
+			Esport: config.RapidApiResource{
+				BaseUrl: "https://example-esport.com",
 			},
 			ApiKey: "fake-api-key",
 		},

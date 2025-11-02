@@ -15,6 +15,7 @@ type RapidApiResource struct {
 type RapidApi struct {
 	NBA      RapidApiResource `validate:"required"`
 	Football RapidApiResource `validate:"required"`
+	Esport   RapidApiResource `validate:"required"`
 	ApiKey   string           `validate:"required"`
 }
 
@@ -35,6 +36,9 @@ func Initialize(logger *slog.Logger) App {
 			},
 			Football: RapidApiResource{
 				BaseUrl: "https://api-football-v1.p.rapidapi.com",
+			},
+			Esport: RapidApiResource{
+				BaseUrl: "https://pinnacle-odds.p.rapidapi.com",
 			},
 			ApiKey: os.Getenv("RAPIDAPI_KEY"),
 		},
