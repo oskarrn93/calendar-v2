@@ -183,6 +183,8 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 				Statements: &[]awsiam.PolicyStatement{
 					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
 						Actions: &[]*string{
+							jsii.String("lambda:GetFunctionConfiguration"),
+							jsii.String("lambda:UpdateFunctionConfiguration"),
 							jsii.String("lambda:UpdateFunctionCode"),
 							jsii.String("lambda:PublishVersion"),
 						},
