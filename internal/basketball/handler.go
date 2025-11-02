@@ -59,11 +59,11 @@ type EventTournament struct {
 }
 
 type Event struct {
-	ID             uint64          `json:"id"`
+	ID             int64           `json:"id"`
 	Tournament     EventTournament `json:"tournament"`
 	HomeTeam       EventTeam       `json:"homeTeam"`
 	AwayTeam       EventTeam       `json:"awayTeam"`
-	StartTimestamp uint64          `json:"startTimestamp"`
+	StartTimestamp int64           `json:"startTimestamp"`
 }
 
 type EventsResponse struct {
@@ -122,7 +122,7 @@ func (h *Handler) createCalendar(events []Event) calendar.Calendar {
 	cal := calendar.New("Basketball")
 	for _, event := range events {
 
-		startTime := time.Unix(int64(event.StartTimestamp), 0)
+		startTime := time.Unix(event.StartTimestamp, 0)
 
 		newEvent := calendar.Event{
 			Id:        fmt.Sprintf("basketball-%d", event.ID),
