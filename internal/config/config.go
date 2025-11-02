@@ -10,7 +10,6 @@ import (
 
 type RapidApiResource struct {
 	BaseUrl string `validate:"required"`
-	Season  int    `validate:"required"`
 }
 
 type RapidApi struct {
@@ -33,11 +32,9 @@ func Initialize(logger *slog.Logger) App {
 		RapidApi: RapidApi{
 			NBA: RapidApiResource{
 				BaseUrl: "https://api-nba-v1.p.rapidapi.com",
-				Season:  2025,
 			},
 			Football: RapidApiResource{
 				BaseUrl: "https://api-football-v1.p.rapidapi.com",
-				Season:  2025,
 			},
 			ApiKey: os.Getenv("RAPIDAPI_KEY"),
 		},

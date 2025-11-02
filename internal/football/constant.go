@@ -10,8 +10,10 @@ type TeamID int
 */
 
 const (
-	REAL_MADRID_TEAM_ID TeamID = 541
-	MALMO_FF_TEAM_ID    TeamID = 375
+	RealMadrid TeamID = 541
+	MalmoFF    TeamID = 375
 )
 
-var TeamIDs = []TeamID{REAL_MADRID_TEAM_ID, MALMO_FF_TEAM_ID}
+var TeamIDs = []TeamID{RealMadrid, MalmoFF}
+
+const Season = 2025

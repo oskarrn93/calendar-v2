@@ -63,17 +63,17 @@ func TestGetGames(t *testing.T) {
 	gamesTestData := string(readGamesTestData(t))
 
 	// Mock http request
-	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, mockConfig.RapidApi.NBA.Season, nba.CELTICS_TEAM_ID)
+	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, nba.Season, nba.BostonCeltics)
 	httpmock.RegisterResponder("GET", expectedUrl,
 		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := nbaHandler.GetGames([]nba.TeamID{nba.CELTICS_TEAM_ID})
+	result, err := nbaHandler.GetGames([]nba.TeamID{nba.BostonCeltics})
 	require.NoError(t, err)
 
 	// Assert
 	for _, game := range result {
-		if game.Teams.Home.Id != int(nba.CELTICS_TEAM_ID) && game.Teams.Visitors.Id != int(nba.CELTICS_TEAM_ID) {
+		if game.Teams.Home.Id != int(nba.BostonCeltics) && game.Teams.Visitors.Id != int(nba.BostonCeltics) {
 			t.Errorf("Expected either home or visitor team to be CELTICS_TEAM_ID, but got home: %d, visitor: %d", game.Teams.Home.Id, game.Teams.Visitors.Id)
 		}
 	}

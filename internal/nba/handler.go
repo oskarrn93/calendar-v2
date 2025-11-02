@@ -70,7 +70,7 @@ func (h *Handler) getGamesByTeam(teamId TeamID) (GamesResponse, error) {
 	// TODO: Add support for multiple teams
 	queryParams := map[string]string{
 		"team":   fmt.Sprintf("%d", teamId),
-		"season": fmt.Sprintf("%d", h.rapidApi.Config.NBA.Season),
+		"season": fmt.Sprintf("%d", Season),
 	}
 
 	apiUrl, err := url.Parse(fmt.Sprintf("%s/games", h.rapidApi.Config.NBA.BaseUrl))
