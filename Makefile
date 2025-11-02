@@ -38,6 +38,10 @@ test:
 test-ci:
 	godotenv -f .env.test go test --failfast ./...
 
+.PHONY: lint
+lint:
+	golangci-lint run ./...
+
 .PHONY: update
 update:
 	go get -u ./...

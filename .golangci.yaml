@@ -1,0 +1,34 @@
+version: "2"
+run:
+  timeout: 5m
+  tests: true
+  concurrency: 4
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - errcheck
+    - gocritic
+    - revive
+    - ineffassign
+    - unused
+    - gosec
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+    - swaggo
+  settings:
+    golines:
+      max-len: 250
+      shorten-comments: true
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
