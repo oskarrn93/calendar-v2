@@ -1,0 +1,38 @@
+name: Continuous Delivery
+run-name: Publish & Deploy ${{ inputs.version }}
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "The image tag (version) to deploy, e.g. v1.0.0"
+        required: true
+
+permissions:
+  contents: "read"
+  id-token: "write"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/publish
+        with:
+          image_tag: ${{ inputs.image_tag }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          aws_ecr_repository: ${{ secrets.AWS_ECR_REPOSITORY }}
+
+      - uses: ./.github/actions/deploy
+        with:
+          image_tag: ${{ inputs.image_tag }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          aws_ecr_repository: ${{ secrets.AWS_ECR_REPOSITORY }}
+          aws_lambda_function_name: ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }}
