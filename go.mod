@@ -6,7 +6,6 @@ require (
 	github.com/arran4/golang-ical v0.3.2
 	github.com/aws/aws-cdk-go/awscdk v1.204.0-devpreview
 	github.com/aws/aws-lambda-go v1.50.0
-	github.com/aws/aws-sdk-go v1.55.8
 	github.com/aws/aws-sdk-go-v2 v1.39.5
 	github.com/aws/aws-sdk-go-v2/config v1.31.16
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.89.1
