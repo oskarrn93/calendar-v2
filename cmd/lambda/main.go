@@ -9,6 +9,7 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/config"
+	"github.com/oskarrn93/calendar-v2/internal/esport"
 	"github.com/oskarrn93/calendar-v2/internal/football"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/nba"
@@ -48,6 +49,10 @@ func handler(ctx context.Context, event json.RawMessage) error {
 		{
 			name:    "NBA",
 			handler: nba.NewHandler(rapidApi, &storage, logger).Handler,
+		},
+		{
+			name:    "Esport",
+			handler: esport.NewHandler(rapidApi, &storage, logger).Handler,
 		},
 	}
 
