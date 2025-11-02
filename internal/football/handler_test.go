@@ -25,9 +25,9 @@ func readGamesTestData(t *testing.T, teamID football.TeamID) []byte {
 
 	var filePath string
 	switch teamID {
-	case football.REAL_MADRID_TEAM_ID:
+	case football.RealMadrid:
 		filePath = "football/fixtures/real_madrid.json"
-	case football.MALMO_FF_TEAM_ID:
+	case football.MalmoFF:
 		filePath = "football/fixtures/malmo_ff.json"
 	default:
 		t.Fatalf("no test data for team ID: %d", teamID)
@@ -71,7 +71,7 @@ func TestGetGames(t *testing.T) {
 
 	handler := football.NewHandler(rapidApi, &mockStorage, logging.New())
 
-	gamesTestData := string(readGamesTestData(t, football.REAL_MADRID_TEAM_ID))
+	gamesTestData := string(readGamesTestData(t, football.RealMadrid))
 
 	// Mock http request
 
@@ -79,20 +79,20 @@ func TestGetGames(t *testing.T) {
 	require.NoError(t, err)
 	expectedUrl.Path += "/v3/fixtures"
 	query := expectedUrl.Query()
-	query.Set("season", fmt.Sprintf("%d", mockConfig.RapidApi.Football.Season))
-	query.Set("team", fmt.Sprintf("%d", football.REAL_MADRID_TEAM_ID))
+	query.Set("season", fmt.Sprintf("%d", football.Season))
+	query.Set("team", fmt.Sprintf("%d", football.RealMadrid))
 	expectedUrl.RawQuery = query.Encode()
 
 	httpmock.RegisterResponder("GET", expectedUrl.String(),
 		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := handler.GetGames([]football.TeamID{football.REAL_MADRID_TEAM_ID})
+	result, err := handler.GetGames([]football.TeamID{football.RealMadrid})
 	require.NoError(t, err)
 
 	// Assert
 	for _, game := range result {
-		if game.Team.Home.Id != int(football.REAL_MADRID_TEAM_ID) && game.Team.Away.Id != int(football.REAL_MADRID_TEAM_ID) {
+		if game.Team.Home.Id != int(football.RealMadrid) && game.Team.Away.Id != int(football.RealMadrid) {
 			t.Errorf("Expected either home or away team to be REAL_MADRID_TEAM_ID, but got home: %d, away: %d", game.Team.Home.Id, game.Team.Away.Id)
 		}
 	}

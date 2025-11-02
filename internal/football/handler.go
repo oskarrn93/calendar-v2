@@ -90,7 +90,7 @@ func (h *Handler) getGamesByTeam(teamId int) (FixturesResponse, error) {
 	// TODO: Add support for multiple teams
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(teamId),
-		"season": strconv.Itoa(h.rapidApi.Config.Football.Season),
+		"season": strconv.Itoa(Season),
 	}
 
 	apiUrl, err := url.Parse(fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl))

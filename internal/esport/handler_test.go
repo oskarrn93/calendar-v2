@@ -1,17 +1,18 @@
-package nba_test
+package esport_test
 
 import (
 	"context"
 	"fmt"
 	"io"
 	"log/slog"
+	"net/url"
 	"testing"
 
 	"github.com/gkampitakis/go-snaps/snaps"
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
+	"github.com/oskarrn93/calendar-v2/internal/esport"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
-	"github.com/oskarrn93/calendar-v2/internal/nba"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 	"github.com/oskarrn93/calendar-v2/internal/testdata"
 	"github.com/oskarrn93/calendar-v2/internal/testutil"
@@ -22,15 +23,15 @@ import (
 func readGamesTestData(t *testing.T) []byte {
 	// Use saved api response so we don't need to make an external request
 
-	jsonFile, err := testdata.Content.Open("nba/games/celtics.json")
+	jsonFile, err := testdata.Content.Open("esport/markets.json")
 	if err != nil {
-		t.Fatal(fmt.Errorf("Failed to open games test data: %w", err))
+		t.Fatal(fmt.Errorf("failed to open games test data: %w", err))
 	}
 	defer jsonFile.Close()
 
 	data, err := io.ReadAll(jsonFile)
 	if err != nil {
-		t.Fatal(fmt.Errorf("Failed to read games test data: %w", err))
+		t.Fatal(fmt.Errorf("failed to read games test data: %w", err))
 	}
 
 	return data
@@ -58,25 +59,27 @@ func TestGetGames(t *testing.T) {
 	rapidApi := rapidapi.New(httpClient, mockConfig.RapidApi)
 	mockStorage := MockStorage{}
 
-	nbaHandler := nba.NewHandler(rapidApi, &mockStorage, logging.New())
+	handler := esport.NewHandler(rapidApi, &mockStorage, logging.New())
 
 	gamesTestData := string(readGamesTestData(t))
 
 	// Mock http request
-	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, nba.Season, nba.BostonCeltics)
-	httpmock.RegisterResponder("GET", expectedUrl,
+
+	expectedUrl, err := url.Parse(mockConfig.RapidApi.Esport.BaseUrl)
+	require.NoError(t, err)
+	expectedUrl.Path += "/kit/v1/markets"
+	query := expectedUrl.Query()
+	query.Set("sport_id", fmt.Sprintf("%d", esport.EsportSportID))
+	expectedUrl.RawQuery = query.Encode()
+
+	httpmock.RegisterResponder("GET", expectedUrl.String(),
 		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := nbaHandler.GetGames([]nba.TeamID{nba.BostonCeltics})
+	result, err := handler.GetEvents([]esport.SportID{esport.EsportSportID})
 	require.NoError(t, err)
 
 	// Assert
-	for _, game := range result {
-		if game.Teams.Home.Id != int(nba.BostonCeltics) && game.Teams.Visitors.Id != int(nba.BostonCeltics) {
-			t.Errorf("Expected either home or visitor team to be CELTICS_TEAM_ID, but got home: %d, visitor: %d", game.Teams.Home.Id, game.Teams.Visitors.Id)
-		}
-	}
 
 	snaps.MatchSnapshot(t, result)
 }
