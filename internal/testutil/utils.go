@@ -11,6 +11,9 @@ func GetMockAppConfig() config.App {
 			Football: config.RapidApiResource{
 				BaseUrl: "https://example-football.com",
 			},
+			Basketball: config.RapidApiResource{
+				BaseUrl: "https://example-basketball.com",
+			},
 			Esport: config.RapidApiResource{
 				BaseUrl: "https://example-esport.com",
 			},

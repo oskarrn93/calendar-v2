@@ -13,6 +13,7 @@ build:
 	chmod +x ./bin/nba
 	chmod +x ./bin/football
 	chmod +x ./bin/esport
+	chmod +x ./bin/basketball
 	
 
 .PHONY: run-lambda
@@ -30,6 +31,10 @@ run-football: build
 .PHONY: run-esport
 run-esport: build
 	godotenv -f .env ./bin/esport
+
+.PHONY: run-basketball
+run-basketball: build
+	godotenv -f .env ./bin/basketball
 
 .PHONY: deploy
 deploy:

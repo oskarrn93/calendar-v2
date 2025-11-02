@@ -1,0 +1,6003 @@
+{
+  "events": [
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 26
+      },
+      "customId": "ivbsPvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Panathinaikos BC",
+        "slug": "panathinaikos-bc",
+        "shortName": "Panathinaikos",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 68854,
+        "nameCode": "PAN",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3508,
+        "country": {
+          "alpha2": "GR",
+          "alpha3": "GRC",
+          "name": "Greece",
+          "slug": "greece"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#007942",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "باناثينايكوس بي سي",
+            "ru": "Панатинайкос"
+          },
+          "shortNameTranslation": {
+            "ar": "باناثينايكوس",
+            "hi": "पानाथिनाइकोस",
+            "bn": "পানাথিনাইকোস"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210722,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "real-madrid-panathinaikos-bc",
+      "startTimestamp": 1770146100,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 27
+      },
+      "customId": "Pvbspyke",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "BC Dubai",
+        "slug": "bc-dubai",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 3994,
+        "nameCode": "BDU",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 526165,
+        "country": {},
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#374df5",
+          "secondary": "#374df5",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "بي سي دبي"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210728,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "dubai-basketball-real-madrid",
+      "startTimestamp": 1770307200,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 19
+      },
+      "customId": "PvbsRvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Fundación CB Granada",
+        "slug": "fundacion-cb-granada",
+        "shortName": "Granada",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 1423,
+        "nameCode": "GRA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3542,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#cc0000",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "فونداسيون سي بي غرناطة"
+          },
+          "shortNameTranslation": {
+            "ar": "غرناطة",
+            "hi": "ग्रेनेडा",
+            "bn": "গ্রানাডা"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491524,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "fundacion-cb-granada-real-madrid",
+      "startTimestamp": 1770566400,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 28
+      },
+      "customId": "PvbsMHc",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "KK Partizan Mozzart Bet",
+        "slug": "kk-partizan-mozzart-bet",
+        "shortName": "Partizan Mozzart",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 83423,
+        "nameCode": "KPM",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 6637,
+        "country": {
+          "alpha2": "RS",
+          "alpha3": "SRB",
+          "name": "Serbia",
+          "slug": "serbia"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#000000",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "كي كي بارتيزان موزارت بيت",
+            "ru": "Партизан Белград"
+          },
+          "shortNameTranslation": {
+            "ar": "بارتيزان موزارت",
+            "hi": "पार्टिज़न मोज़ार्ट",
+            "bn": "পার্টিজান মোৎজার্ট"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210738,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "kk-partizan-mozzart-bet-real-madrid",
+      "startTimestamp": 1771011000,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 20
+      },
+      "customId": "Pvbsgwb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Unicaja Málaga",
+        "slug": "unicaja-malaga",
+        "shortName": "Unicaja",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 7483,
+        "nameCode": "MAL",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3556,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#004225",
+          "secondary": "#800080",
+          "text": "#800080"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "أونيكاخا مالقة",
+            "ru": "Малага"
+          },
+          "shortNameTranslation": {
+            "ar": "أونيكاخا",
+            "hi": "यूनिकाजा",
+            "bn": "ইউনিকাজা"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491540,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "unicaja-malaga-real-madrid",
+      "startTimestamp": 1771178400,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 29
+      },
+      "customId": "Pvbswwk",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Bayern München",
+        "slug": "bayern-munchen",
+        "shortName": "Bayern",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 42832,
+        "nameCode": "BAY",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 26071,
+        "country": {
+          "alpha2": "DE",
+          "alpha3": "DEU",
+          "name": "Germany",
+          "slug": "germany"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ff0000",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "بايرن ميونيخ",
+            "ru": "Бавария Мюнхен"
+          },
+          "shortNameTranslation": {
+            "ar": "بايرن",
+            "hi": "बायर्न",
+            "bn": "বায়ার্ন"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210751,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "bayern-munchen-real-madrid",
+      "startTimestamp": 1772135100,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 30
+      },
+      "customId": "Pvbswmc",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Virtus Bologna",
+        "slug": "virtus-segafredo-bologna",
+        "shortName": "V. Bologna",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 16001,
+        "nameCode": "VIB",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 5621,
+        "country": {
+          "alpha2": "IT",
+          "alpha3": "ITA",
+          "name": "Italy",
+          "slug": "italy"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#000000",
+          "text": "#000000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "فيرتوس سيغافريدو بولونيا",
+            "ru": "Виртус Болонья"
+          },
+          "shortNameTranslation": {
+            "ar": "ف. بولونيا",
+            "hi": "वी. बोलोग्ना",
+            "bn": "ভি বোলোগনা"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210753,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "virtus-segafredo-bologna-real-madrid",
+      "startTimestamp": 1772739900,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 21
+      },
+      "customId": "Pvbsewb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Gran Canaria",
+        "slug": "gran-canaria",
+        "shortName": "Gran Canaria",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 2983,
+        "nameCode": "GRC",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3554,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#fcd017",
+          "secondary": "#002857",
+          "text": "#002857"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "غران كناريا",
+            "ru": "Гран Канария",
+            "hi": "ग्रैन कैनारिया",
+            "bn": "গ্রান কানারিয়া"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491547,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "gran-canaria-real-madrid",
+      "startTimestamp": 1772992800,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 31
+      },
+      "customId": "PvbsVvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Valencia Basket",
+        "slug": "valencia-basket",
+        "shortName": "Valencia",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 9828,
+        "nameCode": "VAL",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3545,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#fe5900",
+          "secondary": "#000000",
+          "text": "#000000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "فالنسيا باسكت",
+            "ru": "Валенсия Баскет"
+          },
+          "shortNameTranslation": {
+            "ar": "فالنسيا",
+            "hi": "वेलेंसिया",
+            "bn": "ভ্যালেন্সিয়া"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14206328,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "valencia-basket-real-madrid",
+      "startTimestamp": 1773344700,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 22
+      },
+      "customId": "Pvbshwb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Força Lleida CE",
+        "slug": "forca-lleida-ce",
+        "shortName": "Lleida",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 1478,
+        "nameCode": "LLE",
+        "national": false,
+        "type": 0,
+        "id": 3557,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ff7f00",
+          "secondary": "#000000",
+          "text": "#000000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "فورسا ليدا سي إي",
+            "ru": "Капрабо Лерида"
+          },
+          "shortNameTranslation": {
+            "ar": "لييدا",
+            "hi": "लेइडा",
+            "bn": "লেইডা"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491560,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "forca-lleida-ce-real-madrid",
+      "startTimestamp": 1773590400,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 32
+      },
+      "customId": "PvbsmIc",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Kauno Žalgiris",
+        "slug": "kauno-zalgiris",
+        "shortName": "Žalgiris",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 13809,
+        "nameCode": "ZAL",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 6662,
+        "country": {
+          "alpha2": "LT",
+          "alpha3": "LTU",
+          "name": "Lithuania",
+          "slug": "lithuania"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#006d3e",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "كاونو زالجيريس",
+            "ru": "Жальгирис Каунас"
+          },
+          "shortNameTranslation": {
+            "ar": "زالجيريس",
+            "hi": "ज़ालगिरिस",
+            "bn": "জালগিরিস"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14206349,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "kauno-zalgiris-real-madrid",
+      "startTimestamp": 1774029600,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 23
+      },
+      "customId": "PvbsTvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Barça Basket",
+        "slug": "barca-basket",
+        "shortName": "Barça",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 77938,
+        "nameCode": "FCB",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3543,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#c32148",
+          "secondary": "#26559b",
+          "text": "#26559b"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "بارسا باسكت",
+            "ru": "Барселона"
+          },
+          "shortNameTranslation": {
+            "ar": "بارسا",
+            "hi": "बार्सा",
+            "bn": "বার্সা"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491567,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "barca-basket-real-madrid",
+      "startTimestamp": 1774202400,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 33
+      },
+      "customId": "PvbsETH",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Hapoel Tel-Aviv",
+        "slug": "hapoel-tel-aviv",
+        "shortName": "Hapoel TA",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 4829,
+        "nameCode": "HTA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 82179,
+        "country": {
+          "alpha2": "IL",
+          "alpha3": "ISR",
+          "name": "Israel",
+          "slug": "israel"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#ff0000",
+          "text": "#ff0000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "هبوعيل تل أبيب",
+            "ru": "Хапоэль Тель-Авив"
+          },
+          "shortNameTranslation": {
+            "ar": "هبوعيل ت. أ.",
+            "hi": "हापोएल टीए",
+            "bn": "হ্যাপোয়েল টিএ"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14206359,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "hapoel-tel-aviv-real-madrid",
+      "startTimestamp": 1774382400,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 34
+      },
+      "customId": "pvbsPvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Anadolu Efes",
+        "slug": "anadolu-efes",
+        "shortName": "Anadolu Efes",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 17120,
+        "nameCode": "EFS",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3515,
+        "country": {
+          "alpha2": "TR",
+          "alpha3": "TUR",
+          "name": "Türkiye",
+          "slug": "turkiye"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#003366",
+          "secondary": "#c00000",
+          "text": "#c00000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "أنادولو إفيس",
+            "ru": "Анадолу Эфес",
+            "hi": "अनादोलु एफेस",
+            "bn": "আনাতোলি এফিসাস"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210763,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "real-madrid-anadolu-efes",
+      "startTimestamp": 1774554300,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 24
+      },
+      "customId": "PvbsFtXc",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Bàsquet Girona",
+        "slug": "basquet-girona",
+        "shortName": "Bàsquet Girona",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 1649,
+        "nameCode": "BAS",
+        "national": false,
+        "type": 0,
+        "id": 368430,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#374df5",
+          "secondary": "#374df5",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "جيرونا باسكت",
+            "hi": "बास्केट गिरोना",
+            "bn": "বাস্কেট জিরোনা"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491580,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "basquet-girona-real-madrid",
+      "startTimestamp": 1774728000,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 35
+      },
+      "customId": "Pvbsdwb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Saski Baskonia",
+        "slug": "saski-baskonia",
+        "shortName": "Baskonia",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 10884,
+        "nameCode": "BVG",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3553,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#da291c",
+          "secondary": "#003153",
+          "text": "#003153"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ساسكي باسكونيا",
+            "ru": "Баскония Витория"
+          },
+          "shortNameTranslation": {
+            "ar": "باسكونيا",
+            "hi": "बास्कोनिया",
+            "bn": "বাসকোনিয়া"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210776,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "saski-baskonia-real-madrid",
+      "startTimestamp": 1775241000,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 25
+      },
+      "customId": "PvbsJPZ",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "MoraBanc Andorra",
+        "slug": "morabanc-andorra",
+        "shortName": "MB Andorra",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 1205,
+        "nameCode": "AND",
+        "national": false,
+        "type": 0,
+        "id": 124534,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#10069f",
+          "text": "#10069f"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "مورا بانك أندورا",
+            "ru": "Андорра",
+            "bn": "মোরাব্যাঙ্ক আন্দোরা"
+          },
+          "shortNameTranslation": {
+            "ar": "م.ب. أندورا",
+            "hi": "एमबी एंडोरा"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491598,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "morabanc-andorra-real-madrid",
+      "startTimestamp": 1775401200,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 36
+      },
+      "customId": "bvbsPvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Olympiacos BC",
+        "slug": "olympiacos-bc",
+        "shortName": "Olympiacos",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 70339,
+        "nameCode": "OPI",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3501,
+        "country": {
+          "alpha2": "GR",
+          "alpha3": "GRC",
+          "name": "Greece",
+          "slug": "greece"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#f20d2f",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "أولمبياكوس بي سي",
+            "ru": "Олимпиакос Пиреус"
+          },
+          "shortNameTranslation": {
+            "ar": "أولمبياكوس",
+            "hi": "ओलंपियाकोस",
+            "bn": "অলিম্পিয়াকোস"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210781,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "real-madrid-olympiacos-bc",
+      "startTimestamp": 1775585700,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 37
+      },
+      "customId": "ovbsPvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Fenerbahçe Beko",
+        "slug": "fenerbahce-beko",
+        "shortName": "Fenerbahçe",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 51963,
+        "nameCode": "FBE",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3514,
+        "country": {
+          "alpha2": "TR",
+          "alpha3": "TUR",
+          "name": "Türkiye",
+          "slug": "turkiye"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffed00",
+          "secondary": "#133a61",
+          "text": "#133a61"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "فنربخشة بيكو",
+            "ru": "Фенербахче"
+          },
+          "shortNameTranslation": {
+            "ar": "فنربخشة",
+            "hi": "फेनरबाचे",
+            "bn": "ফেনারবাহচে"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210790,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "real-madrid-fenerbahce-beko",
+      "startTimestamp": 1775756700,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 26
+      },
+      "customId": "PvbsQaIb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Hereda San Pablo Burgos",
+        "slug": "hereda-san-pablo-burgos",
+        "shortName": "San Pablo",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 1517,
+        "nameCode": "SPB",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 207541,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#0d406f",
+          "secondary": "#f08233",
+          "text": "#f08233"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "هيريدا سان بابلو بورغوس",
+            "ru": "Мирафлорес"
+          },
+          "shortNameTranslation": {
+            "ar": "سان بابلو",
+            "hi": "बर्गोस",
+            "bn": "বার্গোস"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491610,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "hereda-san-pablo-burgos-real-madrid",
+      "startTimestamp": 1776013200,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Euroleague",
+        "slug": "euroleague",
+        "category": {
+          "name": "International",
+          "slug": "international",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 103,
+          "country": {},
+          "flag": "international",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "دولي",
+              "hi": "अंतर्राष्ट्रीय",
+              "bn": "আন্তর্জাতিক"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Euroleague",
+          "slug": "euroleague",
+          "primaryColorHex": "#f47321",
+          "secondaryColorHex": "#f47321",
+          "category": {
+            "name": "International",
+            "slug": "international",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 103,
+            "country": {},
+            "flag": "international",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "دولي",
+                "hi": "अंतर्राष्ट्रीय",
+                "bn": "আন্তর্জাতিক"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 58771,
+          "hasPerformanceGraphFeature": false,
+          "id": 138,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الأوروبي",
+              "hi": "यूरोलीग",
+              "bn": "ইউরোলীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 136,
+        "isGroup": false,
+        "isLive": false,
+        "id": 42527,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "الدوري الأوروبي",
+            "hi": "यूरोलिग",
+            "bn": "ইউরোলীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Euroleague 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 78545
+      },
+      "roundInfo": {
+        "round": 38
+      },
+      "customId": "PvbsITx",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "KK Crvena zvezda",
+        "slug": "kk-crvena-zvezda-meridianbet",
+        "shortName": "Crvena zvezda",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 87358,
+        "nameCode": "KCZ",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 57183,
+        "country": {
+          "alpha2": "RS",
+          "alpha3": "SRB",
+          "name": "Serbia",
+          "slug": "serbia"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ec1c24",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "كي كي كرفينا زفيزدا",
+            "ru": "Црвена Звезда"
+          },
+          "shortNameTranslation": {
+            "ar": "كرفينا زفيزدا",
+            "hi": "क्रवेना ज़्वेज़्दा",
+            "bn": "ক্রভেনা জভেজদা"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14210803,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "kk-crvena-zvezda-real-madrid",
+      "startTimestamp": 1776365100,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 27
+      },
+      "customId": "PvbsTkG",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "La Laguna Tenerife",
+        "slug": "lenovo-tenerife",
+        "shortName": "La Laguna Tenerife",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 3427,
+        "nameCode": "CAN",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 78043,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#000000",
+          "secondary": "#ffd700",
+          "text": "#ffd700"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "لينوفو تينيريفي",
+            "ru": "Канариас",
+            "hi": "लेनोवो टेनेरिफ़",
+            "bn": "লেনোভো টেনেরিফ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491622,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "la-laguna-tenerife-real-madrid",
+      "startTimestamp": 1776618000,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 28
+      },
+      "customId": "PvbsVvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Valencia Basket",
+        "slug": "valencia-basket",
+        "shortName": "Valencia",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 9828,
+        "nameCode": "VAL",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3545,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#fe5900",
+          "secondary": "#000000",
+          "text": "#000000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "فالنسيا باسكت",
+            "ru": "Валенсия Баскет"
+          },
+          "shortNameTranslation": {
+            "ar": "فالنسيا",
+            "hi": "वेलेंसिया",
+            "bn": "ভ্যালেন্সিয়া"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491638,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "valencia-basket-real-madrid",
+      "startTimestamp": 1777222800,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 29
+      },
+      "customId": "PvbsVEc",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "UCAM Murcia",
+        "slug": "ucam-murcia",
+        "shortName": "UCAM Murcia",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 2876,
+        "nameCode": "MUR",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 6495,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#e20e0e",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "أوكام مورسيا",
+            "ru": "Мурсия",
+            "hi": "यूसीएएम मर्सिया",
+            "bn": "ইউসিএএম মুরশিয়া"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491646,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "ucam-murcia-real-madrid",
+      "startTimestamp": 1777820400,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 30
+      },
+      "customId": "PvbsXvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Río Breogán",
+        "slug": "rio-breogan",
+        "shortName": "Breogán",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 1455,
+        "nameCode": "BRE",
+        "national": false,
+        "type": 0,
+        "id": 3547,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#87ceeb",
+          "secondary": "#000080",
+          "text": "#000080"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريو بريوجان"
+          },
+          "shortNameTranslation": {
+            "ar": "بريوجان",
+            "hi": "ब्रेओगान",
+            "bn": "ব্রোগান"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491655,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "rio-breogan-real-madrid",
+      "startTimestamp": 1778425200,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 31
+      },
+      "customId": "Pvbspmc",
+      "status": {
+        "code": 60,
+        "description": "Postponed",
+        "type": "postponed"
+      },
+      "homeTeam": {
+        "name": "Surne Bilbao Basket",
+        "slug": "retabet-bilbao-basket",
+        "shortName": "Bilbao Basket",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 2701,
+        "nameCode": "BIL",
+        "national": false,
+        "type": 0,
+        "id": 5615,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#000000",
+          "secondary": "#9a9a9a",
+          "text": "#9a9a9a"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "سورني بلباو باسكت",
+            "ru": "Бильбао"
+          },
+          "shortNameTranslation": {
+            "ar": "بلباو باسكت",
+            "hi": "बिलबाओ बास्केट",
+            "bn": "বিলবাও বাস্কেট"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changes": [
+          "status.code",
+          "status.description",
+          "status.type"
+        ],
+        "changeTimestamp": 1757530677
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491669,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "surne-bilbao-basket-real-madrid",
+      "startTimestamp": 1778601600,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 31
+      },
+      "customId": "Pvbspmc",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Surne Bilbao Basket",
+        "slug": "retabet-bilbao-basket",
+        "shortName": "Bilbao Basket",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 2701,
+        "nameCode": "BIL",
+        "national": false,
+        "type": 0,
+        "id": 5615,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#000000",
+          "secondary": "#9a9a9a",
+          "text": "#9a9a9a"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "سورني بلباو باسكت",
+            "ru": "Бильбао"
+          },
+          "shortNameTranslation": {
+            "ar": "بلباو باسكت",
+            "hi": "बिलबाओ बास्केट",
+            "bn": "বিলবাও বাস্কেট"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14662389,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "surne-bilbao-basket-real-madrid",
+      "startTimestamp": 1778781600,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 32
+      },
+      "customId": "PvbsUvb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Club Joventut de Badalona",
+        "slug": "club-joventut-de-badalona",
+        "shortName": "Joventut",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 3521,
+        "nameCode": "BAD",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3544,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#007809",
+          "secondary": "#000000",
+          "text": "#000000"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "نادي جوبنتوت دي بادالونا",
+            "ru": "Ховентут Бадалона"
+          },
+          "shortNameTranslation": {
+            "ar": "جوبنتوت",
+            "hi": "जोवेनटुट",
+            "bn": "জোভেন্টুট"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491675,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "club-joventut-de-badalona-real-madrid",
+      "startTimestamp": 1779030000,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 33
+      },
+      "customId": "Pvbsdwb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "awayTeam": {
+        "name": "Saski Baskonia",
+        "slug": "saski-baskonia",
+        "shortName": "Baskonia",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 10884,
+        "nameCode": "BVG",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3553,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#da291c",
+          "secondary": "#003153",
+          "text": "#003153"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ساسكي باسكونيا",
+            "ru": "Баскония Витория"
+          },
+          "shortNameTranslation": {
+            "ar": "باسكونيا",
+            "hi": "बास्कोनिया",
+            "bn": "বাসকোনিয়া"
+          }
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491685,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "saski-baskonia-real-madrid",
+      "startTimestamp": 1779642000,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    },
+    {
+      "tournament": {
+        "name": "Liga ACB",
+        "slug": "liga-acb",
+        "category": {
+          "name": "Spain",
+          "slug": "spain",
+          "sport": {
+            "name": "Basketball",
+            "slug": "basketball",
+            "id": 2
+          },
+          "id": 109,
+          "country": {
+            "alpha2": "ES",
+            "alpha3": "ESP",
+            "name": "Spain",
+            "slug": "spain"
+          },
+          "flag": "spain",
+          "alpha2": "ES",
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "إسبانيا",
+              "hi": "एटीपी",
+              "bn": "স্পেন"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "uniqueTournament": {
+          "name": "Liga ACB",
+          "slug": "liga-acb",
+          "primaryColorHex": "#e9510e",
+          "secondaryColorHex": "#b23c0a",
+          "category": {
+            "name": "Spain",
+            "slug": "spain",
+            "sport": {
+              "name": "Basketball",
+              "slug": "basketball",
+              "id": 2
+            },
+            "id": 109,
+            "country": {
+              "alpha2": "ES",
+              "alpha3": "ESP",
+              "name": "Spain",
+              "slug": "spain"
+            },
+            "flag": "spain",
+            "alpha2": "ES",
+            "fieldTranslations": {
+              "nameTranslation": {
+                "ar": "إسبانيا",
+                "hi": "एटीपी",
+                "bn": "স্পেন"
+              },
+              "shortNameTranslation": {}
+            }
+          },
+          "userCount": 10272,
+          "hasPerformanceGraphFeature": false,
+          "id": 264,
+          "country": {},
+          "hasEventPlayerStatistics": false,
+          "hasBoxScore": true,
+          "displayInverseHomeAwayTeams": false,
+          "fieldTranslations": {
+            "nameTranslation": {
+              "ar": "الدوري الإسباني لكرة السلة",
+              "hi": "लीगा एसीबी",
+              "bn": "এসিবি লীগ"
+            },
+            "shortNameTranslation": {}
+          }
+        },
+        "priority": 75,
+        "isGroup": false,
+        "isLive": false,
+        "id": 271,
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "دوري ACB",
+            "hi": "लीगा एसीबी",
+            "bn": "এসিবি লীগ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "season": {
+        "name": "Liga ACB 25/26",
+        "year": "25/26",
+        "editor": false,
+        "id": 80922
+      },
+      "roundInfo": {
+        "round": 34
+      },
+      "customId": "Pvbskwb",
+      "status": {
+        "code": 0,
+        "description": "Not started",
+        "type": "notstarted"
+      },
+      "homeTeam": {
+        "name": "BAXI Manresa",
+        "slug": "baxi-manresa",
+        "shortName": "Manresa",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 2050,
+        "nameCode": "MAN",
+        "national": false,
+        "type": 0,
+        "id": 3560,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ff0000",
+          "secondary": "#ffffff",
+          "text": "#ffffff"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "باكسي مانريسا",
+            "ru": "Манреса"
+          },
+          "shortNameTranslation": {
+            "ar": "مانريسا",
+            "hi": "मनरेसा",
+            "bn": "মানরেসা"
+          }
+        }
+      },
+      "awayTeam": {
+        "name": "Real Madrid",
+        "slug": "real-madrid",
+        "shortName": "Real Madrid",
+        "gender": "M",
+        "sport": {
+          "name": "Basketball",
+          "slug": "basketball",
+          "id": 2
+        },
+        "userCount": 136755,
+        "nameCode": "RMA",
+        "disabled": false,
+        "national": false,
+        "type": 0,
+        "id": 3540,
+        "country": {
+          "alpha2": "ES",
+          "alpha3": "ESP",
+          "name": "Spain",
+          "slug": "spain"
+        },
+        "subTeams": [],
+        "teamColors": {
+          "primary": "#ffffff",
+          "secondary": "#660099",
+          "text": "#660099"
+        },
+        "fieldTranslations": {
+          "nameTranslation": {
+            "ar": "ريال مدريد",
+            "ru": "Реал Мадрид",
+            "hi": "रियल मैड्रिड",
+            "bn": "রিয়াল মাদ্রিদ"
+          },
+          "shortNameTranslation": {}
+        }
+      },
+      "homeScore": {},
+      "awayScore": {},
+      "time": {},
+      "changes": {
+        "changeTimestamp": 0
+      },
+      "hasGlobalHighlights": false,
+      "crowdsourcingDataDisplayEnabled": false,
+      "id": 14491692,
+      "periods": {
+        "current": "Score",
+        "period1": "1st quarter",
+        "period2": "2nd quarter",
+        "period3": "3rd quarter",
+        "period4": "4th quarter",
+        "overtime": "Overtime"
+      },
+      "slug": "baxi-manresa-real-madrid",
+      "startTimestamp": 1780063200,
+      "finalResultOnly": false,
+      "feedLocked": false,
+      "isEditor": false
+    }
+  ],
+  "hasNextPage": false
+}
