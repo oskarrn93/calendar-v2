@@ -1,4 +1,4 @@
-name: Continuous Delivery
+name: Continuous Deployment
 run-name: Publish & Deploy ${{ inputs.version }}
 
 on:
@@ -7,8 +7,8 @@ on:
       - "v*"
   workflow_dispatch:
     inputs:
-      image_tag:
-        description: "The image tag (version) to deploy, e.g. v1.0.0"
+      version:
+        description: "The version (image tag) to deploy, e.g. v1.0.0"
         required: true
 
 permissions:
@@ -20,9 +20,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v5.0.0
+        with:
+          ref: ${{ inputs.version }}
+
       - uses: ./.github/actions/publish
         with:
-          image_tag: ${{ inputs.image_tag }}
+          image_tag: ${{ inputs.version }}
           aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
           aws_region: ${{ secrets.AWS_REGION }}
           aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
@@ -30,7 +35,7 @@ jobs:
 
       - uses: ./.github/actions/deploy
         with:
-          image_tag: ${{ inputs.image_tag }}
+          image_tag: ${{ inputs.version }}
           aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
           aws_region: ${{ secrets.AWS_REGION }}
           aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
