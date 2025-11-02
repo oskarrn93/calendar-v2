@@ -33,9 +33,9 @@ runs:
       run: |
         docker build -t ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} .
 
-    - name: Get ECR Repository URI
-      id: ecr-uri
-      uses: ./.github/actions/ecr-repository-uri
+    - name: Construct ECR Repository URI
+      id: construct-ecr-uri
+      uses: ./.github/actions/construct-ecr-repository-uri
       with:
         aws_account_id: ${{ inputs.aws_account_id }}
         aws_region: ${{ inputs.aws_region }}
@@ -43,7 +43,7 @@ runs:
 
     - name: Push Docker image to ECR
       run: |
-        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
-        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.ecr-uri.output.ecr_repository_uri }}:latest
-        docker push ${{ steps.ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
-        docker push ${{ steps.ecr-uri.output.ecr_repository_uri }}:latest
+        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
+        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:latest
+        docker push ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
+        docker push ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:latest

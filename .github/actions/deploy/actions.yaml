@@ -30,9 +30,9 @@ runs:
         role-to-assume: ${{ inputs.aws_role_arn }}
         aws-region: ${{ inputs.aws_region }}
 
-    - name: Get ECR Repository URI
-      id: ecr-uri
-      uses: ./.github/actions/ecr-repository-uri
+    - name: Construct ECR Repository URI
+      id: construct-ecr-uri
+      uses: ./.github/actions/construct-ecr-repository-uri
       with:
         aws_account_id: ${{ inputs.aws_account_id }}
         aws_region: ${{ inputs.aws_region }}
@@ -43,4 +43,4 @@ runs:
       with:
         function-name: ${{ inputs.aws_lambda_function_name }}
         package-type: Image
-        image-uri: ${{ steps.ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
+        image-uri: ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
