@@ -12,8 +12,8 @@ type TeamID int
 const (
 	RealMadrid        TeamID = 541
 	MalmoFF           TeamID = 375
-	ManchesterUnited  TeamID = 1878
-	ManchesterCity    TeamID = 1880
+	ManchesterUnited  TeamID = 33
+	ManchesterCity    TeamID = 50
 	ParisSaintGermain TeamID = 85
 	Arsenal           TeamID = 42
 )
