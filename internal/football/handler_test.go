@@ -8,7 +8,6 @@ import (
 	"log/slog"
 	"net/url"
 	"testing"
-	"time"
 
 	"github.com/oskarrn93/calendar-v2/internal/football"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
@@ -76,14 +75,12 @@ func TestGetGames(t *testing.T) {
 
 	gamesTestData := string(readGamesTestData(t, football.REAL_MADRID_TEAM_ID))
 
-	expectedFromDate := time.Now().UTC().Add(-1 * time.Hour * 24 * 2).Format("2006-01-02")
 	// Mock http request
 
 	expectedUrl, err := url.Parse(mockConfig.RapidApi.Football.BaseUrl)
 	require.NoError(t, err)
-	expectedUrl.Path += "/fixtures"
+	expectedUrl.Path += "/v3/fixtures"
 	query := expectedUrl.Query()
-	query.Set("from", expectedFromDate)
 	query.Set("season", fmt.Sprintf("%d", mockConfig.RapidApi.Football.Season))
 	query.Set("team", fmt.Sprintf("%d", football.REAL_MADRID_TEAM_ID))
 	expectedUrl.RawQuery = query.Encode()

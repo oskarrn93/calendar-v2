@@ -62,50 +62,50 @@ type FixturesResponse struct {
 	Response []Fixture `json:"response"`
 }
 
-func (f *Handler) GetGames(teamIDs []TeamID) ([]Fixture, error) {
+func (h *Handler) GetGames(teamIDs []TeamID) ([]Fixture, error) {
 	games := []Fixture{}
 
 	for _, teamID := range teamIDs {
-		response, err := f.getGamesByTeam(int(teamID))
+		response, err := h.getGamesByTeam(int(teamID))
 		if err != nil {
 			return nil, err
 		}
 
+		h.logger.Debug("Retrieved football games", "teamId", teamID, "results", response.Results)
 		games = append(games, response.Response...)
 	}
 
 	return games, nil
 }
 
-func (f *Handler) getGamesByTeam(teamId int) (FixturesResponse, error) {
+func (h *Handler) getGamesByTeam(teamId int) (FixturesResponse, error) {
 	/*
-		curl -X GET https://api-football-v1.p.rapidapi.com/v3/fixtures?team=541&season=2024&from=2024-11-12 \
+		curl -X GET https://api-football-v1.p.rapidapi.com/v3/fixtures?team=541&season=2025 \
 			--header 'x-rapidapi-key: REPLACE_ME' | jq .
 	*/
 
 	// TODO: Add support for multiple teams
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(teamId),
-		"season": strconv.Itoa(f.rapidApi.Config.Football.Season),
-		"from":   time.Now().UTC().Add(-1 * time.Hour * 24 * 2).Format("2006-01-02"),
+		"season": strconv.Itoa(h.rapidApi.Config.Football.Season),
 	}
 
-	apiUrl, err := url.Parse(fmt.Sprintf("%s/fixtures", f.rapidApi.Config.Football.BaseUrl))
+	apiUrl, err := url.Parse(fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl))
 	if err != nil {
 		return FixturesResponse{}, fmt.Errorf("Faiiled to parse Football Api games url: %w", err)
 	}
 
-	response, err := f.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
+	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
 	if err != nil {
 		return FixturesResponse{}, fmt.Errorf("Request failed to retrieve Football games: %w", err)
 	}
 
-	f.logger.Debug("Fotball Api response", "response", response)
+	h.logger.Debug("Fotball Api response", "response", response)
 
-	return f.parseGamesResponse(response.Body())
+	return h.parseGamesResponse(response.Body())
 }
 
-func (f *Handler) parseGamesResponse(input []byte) (FixturesResponse, error) {
+func (h *Handler) parseGamesResponse(input []byte) (FixturesResponse, error) {
 	var data FixturesResponse
 	if err := json.Unmarshal(input, &data); err != nil {
 		return data, fmt.Errorf("Failed to unmarshall Football games: %w", err)
@@ -114,7 +114,7 @@ func (f *Handler) parseGamesResponse(input []byte) (FixturesResponse, error) {
 	return data, nil
 }
 
-func (f *Handler) createCalendar(games []Fixture) calendar.Calendar {
+func (h *Handler) createCalendar(games []Fixture) calendar.Calendar {
 	cal := calendar.New("Football")
 	for _, game := range games {
 
