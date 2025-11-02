@@ -16,7 +16,7 @@ permissions:
   id-token: "write"
 
 jobs:
-  build-and-deploy:
+  publish-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
