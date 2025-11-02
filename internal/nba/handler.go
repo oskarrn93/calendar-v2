@@ -14,7 +14,7 @@ import (
 )
 
 type GameDate struct {
-	Start time.Time `json:time`
+	Start time.Time `json:"start"`
 }
 
 type Team struct {
@@ -53,7 +53,10 @@ func (h *Handler) Handler(ctx context.Context) error {
 	}
 
 	calendar := h.createCalendar(games)
-	calendarData := calendar.Export()
+	calendarData, err := calendar.Export()
+	if err != nil {
+		return fmt.Errorf("failed to export NBA calendar: %w", err)
+	}
 
 	if err := h.storage.Upload(ctx, "nba.ics", calendarData, h.logger); err != nil {
 		return fmt.Errorf("failed to upload NBA file: %w", err)

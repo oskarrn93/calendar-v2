@@ -45,7 +45,7 @@ func Initialize(logger *slog.Logger) App {
 	}
 
 	if err := config.Validate(); err != nil {
-		panic(fmt.Errorf("Config validation failed: %w", err))
+		panic(fmt.Errorf("config validation failed: %w", err))
 	}
 
 	return config

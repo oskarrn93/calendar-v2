@@ -29,7 +29,10 @@ func (h *Handler) Handler(ctx context.Context) error {
 	h.logger.Debug("Fotball games", "games", games)
 
 	calendar := h.createCalendar(games)
-	calendarData := calendar.Export()
+	calendarData, err := calendar.Export()
+	if err != nil {
+		return fmt.Errorf("failed to export Football calendar: %w", err)
+	}
 
 	if err := h.storage.Upload(ctx, "football.ics", calendarData, h.logger); err != nil {
 		return fmt.Errorf("failed to upload Football file: %w", err)
@@ -92,12 +95,12 @@ func (h *Handler) getGamesByTeam(teamId int) (FixturesResponse, error) {
 
 	apiUrl, err := url.Parse(fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl))
 	if err != nil {
-		return FixturesResponse{}, fmt.Errorf("Faiiled to parse Football Api games url: %w", err)
+		return FixturesResponse{}, fmt.Errorf("faiiled to parse Football Api games url: %w", err)
 	}
 
 	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
 	if err != nil {
-		return FixturesResponse{}, fmt.Errorf("Request failed to retrieve Football games: %w", err)
+		return FixturesResponse{}, fmt.Errorf("request failed to retrieve Football games: %w", err)
 	}
 
 	h.logger.Debug("Fotball Api response", "response", response)
@@ -108,7 +111,7 @@ func (h *Handler) getGamesByTeam(teamId int) (FixturesResponse, error) {
 func (h *Handler) parseGamesResponse(input []byte) (FixturesResponse, error) {
 	var data FixturesResponse
 	if err := json.Unmarshal(input, &data); err != nil {
-		return data, fmt.Errorf("Failed to unmarshall Football games: %w", err)
+		return data, fmt.Errorf("failed to unmarshall Football games: %w", err)
 	}
 
 	return data, nil

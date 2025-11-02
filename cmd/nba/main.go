@@ -23,7 +23,7 @@ func main() {
 	httpClient := resty.New()
 	s3Client, err := awsutil.S3Client()
 	if err != nil {
-		panic(fmt.Errorf("Failed to get S3 client: %w", err))
+		panic(fmt.Errorf("failed to get S3 client: %w", err))
 	}
 
 	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
