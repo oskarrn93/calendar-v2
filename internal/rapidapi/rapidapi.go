@@ -1,9 +1,8 @@
 package rapidapi
 
 import (
-	"github.com/oskarrn93/calendar-v2/internal/config"
-
 	"github.com/go-resty/resty/v2"
+	"github.com/oskarrn93/calendar-v2/internal/config"
 )
 
 // Ap docs: https://rapidapi.com/api-sports/api/api-nba

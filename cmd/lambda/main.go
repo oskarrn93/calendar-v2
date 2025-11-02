@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/go-resty/resty/v2"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/config"
 	"github.com/oskarrn93/calendar-v2/internal/football"
@@ -12,9 +14,6 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/nba"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 	"github.com/oskarrn93/calendar-v2/internal/util"
-
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/go-resty/resty/v2"
 )
 
 func handler(ctx context.Context, event json.RawMessage) error {
@@ -26,7 +25,7 @@ func handler(ctx context.Context, event json.RawMessage) error {
 	httpClient := resty.New()
 	s3Client, err := awsutil.S3Client()
 	if err != nil {
-		return fmt.Errorf("Failed to get S3 client: %w", err)
+		return fmt.Errorf("failed to get S3 client: %w", err)
 	}
 
 	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
@@ -66,7 +65,7 @@ func handler(ctx context.Context, event json.RawMessage) error {
 
 	if err != nil {
 		logger.Error("One or more handlers failed", "error", err)
-		return fmt.Errorf("One or more handlers failed: %w", err)
+		return fmt.Errorf("one or more handlers failed: %w", err)
 	}
 
 	logger.Info("Event successfully processed")

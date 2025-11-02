@@ -4,20 +4,18 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"log"
 	"log/slog"
 	"net/url"
 	"testing"
 
+	"github.com/gkampitakis/go-snaps/snaps"
+	"github.com/go-resty/resty/v2"
+	"github.com/jarcoal/httpmock"
 	"github.com/oskarrn93/calendar-v2/internal/football"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 	"github.com/oskarrn93/calendar-v2/internal/testdata"
 	"github.com/oskarrn93/calendar-v2/internal/testutil"
-
-	"github.com/gkampitakis/go-snaps/snaps"
-	"github.com/go-resty/resty/v2"
-	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
@@ -32,18 +30,18 @@ func readGamesTestData(t *testing.T, teamID football.TeamID) []byte {
 	case football.MALMO_FF_TEAM_ID:
 		filePath = "football/fixtures/malmo_ff.json"
 	default:
-		t.Fatalf("No test data for team ID: %d", teamID)
+		t.Fatalf("no test data for team ID: %d", teamID)
 	}
 
 	jsonFile, err := testdata.Content.Open(filePath)
 	if err != nil {
-		log.Fatal("Failed to open games test data", err)
+		t.Fatal(fmt.Errorf("failed to open games test data: %w", err))
 	}
 	defer jsonFile.Close()
 
 	data, err := io.ReadAll(jsonFile)
 	if err != nil {
-		log.Fatal("Failed to read games test data", err)
+		t.Fatal(fmt.Errorf("failed to read games test data: %w", err))
 	}
 
 	return data
@@ -59,7 +57,7 @@ func (m *MockStorage) Upload(ctx context.Context, filename string, data []byte, 
 }
 
 func TestGetGames(t *testing.T) {
-	//Arrange
+	// Arrange
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
