@@ -7,6 +7,10 @@ version: 2
 updates:
   - package-ecosystem: "gomod" # See documentation for possible values
     directory: "/" # Location of package manifests
+    groups:
+      aws:
+        patterns:
+          - "github.com/aws/*"
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions"
