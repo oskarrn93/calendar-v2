@@ -1,7 +1,10 @@
-name: Deploy
-run-name: Deploy ${{ inputs.version }}
+name: Continuous Delivery
+run-name: Publish & Deploy ${{ inputs.version }}
 
 on:
+  push:
+    tags:
+      - "v*"
   workflow_dispatch:
     inputs:
       image_tag:
@@ -17,6 +20,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: ./.github/actions/publish
+        with:
+          image_tag: ${{ inputs.image_tag }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          aws_ecr_repository: ${{ secrets.AWS_ECR_REPOSITORY }}
+
       - uses: ./.github/actions/deploy
         with:
           image_tag: ${{ inputs.image_tag }}

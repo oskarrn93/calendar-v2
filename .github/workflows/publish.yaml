@@ -2,9 +2,6 @@ name: Publish
 run-name: Publish ${{ github.ref_name }}
 
 on:
-  push:
-    tags:
-      - "v*"
   workflow_dispatch:
     inputs:
       version:
@@ -25,23 +22,10 @@ jobs:
         with:
           ref: ${{ inputs.version }}
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5.1.0
+      - uses: ./.github/actions/publish
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Log in to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2.0.1
-
-      - name: Build Docker image
-        run: |
-          docker build -t ${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.ref_name }} .
-
-      - name: Push Docker image to ECR
-        run: |
-          docker tag ${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.ref_name }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.ref_name }}
-          docker tag ${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.ref_name }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:latest
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.ref_name }}
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:latest
+          image_tag: ${{ inputs.version }}
+          aws_role_arn: ${{ secrets.AWS_ROLE_ARN }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          aws_ecr_repository: ${{ secrets.AWS_ECR_REPOSITORY }}

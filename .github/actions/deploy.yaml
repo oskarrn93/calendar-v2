@@ -1,0 +1,46 @@
+name: "Deploy AWS Lambda"
+description: "Deploy AWS Lambda with Docker image from ECR"
+
+inputs:
+  image_tag:
+    description: "The image tag"
+    required: true
+  aws_role_arn:
+    description: "The AWS IAM role to assume"
+    required: true
+  aws_region:
+    description: "The AWS region"
+    required: true
+  aws_account_id:
+    description: "The AWS Account ID"
+    required: true
+  aws_ecr_repository:
+    description: "The AWS ECR repository name"
+    required: true
+  aws_lambda_function_name:
+    description: "The AWS Lambda function name"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v5.1.0
+      with:
+        role-to-assume: ${{ inputs.aws_role_arn }}
+        aws-region: ${{ inputs.aws_region }}
+
+    - name: Get ECR Repository URI
+      id: ecr-uri
+      uses: ./.github/actions/ecr-repository-uri
+      with:
+        aws_account_id: ${{ inputs.aws_account_id }}
+        aws_region: ${{ inputs.aws_region }}
+        aws_ecr_repository: ${{ inputs.aws_ecr_repository }}
+
+    - name: Deploy to AWS Lambda
+      uses: aws-actions/aws-lambda-deploy@v1.1.0
+      with:
+        function-name: ${{ inputs.aws_lambda_function_name }}
+        package-type: Image
+        image-uri: ${{ steps.ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}

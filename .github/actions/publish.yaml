@@ -1,0 +1,49 @@
+name: "Publish image to AWS ECR"
+
+inputs:
+  image_tag:
+    description: "The image tag"
+    required: true
+  aws_role_arn:
+    description: "The AWS IAM role to assume"
+    required: true
+  aws_region:
+    description: "The AWS region"
+    required: true
+  aws_account_id:
+    description: "The AWS Account ID"
+    required: true
+  aws_ecr_repository:
+    description: "The AWS ECR repository name"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v5.1.0
+      with:
+        role-to-assume: ${{ inputs.aws_role_arn }}
+        aws-region: ${{ inputs.aws_region }}
+
+    - name: Log in to Amazon ECR
+      uses: aws-actions/amazon-ecr-login@v2.0.1
+
+    - name: Build Docker image
+      run: |
+        docker build -t ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} .
+
+    - name: Get ECR Repository URI
+      id: ecr-uri
+      uses: ./.github/actions/ecr-repository-uri
+      with:
+        aws_account_id: ${{ inputs.aws_account_id }}
+        aws_region: ${{ inputs.aws_region }}
+        aws_ecr_repository: ${{ inputs.aws_ecr_repository }}
+
+    - name: Push Docker image to ECR
+      run: |
+        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
+        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.ecr-uri.output.ecr_repository_uri }}:latest
+        docker push ${{ steps.ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
+        docker push ${{ steps.ecr-uri.output.ecr_repository_uri }}:latest
