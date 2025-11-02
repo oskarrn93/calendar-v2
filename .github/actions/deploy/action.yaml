@@ -43,4 +43,4 @@ runs:
       with:
         function-name: ${{ inputs.aws_lambda_function_name }}
         package-type: Image
-        image-uri: ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
+        image-uri: ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:${{ inputs.image_tag }}

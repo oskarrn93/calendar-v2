@@ -46,7 +46,7 @@ runs:
     - name: Push Docker image to ECR
       shell: sh
       run: |
-        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
-        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:latest
-        docker push ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:${{ inputs.image_tag }}
-        docker push ${{ steps.construct-ecr-uri.output.ecr_repository_uri }}:latest
+        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:${{ inputs.image_tag }}
+        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:latest
+        docker push ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:${{ inputs.image_tag }}
+        docker push ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:latest
