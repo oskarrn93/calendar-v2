@@ -1,4 +1,5 @@
-name: Build and publish Lambda Docker image to AWS ECR
+name: Publish
+run-name: Publish ${{ inputs.version }}
 
 on:
   push:
@@ -10,23 +11,29 @@ on:
         description: "The version tag to publish, e.g. v1.0.0"
         required: true
 
+permissions:
+  contents: "read"
+  id-token: "write"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.0.0
+        with:
+          ref: refs/tags/${{ inputs.version }}
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v5.1.0
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Log in to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-ecr-login@v2.0.1
 
       - name: Build Docker image
         run: |

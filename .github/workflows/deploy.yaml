@@ -1,29 +1,31 @@
-name: Build and Deploy to AWS Lambda
+name: Deploy
+run-name: Deploy ${{ inputs.version }}
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: "The version tag to deploy, e.g. v1.0.0"
+        description: "The version tag (image) to deploy, e.g. v1.0.0"
         required: true
 
+permissions:
+  contents: "read"
+  id-token: "write"
+
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v5.1.0
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to AWS Lambda
-        uses: aws-actions/aws-lambda-deploy@v1
+        uses: aws-actions/aws-lambda-deploy@v1.1.0
         with:
           function-name: ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }}
-          region: ${{ secrets.AWS_REGION }}
-          image-uri: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:latest
+          package-type: Image
+          image-uri: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ inputs.version }}

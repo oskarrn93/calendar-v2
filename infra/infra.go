@@ -1,13 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
 	"github.com/aws/aws-cdk-go/awscdk"
 	"github.com/aws/aws-cdk-go/awscdk/awscloudfront"
+	"github.com/aws/aws-cdk-go/awscdk/awsecr"
 	"github.com/aws/aws-cdk-go/awscdk/awsevents"
 	"github.com/aws/aws-cdk-go/awscdk/awseventstargets"
+	"github.com/aws/aws-cdk-go/awscdk/awsiam"
 	"github.com/aws/aws-cdk-go/awscdk/awslambda"
 	"github.com/aws/aws-cdk-go/awscdk/awss3"
 	"github.com/aws/aws-sdk-go/aws"
@@ -18,7 +21,8 @@ import (
 )
 
 type AppConfig struct {
-	RapidApiKey string `validate:"required"`
+	RapidApiKey      string `validate:"required"`
+	GithubRepository string `validate:"required"`
 }
 
 func (a *AppConfig) Validate() error {
@@ -31,10 +35,9 @@ func ReadRequiredEnvironmentVariables() AppConfig {
 		log.Println("No .env file was provided")
 	}
 
-	rapidApiKey := os.Getenv("RAPIDAPI_KEY")
-
 	appConfig := AppConfig{
-		RapidApiKey: rapidApiKey,
+		RapidApiKey:      os.Getenv("RAPIDAPI_KEY"),
+		GithubRepository: os.Getenv("GITHUB_REPOSITORY"),
 	}
 
 	if err := appConfig.Validate(); err != nil {
@@ -63,12 +66,24 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		AccessControl: awss3.BucketAccessControl_PRIVATE,
 	})
 
+	ecrRepository := awsecr.NewRepository(stack, jsii.String("calendar-v2-ecr"), &awsecr.RepositoryProps{
+		RepositoryName: aws.String("calendar-v2"),
+		LifecycleRules: &[]*awsecr.LifecycleRule{
+			{
+				Description:   aws.String("Expire old images"),
+				MaxImageCount: aws.Float64(3),
+			},
+		},
+	})
+
 	lambda := awslambda.NewFunction(stack, jsii.String("calendar-v2-bucket-lambda"), &awslambda.FunctionProps{
-		Runtime: awslambda.Runtime_PROVIDED_AL2(),
-		Handler: jsii.String("bootstrap"),
-		Code: awslambda.Code_FromDockerBuild(aws.String("./"), &awslambda.DockerBuildAssetOptions{
-			File: aws.String("Dockerfile"),
+		Runtime: awslambda.Runtime_FROM_IMAGE(),
+		Handler: awslambda.Handler_FROM_IMAGE(),
+		Code: awslambda.Code_FromEcrImage(ecrRepository, &awslambda.EcrImageCodeProps{
+			TagOrDigest: aws.String("latest"),
 		}),
+		Timeout:    awscdk.Duration_Seconds(jsii.Number(30)),
+		MemorySize: jsii.Number(128),
 		Environment: &map[string]*string{
 			"RAPIDAPI_KEY":   &envConfig.RapidApiKey,
 			"S3_BUCKET_NAME": s3Bucket.BucketName(),
@@ -113,6 +128,77 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 	awscloudfront.NewCloudFrontWebDistribution(stack, jsii.String("calendar-v2-cf"), &awscloudfront.CloudFrontWebDistributionProps{
 		OriginConfigs: &originConfigs,
 	})
+
+	// https://aws.amazon.com/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/
+	githubIamOidcProvider := awsiam.NewCfnOIDCProvider(stack, jsii.String("calendar-v2-github-oidc-provider"), &awsiam.CfnOIDCProviderProps{
+		Url: jsii.String("https://token.actions.githubusercontent.com"),
+		ClientIdList: &[]*string{
+			jsii.String("sts.amazonaws.com"),
+		},
+		ThumbprintList: &[]*string{
+			jsii.String("6938fd4d98bab03faadb97b34396831e3780aea1"),
+		},
+	})
+
+	githubActionsRole := awsiam.NewRole(stack, jsii.String("calendar-v2-iam-github-actions-role"), &awsiam.RoleProps{
+		AssumedBy: awsiam.NewFederatedPrincipal(
+			githubIamOidcProvider.AttrArn(),
+			&map[string]interface{}{
+				"StringEquals": map[string]string{
+					"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+				},
+				"StringLike": map[string]string{
+					"token.actions.githubusercontent.com:sub": fmt.Sprintf("repo:%s:*", envConfig.GithubRepository),
+				},
+			},
+			jsii.String("sts:AssumeRoleWithWebIdentity"),
+		),
+		RoleName: jsii.String("calendar-v2-iam-github-actions-oidc-deployment-role"),
+
+		InlinePolicies: &map[string]awsiam.PolicyDocument{
+			"ECRUploadImage": awsiam.NewPolicyDocument(&awsiam.PolicyDocumentProps{
+				Statements: &[]awsiam.PolicyStatement{
+					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
+						Actions: &[]*string{
+							jsii.String("ecr:CompleteLayerUpload"),
+							jsii.String("ecr:UploadLayerPart"),
+							jsii.String("ecr:InitiateLayerUpload"),
+							jsii.String("ecr:BatchCheckLayerAvailability"),
+							jsii.String("ecr:PutImage"),
+							jsii.String("ecr:BatchGetImage"),
+						},
+						Resources: &[]*string{
+							ecrRepository.RepositoryArn(),
+						},
+					}),
+					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
+						Actions: &[]*string{
+							jsii.String("ecr:GetAuthorizationToken"),
+						},
+						Resources: &[]*string{aws.String("*")},
+					}),
+				},
+			}),
+			"LambdaDeploy": awsiam.NewPolicyDocument(&awsiam.PolicyDocumentProps{
+				Statements: &[]awsiam.PolicyStatement{
+					awsiam.NewPolicyStatement(&awsiam.PolicyStatementProps{
+						Actions: &[]*string{
+							jsii.String("lambda:UpdateFunctionCode"),
+							jsii.String("lambda:PublishVersion"),
+						},
+						Resources: &[]*string{
+							lambda.FunctionArn(),
+						},
+					}),
+				},
+			}),
+		},
+	},
+	)
+
+	// Grant the GitHub Actions role permissions to interact with the ECR repository
+	ecrRepository.GrantPullPush(githubActionsRole)
+	ecrRepository.GrantPull(lambda.Role())
 
 	return stack
 }
