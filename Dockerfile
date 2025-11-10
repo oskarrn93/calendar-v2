@@ -1,4 +1,4 @@
-FROM golang:1.25.3-alpine3.22 AS builder
+FROM golang:1.25.4-alpine3.22 AS builder
 
 RUN apk update && apk add --no-cache make git
 
@@ -16,7 +16,7 @@ COPY . ./
 
 RUN make build
 
-FROM golang:1.25.3-alpine3.22
+FROM golang:1.25.4-alpine3.22
 
 WORKDIR /asset
 
