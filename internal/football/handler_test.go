@@ -73,21 +73,25 @@ func TestGetGames(t *testing.T) {
 
 	gamesTestData := string(readGamesTestData(t, football.RealMadrid))
 
+	searchTeam := football.SearchTeam{
+		TeamID: football.RealMadrid,
+		Season: 2025,
+	}
 	// Mock http request
 
 	expectedUrl, err := url.Parse(mockConfig.RapidApi.Football.BaseUrl)
 	require.NoError(t, err)
 	expectedUrl.Path += "/v3/fixtures"
 	query := expectedUrl.Query()
-	query.Set("season", fmt.Sprintf("%d", football.Season))
-	query.Set("team", fmt.Sprintf("%d", football.RealMadrid))
+	query.Set("season", fmt.Sprintf("%d", searchTeam.Season))
+	query.Set("team", fmt.Sprintf("%d", searchTeam.TeamID))
 	expectedUrl.RawQuery = query.Encode()
 
 	httpmock.RegisterResponder("GET", expectedUrl.String(),
 		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := handler.GetGames([]football.TeamID{football.RealMadrid})
+	result, err := handler.GetGames([]football.SearchTeam{searchTeam})
 	require.NoError(t, err)
 
 	// Assert
