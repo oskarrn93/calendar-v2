@@ -16,6 +16,7 @@ const (
 	ManchesterCity    TeamID = 50
 	ParisSaintGermain TeamID = 85
 	Arsenal           TeamID = 42
+	Sweden            TeamID = 5
 )
 
 type SearchTeam struct {
@@ -30,4 +31,5 @@ var SearchTeams = []SearchTeam{
 	{TeamID: ManchesterCity, Season: 2025},
 	{TeamID: ParisSaintGermain, Season: 2025},
 	{TeamID: Arsenal, Season: 2025},
+	{TeamID: Sweden, Season: 2026},
 }
