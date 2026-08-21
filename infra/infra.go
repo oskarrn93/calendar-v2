@@ -144,7 +144,7 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		AssumedBy: awsiam.NewFederatedPrincipal(
 			githubIamOidcProvider.AttrArn(),
 			&map[string]interface{}{
-				"StringEquals": map[string]string{
+				"StringEquals": map[string]string{ // #nosec G101 -- AWS OIDC audience is a public identifier
 					"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
 				},
 				"StringLike": map[string]string{

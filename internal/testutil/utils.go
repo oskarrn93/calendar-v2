@@ -1,6 +1,11 @@
 package testutil
 
-import "github.com/oskarrn93/calendar-v2/internal/config"
+import (
+	"fmt"
+	"uuid"
+
+	"github.com/oskarrn93/calendar-v2/internal/config"
+)
 
 func GetMockAppConfig() config.App {
 	config := config.App{
@@ -17,7 +22,7 @@ func GetMockAppConfig() config.App {
 			Esport: config.RapidApiResource{
 				BaseUrl: "https://example-esport.com",
 			},
-			ApiKey: "fake-api-key",
+			ApiKey: fmt.Sprintf("fake-%s", uuid.New()),
 		},
 		S3Bucket: "fake-s3-bucket",
 	}
