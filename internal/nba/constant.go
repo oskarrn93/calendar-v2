@@ -9,4 +9,4 @@ const (
 
 var TeamIDs = []TeamID{BostonCeltics, LosAngelesLakers}
 
-const Season = 2025
+const Season = 2026

@@ -25,11 +25,11 @@ type SearchTeam struct {
 }
 
 var SearchTeams = []SearchTeam{
-	{TeamID: RealMadrid, Season: 2025},
+	{TeamID: RealMadrid, Season: 2026},
 	{TeamID: MalmoFF, Season: 2026},
-	{TeamID: ManchesterUnited, Season: 2025},
-	{TeamID: ManchesterCity, Season: 2025},
-	{TeamID: ParisSaintGermain, Season: 2025},
-	{TeamID: Arsenal, Season: 2025},
+	{TeamID: ManchesterUnited, Season: 2026},
+	{TeamID: ManchesterCity, Season: 2026},
+	{TeamID: ParisSaintGermain, Season: 2026},
+	{TeamID: Arsenal, Season: 2026},
 	{TeamID: Sweden, Season: 2026},
 }
