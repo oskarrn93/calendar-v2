@@ -1,6 +1,6 @@
 module github.com/oskarrn93/calendar-v2
 
-go 1.25.9
+go 1.27.0
 
 require (
 	github.com/arran4/golang-ical v0.3.5
