@@ -12,7 +12,7 @@ require (
 	github.com/aws/constructs-go/constructs/v3 v3.4.344
 	github.com/aws/jsii-runtime-go v1.139.0
 	github.com/gkampitakis/go-snaps v0.5.23
-	github.com/go-playground/validator/v10 v10.30.3
+	github.com/go-playground/validator/v10 v10.30.4
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/jarcoal/httpmock v1.4.1
 	github.com/joho/godotenv v1.5.1
