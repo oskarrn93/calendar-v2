@@ -1,14 +1,21 @@
-# Welcome to your CDK Go project!
+# Infrastructure
 
-This is a blank project for Go development with CDK.
+Terraform configuration for the calendar-v2 AWS resources (S3 bucket, CloudFront distribution, ECR repository, Lambda function, EventBridge schedule, and the GitHub Actions OIDC deployment role).
 
-**NOTICE**: Go support is still in Developer Preview. This implies that APIs may
-change while we address early feedback from the community. We would love to hear
-about your experience through GitHub issues.
+State is stored remotely in the `oskarrosen-terraform` S3 bucket (`eu-north-1`), with native S3 locking.
+
+Terraform version is pinned via [`.terraform-version`](.terraform-version) for use with [tfenv](https://github.com/tfutils/tfenv).
+
+## Setup
+
+Copy `terraform.tfvars.example` to `terraform.tfvars` and fill in the values (this file is gitignored since it holds the `RAPIDAPI_KEY` secret).
+
+```sh
+cp terraform.tfvars.example terraform.tfvars
+```
 
 ## Useful commands
 
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
- * `go test`         run unit tests
+* `terraform init` initialize the backend and providers
+* `terraform plan` preview changes
+* `terraform apply` apply changes

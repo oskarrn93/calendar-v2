@@ -16,6 +16,8 @@ Manually invoke the [Deploy Github Actions workflow](https://github.com/oskarrn9
 
 ### Infrastructure
 
+Infrastructure is managed with Terraform (see [`infra/`](infra/)), with state stored remotely in the `oskarrosen-terraform` S3 bucket.
+
 To deploy infrastructure run the following command from your local machine. This assumes you have setup the AWS Profile and have the expected IAM permissions.
 
 ```sh

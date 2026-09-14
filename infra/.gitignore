@@ -1,19 +1,21 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# Local .terraform directories
+**/.terraform/*
 
-# Test binary, built with `go test -c`
-*.test
+# Terraform state files
+*.tfstate
+*.tfstate.*
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# Crash log files
+crash.log
+crash.*.log
 
-# go.sum should be committed
-!go.sum
+# Variable files that may contain secrets
+*.tfvars
+*.tfvars.json
 
-# CDK asset staging directory
-.cdk.staging
-cdk.out
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# Config generated during import
+generated.tf

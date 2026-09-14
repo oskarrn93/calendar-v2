@@ -38,7 +38,7 @@ run-basketball: build
 
 .PHONY: deploy
 deploy:
-	cdk deploy
+	cd infra && terraform apply
 
 .PHONY: test
 test:
