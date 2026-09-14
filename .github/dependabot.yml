@@ -11,13 +11,39 @@ updates:
       aws:
         patterns:
           - "github.com/aws/*"
+      gomod:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "github.com/aws/*"
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions"
     directory: "/"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
     schedule:
       interval: "weekly"
   - package-ecosystem: "docker"
     directory: "/"
+    groups:
+      docker:
+        patterns:
+          - "*"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "terraform"
+    directory: "/infra"
+    groups:
+      aws:
+        patterns:
+          - "hashicorp/aws"
+      terraform:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "hashicorp/aws"
     schedule:
       interval: "weekly"
