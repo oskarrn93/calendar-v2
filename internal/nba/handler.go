@@ -58,7 +58,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return fmt.Errorf("failed to export NBA calendar: %w", err)
 	}
 
-	if err := h.storage.Upload(ctx, "nba.ics", calendarData, h.logger); err != nil {
+	if err := h.storage.Upload(ctx, "nba.ics", calendarData); err != nil {
 		return fmt.Errorf("failed to upload NBA file: %w", err)
 	}
 

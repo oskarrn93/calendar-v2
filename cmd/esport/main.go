@@ -24,18 +24,14 @@ func main() {
 		panic(err)
 	}
 	httpClient := resty.New()
-	s3Client, err := awsutil.S3Client()
+	storage, err := awsutil.NewS3Storage(ctx, appConfig.S3Bucket, logger)
 	if err != nil {
-		panic(fmt.Errorf("failed to get S3 client: %w", err))
+		panic(fmt.Errorf("failed to create S3 storage: %w", err))
 	}
 
 	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
-	storage := awsutil.S3Storage{
-		S3Client: s3Client,
-		S3Bucket: appConfig.S3Bucket,
-	}
 
-	handler := esport.NewHandler(rapidApi, &storage, logger)
+	handler := esport.NewHandler(rapidApi, storage, logger)
 	if err := handler.Handler(ctx); err != nil {
 		logger.Error("Esport handler failed", "error", err)
 		panic(err)

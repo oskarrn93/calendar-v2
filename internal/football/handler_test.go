@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"log/slog"
 	"net/url"
 	"testing"
 
@@ -51,8 +50,8 @@ type MockStorage struct {
 	mock.Mock
 }
 
-func (m *MockStorage) Upload(ctx context.Context, filename string, data []byte, logger *slog.Logger) error {
-	args := m.Called(ctx, filename, data, logger)
+func (m *MockStorage) Upload(ctx context.Context, filename string, data []byte) error {
+	args := m.Called(ctx, filename, data)
 	return args.Error(0)
 }
 

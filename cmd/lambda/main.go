@@ -28,16 +28,12 @@ func handler(ctx context.Context, event json.RawMessage) error {
 		return err
 	}
 	httpClient := resty.New()
-	s3Client, err := awsutil.S3Client()
+	storage, err := awsutil.NewS3Storage(ctx, appConfig.S3Bucket, logger)
 	if err != nil {
-		return fmt.Errorf("failed to get S3 client: %w", err)
+		return fmt.Errorf("failed to create S3 storage: %w", err)
 	}
 
 	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
-	storage := awsutil.S3Storage{
-		S3Client: s3Client,
-		S3Bucket: appConfig.S3Bucket,
-	}
 
 	// use any for results since we don't care about them
 	wg := util.NewWaitGroup[any](ctx)
@@ -48,19 +44,19 @@ func handler(ctx context.Context, event json.RawMessage) error {
 	}{
 		{
 			name:    "Football",
-			handler: football.NewHandler(rapidApi, &storage, logger).Handler,
+			handler: football.NewHandler(rapidApi, storage, logger).Handler,
 		},
 		{
 			name:    "NBA",
-			handler: nba.NewHandler(rapidApi, &storage, logger).Handler,
+			handler: nba.NewHandler(rapidApi, storage, logger).Handler,
 		},
 		{
 			name:    "Esport",
-			handler: esport.NewHandler(rapidApi, &storage, logger).Handler,
+			handler: esport.NewHandler(rapidApi, storage, logger).Handler,
 		},
 		{
 			name:    "Basketball",
-			handler: basketball.NewHandler(rapidApi, &storage, logger).Handler,
+			handler: basketball.NewHandler(rapidApi, storage, logger).Handler,
 		},
 	}
 
