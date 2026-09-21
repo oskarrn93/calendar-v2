@@ -2,19 +2,9 @@
 install:
 	go mod download 
 
-.PHONY: dev
-dev:
-	godotenv -f .env go run .
-
 .PHONY: build
 build:
 	go build -o ./bin ./...
-	chmod +x ./bin/lambda
-	chmod +x ./bin/nba
-	chmod +x ./bin/football
-	chmod +x ./bin/esport
-	chmod +x ./bin/basketball
-	
 
 .PHONY: run-lambda
 run-lambda: build

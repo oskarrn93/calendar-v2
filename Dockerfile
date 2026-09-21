@@ -1,22 +1,20 @@
-FROM golang:1.27.0-alpine3.24 AS builder
+ARG GO_VERSION=1.27.0
 
-RUN apk update && apk add --no-cache make git
+FROM golang:${GO_VERSION}-alpine3.24 AS builder
 
 WORKDIR /app
 
-RUN mkdir ./bin
+COPY go.mod go.sum ./
 
-COPY Makefile ./
-COPY go.mod ./
-COPY go.sum ./
-
-RUN make install
+RUN go mod download
 
 COPY . ./
 
-RUN make build
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o ./bin/lambda ./cmd/lambda
 
-FROM golang:1.27.0-alpine3.24
+FROM alpine:3.24
+
+RUN apk add --no-cache ca-certificates
 
 WORKDIR /asset
 
