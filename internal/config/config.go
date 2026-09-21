@@ -2,11 +2,12 @@ package config
 
 import (
 	"fmt"
-	"log/slog"
 	"os"
 
-	validator "github.com/oskarrn93/calendar-v2/internal/validation"
+	"github.com/go-playground/validator/v10"
 )
+
+var validate = validator.New(validator.WithPrivateFieldValidation())
 
 type RapidApiResource struct {
 	BaseUrl string `validate:"required"`
@@ -26,10 +27,10 @@ type App struct {
 }
 
 func (a *App) Validate() error {
-	return validator.ValidateStruct(a)
+	return validate.Struct(a)
 }
 
-func Initialize(logger *slog.Logger) App {
+func Initialize() (App, error) {
 	config := App{
 		RapidApi: RapidApi{
 			NBA: RapidApiResource{
@@ -50,8 +51,8 @@ func Initialize(logger *slog.Logger) App {
 	}
 
 	if err := config.Validate(); err != nil {
-		panic(fmt.Errorf("config validation failed: %w", err))
+		return App{}, fmt.Errorf("config validation failed: %w", err)
 	}
 
-	return config
+	return config, nil
 }

@@ -19,7 +19,10 @@ func main() {
 
 	logger.Info("Football command")
 
-	appConfig := config.Initialize(logger)
+	appConfig, err := config.Initialize()
+	if err != nil {
+		panic(err)
+	}
 	httpClient := resty.New()
 	s3Client, err := awsutil.S3Client()
 	if err != nil {

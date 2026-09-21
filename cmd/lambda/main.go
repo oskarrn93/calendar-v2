@@ -23,7 +23,10 @@ func handler(ctx context.Context, event json.RawMessage) error {
 
 	logger.Info("Received Event", "event", event)
 
-	appConfig := config.Initialize(logger)
+	appConfig, err := config.Initialize()
+	if err != nil {
+		return err
+	}
 	httpClient := resty.New()
 	s3Client, err := awsutil.S3Client()
 	if err != nil {
