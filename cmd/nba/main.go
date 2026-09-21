@@ -23,18 +23,17 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	httpClient := resty.New()
+
 	storage, err := awsutil.NewS3Storage(ctx, appConfig.S3Bucket, logger)
 	if err != nil {
 		panic(fmt.Errorf("failed to create S3 storage: %w", err))
 	}
 
-	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
+	rapidApi := rapidapi.New(resty.New(), appConfig.RapidApi)
 
-	nbaHandler := nba.NewHandler(rapidApi, storage, logger)
-	if err := nbaHandler.Handler(ctx); err != nil {
-		logger.Error("NBA handler failed", "error", err)
-		panic(err)
+	handler := nba.NewHandler(rapidApi, storage, logger)
+	if err := handler.Handler(ctx); err != nil {
+		panic(fmt.Errorf("NBA handler failed: %w", err))
 	}
 
 	logger.Info("Event successfully processed")
