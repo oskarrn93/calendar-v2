@@ -19,17 +19,14 @@ const (
 	Sweden            TeamID = 5
 )
 
-type SearchTeam struct {
-	TeamID TeamID
-	Season int
+var TeamIDs = []TeamID{
+	RealMadrid,
+	MalmoFF,
+	ManchesterUnited,
+	ManchesterCity,
+	ParisSaintGermain,
+	Arsenal,
+	Sweden,
 }
 
-var SearchTeams = []SearchTeam{
-	{TeamID: RealMadrid, Season: 2026},
-	{TeamID: MalmoFF, Season: 2026},
-	{TeamID: ManchesterUnited, Season: 2026},
-	{TeamID: ManchesterCity, Season: 2026},
-	{TeamID: ParisSaintGermain, Season: 2026},
-	{TeamID: Arsenal, Season: 2026},
-	{TeamID: Sweden, Season: 2026},
-}
+const Season = 2026
