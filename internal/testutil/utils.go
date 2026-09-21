@@ -1,14 +1,18 @@
 package testutil
 
 import (
-	"fmt"
-	"uuid"
+	"context"
+	"io"
+	"testing"
 
 	"github.com/oskarrn93/calendar-v2/internal/config"
+	"github.com/oskarrn93/calendar-v2/internal/testdata"
 )
 
-func GetMockAppConfig() config.App {
-	config := config.App{
+func GetMockAppConfig(t *testing.T) config.App {
+	t.Helper()
+
+	mockConfig := config.App{
 		RapidApi: config.RapidApi{
 			NBA: config.RapidApiResource{
 				BaseUrl: "https://example-nba.com",
@@ -22,14 +26,39 @@ func GetMockAppConfig() config.App {
 			Esport: config.RapidApiResource{
 				BaseUrl: "https://example-esport.com",
 			},
-			ApiKey: fmt.Sprintf("fake-%s", uuid.New()),
+			ApiKey: "fake-api-key", // #nosec G101 -- test placeholder, not a real credential
 		},
 		S3Bucket: "fake-s3-bucket",
 	}
 
-	if err := config.Validate(); err != nil {
-		panic("Invalid mock app config")
+	if err := mockConfig.Validate(); err != nil {
+		t.Fatalf("invalid mock app config: %v", err)
 	}
 
-	return config
+	return mockConfig
+}
+
+// ReadTestData returns a saved api response so tests don't need to make an external request.
+func ReadTestData(t *testing.T, path string) []byte {
+	t.Helper()
+
+	jsonFile, err := testdata.Content.Open(path)
+	if err != nil {
+		t.Fatalf("failed to open test data %q: %v", path, err)
+	}
+	defer jsonFile.Close()
+
+	data, err := io.ReadAll(jsonFile)
+	if err != nil {
+		t.Fatalf("failed to read test data %q: %v", path, err)
+	}
+
+	return data
+}
+
+// NoopStorage satisfies awsutil.Storage for tests that never upload.
+type NoopStorage struct{}
+
+func (NoopStorage) Upload(_ context.Context, _ string, _ []byte) error {
+	return nil
 }

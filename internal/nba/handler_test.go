@@ -1,9 +1,7 @@
 package nba_test
 
 import (
-	"context"
 	"fmt"
-	"io"
 	"testing"
 
 	"github.com/gkampitakis/go-snaps/snaps"
@@ -12,37 +10,9 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/nba"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
-	"github.com/oskarrn93/calendar-v2/internal/testdata"
 	"github.com/oskarrn93/calendar-v2/internal/testutil"
-	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
-
-func readGamesTestData(t *testing.T) []byte {
-	// Use saved api response so we don't need to make an external request
-
-	jsonFile, err := testdata.Content.Open("nba/games/celtics.json")
-	if err != nil {
-		t.Fatal(fmt.Errorf("Failed to open games test data: %w", err))
-	}
-	defer jsonFile.Close()
-
-	data, err := io.ReadAll(jsonFile)
-	if err != nil {
-		t.Fatal(fmt.Errorf("Failed to read games test data: %w", err))
-	}
-
-	return data
-}
-
-type MockStorage struct {
-	mock.Mock
-}
-
-func (m *MockStorage) Upload(ctx context.Context, filename string, data []byte) error {
-	args := m.Called(ctx, filename, data)
-	return args.Error(0)
-}
 
 func TestGetGames(t *testing.T) {
 	// Arrange
@@ -52,14 +22,13 @@ func TestGetGames(t *testing.T) {
 	httpClient := resty.New()
 	httpmock.ActivateNonDefault(httpClient.GetClient())
 
-	mockConfig := testutil.GetMockAppConfig()
+	mockConfig := testutil.GetMockAppConfig(t)
 
 	rapidApi := rapidapi.New(httpClient, mockConfig.RapidApi)
-	mockStorage := MockStorage{}
 
-	nbaHandler := nba.NewHandler(rapidApi, &mockStorage, logging.New())
+	nbaHandler := nba.NewHandler(rapidApi, testutil.NoopStorage{}, logging.New())
 
-	gamesTestData := string(readGamesTestData(t))
+	gamesTestData := string(testutil.ReadTestData(t, "nba/games/celtics.json"))
 
 	// Mock http request
 	expectedUrl := fmt.Sprintf("%s/games?season=%d&team=%d", mockConfig.RapidApi.NBA.BaseUrl, nba.Season, nba.BostonCeltics)
