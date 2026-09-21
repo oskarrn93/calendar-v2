@@ -34,40 +34,15 @@ resource "aws_iam_role_policy" "github_actions_ecr_pull" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
-        Action   = ["ecr:BatchCheckLayerAvailability", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage"]
-        Resource = aws_ecr_repository.calendar.arn
-      },
-      {
-        Effect   = "Allow"
-        Action   = "ecr:GetAuthorizationToken"
-        Resource = "*"
-      },
-      {
-        Effect   = "Allow"
-        Action   = ["ecr:PutImage", "ecr:InitiateLayerUpload", "ecr:UploadLayerPart", "ecr:CompleteLayerUpload"]
-        Resource = aws_ecr_repository.calendar.arn
-      },
-    ]
-  })
-}
-
-resource "aws_iam_role_policy" "github_actions_ecr_upload" {
-  name = "ECRUploadImage"
-  role = aws_iam_role.github_actions.name
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
         Effect = "Allow"
         Action = [
-          "ecr:CompleteLayerUpload",
-          "ecr:UploadLayerPart",
-          "ecr:InitiateLayerUpload",
           "ecr:BatchCheckLayerAvailability",
-          "ecr:PutImage",
+          "ecr:GetDownloadUrlForLayer",
           "ecr:BatchGetImage",
+          "ecr:PutImage",
+          "ecr:InitiateLayerUpload",
+          "ecr:UploadLayerPart",
+          "ecr:CompleteLayerUpload",
         ]
         Resource = aws_ecr_repository.calendar.arn
       },
