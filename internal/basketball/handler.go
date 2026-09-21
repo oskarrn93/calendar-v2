@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"net/url"
 	"time"
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
@@ -94,25 +93,18 @@ func (h *Handler) getEventsByTeam(teamId int) (EventsResponse, error) {
 		--header 'x-rapidapi-key: REPLACE_ME'
 	*/
 
-	apiUrl, err := url.Parse(fmt.Sprintf("%s/api/v1/team/%d/events/next/1", h.rapidApi.Config.Basketball.BaseUrl, teamId))
-	if err != nil {
-		return EventsResponse{}, fmt.Errorf("faiiled to parse Basketball Api games url: %w", err)
-	}
+	apiUrl := fmt.Sprintf("%s/api/v1/team/%d/events/next/1", h.rapidApi.Config.Basketball.BaseUrl, teamId)
 
-	response, err := h.rapidApi.BaseRequest().Get(apiUrl.String())
+	response, err := h.rapidApi.BaseRequest().Get(apiUrl)
 	if err != nil {
 		return EventsResponse{}, fmt.Errorf("request failed to retrieve Basketball games: %w", err)
 	}
 
 	h.logger.Debug("Basketball Api response", "response", response)
 
-	return h.parseEventsResponse(response.Body())
-}
-
-func (h *Handler) parseEventsResponse(input []byte) (EventsResponse, error) {
 	var data EventsResponse
-	if err := json.Unmarshal(input, &data); err != nil {
-		return data, fmt.Errorf("failed to unmarshall Basketball games: %w", err)
+	if err := json.Unmarshal(response.Body(), &data); err != nil {
+		return EventsResponse{}, fmt.Errorf("failed to unmarshall Basketball games: %w", err)
 	}
 
 	return data, nil

@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"net/url"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -61,12 +61,7 @@ func (e *Event) HasTeam(team string) bool {
 }
 
 func (e *Event) HasTeams(teams []string) bool {
-	for _, team := range teams {
-		if e.HasTeam(team) {
-			return true
-		}
-	}
-	return false
+	return slices.ContainsFunc(teams, e.HasTeam)
 }
 
 type EventsResponse struct {
@@ -102,25 +97,18 @@ func (h *Handler) getEventsBySport(sportID int) (EventsResponse, error) {
 		"sport_id": strconv.Itoa(sportID),
 	}
 
-	apiUrl, err := url.Parse(fmt.Sprintf("%s/kit/v1/markets", h.rapidApi.Config.Esport.BaseUrl))
-	if err != nil {
-		return EventsResponse{}, fmt.Errorf("faiiled to parse Esport Api games url: %w", err)
-	}
+	apiUrl := fmt.Sprintf("%s/kit/v1/markets", h.rapidApi.Config.Esport.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
+	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl)
 	if err != nil {
 		return EventsResponse{}, fmt.Errorf("request failed to retrieve Esport games: %w", err)
 	}
 
-	h.logger.Debug("Fotball Api response", "response", response)
+	h.logger.Debug("Esport Api response", "response", response)
 
-	return h.parseGamesResponse(response.Body())
-}
-
-func (h *Handler) parseGamesResponse(input []byte) (EventsResponse, error) {
 	var data EventsResponse
-	if err := json.Unmarshal(input, &data); err != nil {
-		return data, fmt.Errorf("failed to unmarshall Esport games: %w", err)
+	if err := json.Unmarshal(response.Body(), &data); err != nil {
+		return EventsResponse{}, fmt.Errorf("failed to unmarshall Esport games: %w", err)
 	}
 
 	return data, nil

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"net/url"
 	"strconv"
 	"time"
 
@@ -26,7 +25,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return err
 	}
 
-	h.logger.Debug("Fotball games", "games", games)
+	h.logger.Debug("Football games", "games", games)
 
 	calendar := h.createCalendar(games)
 	calendarData, err := calendar.Export()
@@ -71,7 +70,7 @@ func (h *Handler) GetGames(teamIds []TeamID) ([]Fixture, error) {
 	for _, teamId := range teamIds {
 		response, err := h.getGamesByTeam(teamId)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("failed to retrieve Football games for team id %d: %w", teamId, err)
 		}
 
 		h.logger.Debug("Retrieved football games", "teamId", teamId, "season", Season, "results", response.Results)
@@ -93,25 +92,18 @@ func (h *Handler) getGamesByTeam(teamId TeamID) (FixturesResponse, error) {
 		"season": strconv.Itoa(Season),
 	}
 
-	apiUrl, err := url.Parse(fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl))
-	if err != nil {
-		return FixturesResponse{}, fmt.Errorf("faiiled to parse Football Api games url: %w", err)
-	}
+	apiUrl := fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
+	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl)
 	if err != nil {
 		return FixturesResponse{}, fmt.Errorf("request failed to retrieve Football games: %w", err)
 	}
 
-	h.logger.Debug("Fotball Api response", "response", response)
+	h.logger.Debug("Football Api response", "response", response)
 
-	return h.parseGamesResponse(response.Body())
-}
-
-func (h *Handler) parseGamesResponse(input []byte) (FixturesResponse, error) {
 	var data FixturesResponse
-	if err := json.Unmarshal(input, &data); err != nil {
-		return data, fmt.Errorf("failed to unmarshall Football games: %w", err)
+	if err := json.Unmarshal(response.Body(), &data); err != nil {
+		return FixturesResponse{}, fmt.Errorf("failed to unmarshall Football games: %w", err)
 	}
 
 	return data, nil

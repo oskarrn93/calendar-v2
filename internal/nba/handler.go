@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"net/url"
+	"strconv"
 	"time"
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
@@ -46,7 +46,6 @@ type Handler struct {
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
-
 	games, err := h.GetGames(TeamIDs)
 	if err != nil {
 		return err
@@ -66,51 +65,41 @@ func (h *Handler) Handler(ctx context.Context) error {
 }
 
 func (h *Handler) getGamesByTeam(teamId TeamID) (GamesResponse, error) {
-
 	// TODO: Add support for multiple teams
 	queryParams := map[string]string{
-		"team":   fmt.Sprintf("%d", teamId),
-		"season": fmt.Sprintf("%d", Season),
+		"team":   strconv.Itoa(int(teamId)),
+		"season": strconv.Itoa(Season),
 	}
 
-	apiUrl, err := url.Parse(fmt.Sprintf("%s/games", h.rapidApi.Config.NBA.BaseUrl))
-	if err != nil {
-		return GamesResponse{}, fmt.Errorf("faiiled to parse NBA Api games url: %w", err)
-	}
+	apiUrl := fmt.Sprintf("%s/games", h.rapidApi.Config.NBA.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl.String())
+	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl)
 	if err != nil {
 		return GamesResponse{}, fmt.Errorf("request failed to retrieve NBA games: %w", err)
 	}
 
 	h.logger.Debug("NBA Api response", "response", response)
 
-	return h.parseGamesResponse(response.Body())
-
-}
-
-func (h *Handler) parseGamesResponse(input []byte) (GamesResponse, error) {
 	var data GamesResponse
-	if err := json.Unmarshal(input, &data); err != nil {
-		return data, fmt.Errorf("failed to unmarshall nba games: %w", err)
+	if err := json.Unmarshal(response.Body(), &data); err != nil {
+		return GamesResponse{}, fmt.Errorf("failed to unmarshall NBA games: %w", err)
 	}
 
 	return data, nil
 }
 
 func (h *Handler) GetGames(teamIds []TeamID) ([]Game, error) {
-	var games = []Game{}
+	games := []Game{}
 
 	for _, teamId := range teamIds {
 		data, err := h.getGamesByTeam(teamId)
 		if err != nil {
-			return nil, fmt.Errorf("failed to retrieve games for team id: %d", teamId)
+			return nil, fmt.Errorf("failed to retrieve NBA games for team id %d: %w", teamId, err)
 		}
 		games = append(games, data.Response...)
 	}
 
 	return games, nil
-
 }
 
 func (h *Handler) createCalendar(games []Game) *calendar.Calendar {
