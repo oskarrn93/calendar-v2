@@ -5,7 +5,7 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/config"
 )
 
-// Ap docs: https://rapidapi.com/api-sports/api/api-nba
+// API docs: https://rapidapi.com/api-sports/api/api-nba
 
 type RapidApi struct {
 	HttpClient *resty.Client
@@ -13,7 +13,7 @@ type RapidApi struct {
 }
 
 func (ra RapidApi) BaseRequest() *resty.Request {
-	return ra.HttpClient.R().EnableTrace().SetHeader("X-RapidAPI-Key", ra.Config.ApiKey)
+	return ra.HttpClient.R().SetHeader("X-RapidAPI-Key", ra.Config.ApiKey)
 }
 
 func New(httpClient *resty.Client, config config.RapidApi) RapidApi {
