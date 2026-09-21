@@ -1,9 +1,7 @@
 package util
 
 import (
-	"context"
 	"errors"
-	"slices"
 	"sync"
 
 	"golang.org/x/sync/errgroup"
@@ -11,74 +9,36 @@ import (
 
 const MaxConcurrentLimit = 10
 
-type SyncSlice[T any] struct {
-	data []T
-	mu   sync.RWMutex
+// WaitGroup collects the error of every task instead of cancelling the
+// remaining ones on the first failure, so a partial run still completes.
+type WaitGroup struct {
+	eg   errgroup.Group
+	mu   sync.Mutex
+	errs []error
 }
 
-func (s *SyncSlice[T]) Append(item T) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
+func NewWaitGroup() *WaitGroup {
+	wg := &WaitGroup{}
+	wg.eg.SetLimit(MaxConcurrentLimit)
 
-	s.data = append(s.data, item)
+	return wg
 }
 
-func (s *SyncSlice[T]) Get() []T {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-
-	// return a copy of the slice since slices are reference types (pointer)
-	return slices.Clone(s.data)
-}
-
-type WaitGroup[T any] struct {
-	Ctx     context.Context
-	eg      *errgroup.Group
-	results SyncSlice[T]
-	errors  SyncSlice[error]
-}
-
-func (wg *WaitGroup[T]) Run(f func() (T, error)) {
+func (wg *WaitGroup) Run(f func() error) {
 	wg.eg.Go(func() error {
-		result, err := f()
-		if err != nil {
-			wg.errors.Append(err)
+		if err := f(); err != nil {
+			wg.mu.Lock()
+			wg.errs = append(wg.errs, err)
+			wg.mu.Unlock()
 		}
-		wg.results.Append(result)
 
-		// Always return nil to prevent cancelling other goroutines if one fails, let them all finish
+		// Always return nil so errgroup never cancels the other tasks
 		return nil
 	})
 }
 
-func (wg *WaitGroup[T]) Wait() ([]T, error) {
-	err := wg.eg.Wait()
+func (wg *WaitGroup) Wait() error {
+	_ = wg.eg.Wait()
 
-	errs := wg.errors.Get()
-	resultError := errors.Join(err, errors.Join(errs...))
-
-	result := wg.results.Get()
-
-	// Return all results and the combined error, let the client handle partial failures
-	return result, resultError
-}
-
-func (wg *WaitGroup[T]) SetLimit(limit int) {
-	if limit <= 0 {
-		limit = -1 // negative value means no limit
-	}
-
-	wg.eg.SetLimit(limit)
-}
-
-func NewWaitGroup[T any](ctx context.Context) *WaitGroup[T] {
-	eg, egCtx := errgroup.WithContext(ctx)
-	eg.SetLimit(MaxConcurrentLimit)
-
-	wg := &WaitGroup[T]{
-		Ctx: egCtx,
-		eg:  eg,
-	}
-
-	return wg
+	return errors.Join(wg.errs...)
 }

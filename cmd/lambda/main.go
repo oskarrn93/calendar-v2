@@ -27,52 +27,34 @@ func handler(ctx context.Context, event json.RawMessage) error {
 	if err != nil {
 		return err
 	}
-	httpClient := resty.New()
+
 	storage, err := awsutil.NewS3Storage(ctx, appConfig.S3Bucket, logger)
 	if err != nil {
 		return fmt.Errorf("failed to create S3 storage: %w", err)
 	}
 
-	rapidApi := rapidapi.New(httpClient, appConfig.RapidApi)
+	rapidApi := rapidapi.New(resty.New(), appConfig.RapidApi)
 
-	// use any for results since we don't care about them
-	wg := util.NewWaitGroup[any](ctx)
-
-	handlers := []struct {
-		name    string
-		handler func(context.Context) error
-	}{
-		{
-			name:    "Football",
-			handler: football.NewHandler(rapidApi, storage, logger).Handler,
-		},
-		{
-			name:    "NBA",
-			handler: nba.NewHandler(rapidApi, storage, logger).Handler,
-		},
-		{
-			name:    "Esport",
-			handler: esport.NewHandler(rapidApi, storage, logger).Handler,
-		},
-		{
-			name:    "Basketball",
-			handler: basketball.NewHandler(rapidApi, storage, logger).Handler,
-		},
+	handlers := map[string]func(context.Context) error{
+		"Football":   football.NewHandler(rapidApi, storage, logger).Handler,
+		"NBA":        nba.NewHandler(rapidApi, storage, logger).Handler,
+		"Esport":     esport.NewHandler(rapidApi, storage, logger).Handler,
+		"Basketball": basketball.NewHandler(rapidApi, storage, logger).Handler,
 	}
 
-	for _, h := range handlers {
-		wg.Run(func() (any, error) {
-			if err := h.handler(ctx); err != nil {
-				return nil, fmt.Errorf("%s handler failed: %w", h.name, err)
+	wg := util.NewWaitGroup()
+
+	for name, sportHandler := range handlers {
+		wg.Run(func() error {
+			if err := sportHandler(ctx); err != nil {
+				return fmt.Errorf("%s handler failed: %w", name, err)
 			}
 
-			return nil, nil
+			return nil
 		})
 	}
 
-	_, err = wg.Wait()
-
-	if err != nil {
+	if err := wg.Wait(); err != nil {
 		logger.Error("One or more handlers failed", "error", err)
 		return fmt.Errorf("one or more handlers failed: %w", err)
 	}
