@@ -113,7 +113,7 @@ func (h *Handler) GetGames(teamIds []TeamID) ([]Game, error) {
 
 }
 
-func (h *Handler) createCalendar(games []Game) calendar.Calendar {
+func (h *Handler) createCalendar(games []Game) *calendar.Calendar {
 	cal := calendar.New("NBA")
 
 	for _, game := range games {

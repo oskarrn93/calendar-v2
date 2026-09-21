@@ -117,7 +117,7 @@ func (h *Handler) parseGamesResponse(input []byte) (FixturesResponse, error) {
 	return data, nil
 }
 
-func (h *Handler) createCalendar(games []Fixture) calendar.Calendar {
+func (h *Handler) createCalendar(games []Fixture) *calendar.Calendar {
 	cal := calendar.New("Football")
 	for _, game := range games {
 

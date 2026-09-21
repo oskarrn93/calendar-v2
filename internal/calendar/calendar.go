@@ -8,11 +8,6 @@ import (
 	ics "github.com/arran4/golang-ical"
 )
 
-type Calendar interface {
-	AddEvent(event Event)
-	Export() ([]byte, error)
-}
-
 type Event struct {
 	Id        string
 	Title     string
@@ -20,11 +15,19 @@ type Event struct {
 	EndDate   time.Time
 }
 
-type ICSCalendar struct {
+type Calendar struct {
 	calendar *ics.Calendar
 }
 
-func (cal ICSCalendar) AddEvent(newEvent Event) {
+func New(name string) *Calendar {
+	calendar := ics.NewCalendar()
+	calendar.SetProductId(fmt.Sprintf("-//%s", name))
+	calendar.SetName(name)
+
+	return &Calendar{calendar: calendar}
+}
+
+func (cal *Calendar) AddEvent(newEvent Event) {
 	icsEvent := cal.calendar.AddEvent(newEvent.Id)
 
 	icsEvent.SetSummary(newEvent.Title)
@@ -32,21 +35,10 @@ func (cal ICSCalendar) AddEvent(newEvent Event) {
 	icsEvent.SetEndAt(newEvent.EndDate)
 }
 
-func (cal ICSCalendar) Export() ([]byte, error) {
+func (cal *Calendar) Export() ([]byte, error) {
 	var data bytes.Buffer
-	err := cal.calendar.SerializeTo(&data)
-	if err != nil {
-		return nil, fmt.Errorf("failed to serialze calendar: %w", err)
+	if err := cal.calendar.SerializeTo(&data); err != nil {
+		return nil, fmt.Errorf("failed to serialize calendar: %w", err)
 	}
 	return data.Bytes(), nil
-}
-
-func New(name string) Calendar {
-	calendar := *ics.NewCalendar()
-	calendar.SetProductId(fmt.Sprintf("-//%s", name))
-	calendar.SetName(name)
-
-	return &ICSCalendar{
-		calendar: &calendar,
-	}
 }

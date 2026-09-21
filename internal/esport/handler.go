@@ -126,7 +126,7 @@ func (h *Handler) parseGamesResponse(input []byte) (EventsResponse, error) {
 	return data, nil
 }
 
-func (h *Handler) createCalendar(events []Event) calendar.Calendar {
+func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
 	cal := calendar.New("Esport")
 	for _, event := range events {
 		if !event.IsCS2() {

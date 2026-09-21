@@ -118,7 +118,7 @@ func (h *Handler) parseEventsResponse(input []byte) (EventsResponse, error) {
 	return data, nil
 }
 
-func (h *Handler) createCalendar(events []Event) calendar.Calendar {
+func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
 	cal := calendar.New("Basketball")
 	for _, event := range events {
 
