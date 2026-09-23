@@ -36,7 +36,7 @@ make test-ci
 
 #### Update snapshots
 
-If the application logic is changed and the test snapshots needs to be update then include `UPDATED_SNAPS=true` when running the tests.
+If the application logic is changed and the test snapshots need to be updated then include `UPDATE_SNAPS=true` when running the tests.
 
 ```sh
 UPDATE_SNAPS=true make test
