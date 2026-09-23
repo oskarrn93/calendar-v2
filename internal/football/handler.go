@@ -20,7 +20,7 @@ type Handler struct {
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
-	games, err := h.GetGames(TeamIDs)
+	games, err := h.GetGames(ctx, TeamIDs)
 	if err != nil {
 		return err
 	}
@@ -64,11 +64,11 @@ type FixturesResponse struct {
 	Response []Fixture `json:"response"`
 }
 
-func (h *Handler) GetGames(teamIds []TeamID) ([]Fixture, error) {
+func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Fixture, error) {
 	games := []Fixture{}
 
 	for _, teamId := range teamIds {
-		response, err := h.getGamesByTeam(teamId)
+		response, err := h.getGamesByTeam(ctx, teamId)
 		if err != nil {
 			return nil, fmt.Errorf("failed to retrieve Football games for team id %d: %w", teamId, err)
 		}
@@ -80,13 +80,11 @@ func (h *Handler) GetGames(teamIds []TeamID) ([]Fixture, error) {
 	return games, nil
 }
 
-func (h *Handler) getGamesByTeam(teamId TeamID) (FixturesResponse, error) {
+func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (FixturesResponse, error) {
 	/*
 		curl -X GET https://api-football-v1.p.rapidapi.com/v3/fixtures?team=541&season=2025 \
 			--header 'x-rapidapi-key: REPLACE_ME' | jq .
 	*/
-
-	// TODO: Add support for multiple teams
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
 		"season": strconv.Itoa(Season),
@@ -94,7 +92,7 @@ func (h *Handler) getGamesByTeam(teamId TeamID) (FixturesResponse, error) {
 
 	apiUrl := fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl)
+	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
 	if err != nil {
 		return FixturesResponse{}, fmt.Errorf("request failed to retrieve Football games: %w", err)
 	}

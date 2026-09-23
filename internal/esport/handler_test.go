@@ -44,7 +44,7 @@ func TestGetGames(t *testing.T) {
 		httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
-	result, err := handler.GetEvents([]esport.SportID{esport.EsportSportID})
+	result, err := handler.GetEvents(t.Context(), []esport.SportID{esport.EsportSportID})
 	require.NoError(t, err)
 
 	// Assert
