@@ -46,7 +46,6 @@ type Event struct {
 	ID         int    `json:"event_id"`
 	LeagueName string `json:"league_name"`
 	Starts     string `json:"starts"`
-	Last       int64  `json:"last"`
 	Home       string `json:"home"`
 	Away       string `json:"away"`
 }
@@ -131,11 +130,12 @@ func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
 			continue
 		}
 
+		// The API only exposes a start time; a CS2 best-of-three usually runs about three hours.
 		newEvent := calendar.Event{
 			Id:        fmt.Sprintf("esport-%d", event.ID),
 			Title:     fmt.Sprintf("%s - %s", event.Home, event.Away),
 			StartDate: startDate,
-			EndDate:   time.Unix(event.Last, 0),
+			EndDate:   startDate.Add(3 * time.Hour),
 		}
 		cal.AddEvent(newEvent)
 	}

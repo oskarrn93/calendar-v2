@@ -62,3 +62,16 @@ type NoopStorage struct{}
 func (NoopStorage) Upload(_ context.Context, _ string, _ []byte) error {
 	return nil
 }
+
+// MemoryStorage records uploads so tests can inspect the generated files.
+type MemoryStorage struct {
+	Files map[string][]byte
+}
+
+func (m *MemoryStorage) Upload(_ context.Context, s3Key string, data []byte) error {
+	if m.Files == nil {
+		m.Files = map[string][]byte{}
+	}
+	m.Files[s3Key] = data
+	return nil
+}
