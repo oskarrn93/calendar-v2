@@ -18,12 +18,13 @@ resource "aws_s3_bucket_policy" "calendar" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect = "Allow"
-        Principal = {
-          AWS = "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${aws_cloudfront_origin_access_identity.calendar.id}"
+        Effect    = "Allow"
+        Principal = { Service = "cloudfront.amazonaws.com" }
+        Action    = "s3:GetObject"
+        Resource  = "${aws_s3_bucket.calendar.arn}/*"
+        Condition = {
+          StringEquals = { "AWS:SourceArn" = aws_cloudfront_distribution.calendar.arn }
         }
-        Action   = ["s3:GetObject*", "s3:GetBucket*", "s3:List*"]
-        Resource = [aws_s3_bucket.calendar.arn, "${aws_s3_bucket.calendar.arn}/*"]
       },
     ]
   })
