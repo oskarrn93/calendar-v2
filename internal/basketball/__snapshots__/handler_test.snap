@@ -2,6 +2,13 @@
 [TestGetGames - 1]
 []basketball.Event{
     {
+        ID:             1,
+        Tournament:     basketball.EventTournament{Name:"Liga ACB"},
+        HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"", Gender:""},
+        AwayTeam:       basketball.EventTeam{Name:"Barcelona", ShortName:"", Gender:""},
+        StartTimestamp: 1762200000,
+    },
+    {
         ID:             14210722,
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Panathinaikos BC", ShortName:"Panathinaikos", Gender:"M"},

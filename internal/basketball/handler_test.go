@@ -33,18 +33,24 @@ func TestGetGames(t *testing.T) {
 
 	// Mock http request
 
-	expectedUrl, err := url.Parse(mockConfig.RapidApi.Basketball.BaseUrl)
-	require.NoError(t, err)
-	expectedUrl.Path += fmt.Sprintf("/api/v1/team/%d/events/next/1", basketball.RealMadrid)
+	pageUrl := func(page int) string {
+		expectedUrl, err := url.Parse(mockConfig.RapidApi.Basketball.BaseUrl)
+		require.NoError(t, err)
+		expectedUrl.Path += fmt.Sprintf("/api/v1/team/%d/events/next/%d", basketball.RealMadrid, page)
+		return expectedUrl.String()
+	}
 
-	httpmock.RegisterResponder("GET", expectedUrl.String(),
-		httpmock.NewStringResponder(200, gamesTestData))
+	firstPage := `{"events":[{"id":1,"tournament":{"name":"Liga ACB"},"homeTeam":{"name":"Real Madrid"},"awayTeam":{"name":"Barcelona"},"startTimestamp":1762200000}],"hasNextPage":true}`
+	httpmock.RegisterResponder("GET", pageUrl(0), httpmock.NewStringResponder(200, firstPage))
+	httpmock.RegisterResponder("GET", pageUrl(1), httpmock.NewStringResponder(200, gamesTestData))
 
 	// Act
 	result, err := handler.GetGames(t.Context(), []basketball.TeamID{basketball.RealMadrid})
 	require.NoError(t, err)
 
 	// Assert
+	require.Equal(t, 2, httpmock.GetTotalCallCount())
+	require.Equal(t, int64(1), result[0].ID)
 
 	snaps.MatchSnapshot(t, result)
 }

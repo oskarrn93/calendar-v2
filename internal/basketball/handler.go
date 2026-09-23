@@ -74,26 +74,32 @@ func (h *Handler) GetGames(ctx context.Context, teamIDs []TeamID) ([]Event, erro
 	events := []Event{}
 
 	for _, teamID := range teamIDs {
-		response, err := h.getEventsByTeam(ctx, int(teamID))
-		if err != nil {
-			return nil, err
-		}
+		for page := 0; page < maxPages; page++ {
+			response, err := h.getEventsByTeam(ctx, int(teamID), page)
+			if err != nil {
+				return nil, err
+			}
 
-		h.logger.Debug("Retrieved Basketball games", "teamId", teamID, "events", response.Events)
-		events = append(events, response.Events...)
+			h.logger.Debug("Retrieved Basketball games", "teamId", teamID, "page", page, "events", response.Events)
+			events = append(events, response.Events...)
+
+			if !response.HasNextPage {
+				break
+			}
+		}
 	}
 
 	return events, nil
 }
 
-func (h *Handler) getEventsByTeam(ctx context.Context, teamId int) (EventsResponse, error) {
+func (h *Handler) getEventsByTeam(ctx context.Context, teamId int, page int) (EventsResponse, error) {
 	/*
 		curl --request GET
-		--url https://sportapi7.p.rapidapi.com/api/v1/team/3540/events/next/1
+		--url https://sportapi7.p.rapidapi.com/api/v1/team/3540/events/next/0
 		--header 'x-rapidapi-key: REPLACE_ME'
 	*/
 
-	apiUrl := fmt.Sprintf("%s/api/v1/team/%d/events/next/1", h.rapidApi.Config.Basketball.BaseUrl, teamId)
+	apiUrl := fmt.Sprintf("%s/api/v1/team/%d/events/next/%d", h.rapidApi.Config.Basketball.BaseUrl, teamId, page)
 
 	response, err := h.rapidApi.BaseRequest(ctx).Get(apiUrl)
 	if err != nil {
