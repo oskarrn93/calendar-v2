@@ -22,7 +22,7 @@ type Handler struct {
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
-	events, err := h.GetEvents([]SportID{EsportSportID})
+	events, err := h.GetEvents(ctx, []SportID{EsportSportID})
 	if err != nil {
 		return err
 	}
@@ -46,7 +46,6 @@ type Event struct {
 	ID         int    `json:"event_id"`
 	LeagueName string `json:"league_name"`
 	Starts     string `json:"starts"`
-	Last       int64  `json:"last"`
 	Home       string `json:"home"`
 	Away       string `json:"away"`
 }
@@ -68,11 +67,11 @@ type EventsResponse struct {
 	Events []Event `json:"events"`
 }
 
-func (h *Handler) GetEvents(sportIDs []SportID) ([]Event, error) {
+func (h *Handler) GetEvents(ctx context.Context, sportIDs []SportID) ([]Event, error) {
 	events := []Event{}
 
 	for _, sportID := range sportIDs {
-		response, err := h.getEventsBySport(int(sportID))
+		response, err := h.getEventsBySport(ctx, int(sportID))
 		if err != nil {
 			return nil, err
 		}
@@ -84,7 +83,7 @@ func (h *Handler) GetEvents(sportIDs []SportID) ([]Event, error) {
 	return events, nil
 }
 
-func (h *Handler) getEventsBySport(sportID int) (EventsResponse, error) {
+func (h *Handler) getEventsBySport(ctx context.Context, sportID int) (EventsResponse, error) {
 	// API docs https://rapidapi.com/tipsters/api/pinnacle-odds
 
 	/*
@@ -99,7 +98,7 @@ func (h *Handler) getEventsBySport(sportID int) (EventsResponse, error) {
 
 	apiUrl := fmt.Sprintf("%s/kit/v1/markets", h.rapidApi.Config.Esport.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl)
+	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
 	if err != nil {
 		return EventsResponse{}, fmt.Errorf("request failed to retrieve Esport games: %w", err)
 	}
@@ -131,11 +130,12 @@ func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
 			continue
 		}
 
+		// The API only exposes a start time; a CS2 best-of-three usually runs about three hours.
 		newEvent := calendar.Event{
 			Id:        fmt.Sprintf("esport-%d", event.ID),
 			Title:     fmt.Sprintf("%s - %s", event.Home, event.Away),
 			StartDate: startDate,
-			EndDate:   time.Unix(event.Last, 0),
+			EndDate:   startDate.Add(3 * time.Hour),
 		}
 		cal.AddEvent(newEvent)
 	}

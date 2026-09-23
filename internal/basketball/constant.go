@@ -16,3 +16,7 @@ const (
 )
 
 var TeamIDs = []TeamID{RealMadrid}
+
+// Pages are zero-indexed and hold ~30 events each, so this covers well over a
+// season while capping RapidAPI quota usage if hasNextPage never turns false.
+const maxPages = 5

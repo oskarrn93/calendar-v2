@@ -36,9 +36,12 @@ func NewS3Storage(ctx context.Context, bucket string, logger *slog.Logger) (*S3S
 
 func (s *S3Storage) Upload(ctx context.Context, s3Key string, data []byte) error {
 	response, err := s.s3Client.PutObject(ctx, &s3.PutObjectInput{
-		Bucket: aws.String(s.s3Bucket),
-		Key:    aws.String(s3Key),
-		Body:   bytes.NewReader(data),
+		Bucket:      aws.String(s.s3Bucket),
+		Key:         aws.String(s3Key),
+		Body:        bytes.NewReader(data),
+		ContentType: aws.String("text/calendar; charset=utf-8"),
+		// Overrides CloudFront's one-day default TTL so the daily refresh reaches subscribers within the hour.
+		CacheControl: aws.String("max-age=3600"),
 	})
 	s.logger.Debug("Upload S3 response", "s3Key", s3Key, "response", response)
 

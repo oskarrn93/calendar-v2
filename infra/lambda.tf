@@ -24,20 +24,9 @@ resource "aws_iam_role_policy" "lambda_default" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect = "Allow"
-        Action = [
-          "s3:GetObject*",
-          "s3:GetBucket*",
-          "s3:List*",
-          "s3:DeleteObject*",
-          "s3:PutObject",
-          "s3:PutObjectLegalHold",
-          "s3:PutObjectRetention",
-          "s3:PutObjectTagging",
-          "s3:PutObjectVersionTagging",
-          "s3:Abort*",
-        ]
-        Resource = [aws_s3_bucket.calendar.arn, "${aws_s3_bucket.calendar.arn}/*"]
+        Effect   = "Allow"
+        Action   = "s3:PutObject"
+        Resource = "${aws_s3_bucket.calendar.arn}/*"
       },
       {
         Effect   = "Allow"
@@ -59,7 +48,7 @@ resource "aws_lambda_function" "calendar" {
   package_type  = "Image"
   image_uri     = "${aws_ecr_repository.calendar.repository_url}:v1.7.0"
   architectures = ["x86_64"]
-  timeout       = 30
+  timeout       = 90
   memory_size   = 128
 
   environment {

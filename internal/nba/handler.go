@@ -46,7 +46,7 @@ type Handler struct {
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
-	games, err := h.GetGames(TeamIDs)
+	games, err := h.GetGames(ctx, TeamIDs)
 	if err != nil {
 		return err
 	}
@@ -64,8 +64,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 	return nil
 }
 
-func (h *Handler) getGamesByTeam(teamId TeamID) (GamesResponse, error) {
-	// TODO: Add support for multiple teams
+func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (GamesResponse, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
 		"season": strconv.Itoa(Season),
@@ -73,7 +72,7 @@ func (h *Handler) getGamesByTeam(teamId TeamID) (GamesResponse, error) {
 
 	apiUrl := fmt.Sprintf("%s/games", h.rapidApi.Config.NBA.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest().SetQueryParams(queryParams).Get(apiUrl)
+	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
 	if err != nil {
 		return GamesResponse{}, fmt.Errorf("request failed to retrieve NBA games: %w", err)
 	}
@@ -88,11 +87,11 @@ func (h *Handler) getGamesByTeam(teamId TeamID) (GamesResponse, error) {
 	return data, nil
 }
 
-func (h *Handler) GetGames(teamIds []TeamID) ([]Game, error) {
+func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Game, error) {
 	games := []Game{}
 
 	for _, teamId := range teamIds {
-		data, err := h.getGamesByTeam(teamId)
+		data, err := h.getGamesByTeam(ctx, teamId)
 		if err != nil {
 			return nil, fmt.Errorf("failed to retrieve NBA games for team id %d: %w", teamId, err)
 		}

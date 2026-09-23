@@ -1,5 +1,9 @@
-resource "aws_cloudfront_origin_access_identity" "calendar" {
-  comment = "Allows CloudFront to reach the bucket"
+resource "aws_cloudfront_origin_access_control" "calendar" {
+  name                              = "calendar-v2"
+  description                       = "Allows CloudFront to reach the bucket"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_distribution" "calendar" {
@@ -10,12 +14,9 @@ resource "aws_cloudfront_distribution" "calendar" {
   price_class         = "PriceClass_100"
 
   origin {
-    origin_id   = "origin1"
-    domain_name = aws_s3_bucket.calendar.bucket_regional_domain_name
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.calendar.cloudfront_access_identity_path
-    }
+    origin_id                = "origin1"
+    domain_name              = aws_s3_bucket.calendar.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.calendar.id
   }
 
   default_cache_behavior {
