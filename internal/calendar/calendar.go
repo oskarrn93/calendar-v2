@@ -16,7 +16,9 @@ type Event struct {
 }
 
 type Calendar struct {
-	calendar *ics.Calendar
+	calendar  *ics.Calendar
+	createdAt time.Time
+	eventIDs  map[string]struct{}
 }
 
 func New(name string) *Calendar {
@@ -24,12 +26,25 @@ func New(name string) *Calendar {
 	calendar.SetProductId(fmt.Sprintf("-//%s", name))
 	calendar.SetName(name)
 
-	return &Calendar{calendar: calendar}
+	return &Calendar{
+		calendar:  calendar,
+		createdAt: time.Now(),
+		eventIDs:  map[string]struct{}{},
+	}
 }
 
+// AddEvent ignores events whose Id was already added: when two followed teams
+// play each other the same game is returned once per team, and duplicate UIDs
+// make calendar clients drop or mangle the event.
 func (cal *Calendar) AddEvent(newEvent Event) {
+	if _, ok := cal.eventIDs[newEvent.Id]; ok {
+		return
+	}
+	cal.eventIDs[newEvent.Id] = struct{}{}
+
 	icsEvent := cal.calendar.AddEvent(newEvent.Id)
 
+	icsEvent.SetDtStampTime(cal.createdAt)
 	icsEvent.SetSummary(newEvent.Title)
 	icsEvent.SetStartAt(newEvent.StartDate)
 	icsEvent.SetEndAt(newEvent.EndDate)
