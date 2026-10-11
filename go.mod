@@ -13,7 +13,7 @@ require (
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/jarcoal/httpmock v1.4.2
 	github.com/stretchr/testify v1.12.1
-	golang.org/x/sync v0.23.0
+	golang.org/x/sync v0.24.0
 )
 
 require (
