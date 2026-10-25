@@ -3,7 +3,7 @@ module github.com/oskarrn93/calendar-v2
 go 1.27.0
 
 require (
-	github.com/arran4/golang-ical v0.3.7
+	github.com/arran4/golang-ical v0.3.8
 	github.com/aws/aws-lambda-go v1.55.1
 	github.com/aws/aws-sdk-go-v2 v1.47.1
 	github.com/aws/aws-sdk-go-v2/config v1.33.6
