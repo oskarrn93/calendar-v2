@@ -62,17 +62,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return errors.New("no F1 races returned")
 	}
 
-	calendar := h.createCalendar(races)
-	calendarData, err := calendar.Export()
-	if err != nil {
-		return fmt.Errorf("failed to export F1 calendar: %w", err)
-	}
-
-	if err := h.storage.Upload(ctx, "f1.ics", calendarData); err != nil {
-		return fmt.Errorf("failed to upload F1 file: %w", err)
-	}
-
-	return nil
+	return h.createCalendar(races).Upload(ctx, h.storage, "f1.ics")
 }
 
 func (h *Handler) GetRaces(ctx context.Context, seasons []int) ([]Race, error) {

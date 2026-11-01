@@ -51,17 +51,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return err
 	}
 
-	calendar := h.createCalendar(games)
-	calendarData, err := calendar.Export()
-	if err != nil {
-		return fmt.Errorf("failed to export NBA calendar: %w", err)
-	}
-
-	if err := h.storage.Upload(ctx, "nba.ics", calendarData); err != nil {
-		return fmt.Errorf("failed to upload NBA file: %w", err)
-	}
-
-	return nil
+	return h.createCalendar(games).Upload(ctx, h.storage, "nba.ics")
 }
 
 func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (GamesResponse, error) {

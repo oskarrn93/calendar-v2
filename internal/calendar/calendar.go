@@ -2,10 +2,12 @@ package calendar
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"time"
 
 	ics "github.com/arran4/golang-ical"
+	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 )
 
 type Event struct {
@@ -63,4 +65,17 @@ func (cal *Calendar) Export() ([]byte, error) {
 		return nil, fmt.Errorf("failed to serialize calendar: %w", err)
 	}
 	return data.Bytes(), nil
+}
+
+func (cal *Calendar) Upload(ctx context.Context, storage awsutil.Storage, filename string) error {
+	data, err := cal.Export()
+	if err != nil {
+		return fmt.Errorf("failed to export %s: %w", filename, err)
+	}
+
+	if err := storage.Upload(ctx, filename, data); err != nil {
+		return fmt.Errorf("failed to upload %s: %w", filename, err)
+	}
+
+	return nil
 }

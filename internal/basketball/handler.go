@@ -26,17 +26,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 
 	h.logger.Debug("Basketball games", "games", games)
 
-	calendar := h.createCalendar(games)
-	calendarData, err := calendar.Export()
-	if err != nil {
-		return fmt.Errorf("failed to export Basketball calendar: %w", err)
-	}
-
-	if err := h.storage.Upload(ctx, "basketball.ics", calendarData); err != nil {
-		return fmt.Errorf("failed to upload Basketball file: %w", err)
-	}
-
-	return nil
+	return h.createCalendar(games).Upload(ctx, h.storage, "basketball.ics")
 }
 
 type EventTeam struct {
