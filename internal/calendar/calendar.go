@@ -13,6 +13,7 @@ type Event struct {
 	Title     string
 	StartDate time.Time
 	EndDate   time.Time
+	Url       string
 }
 
 type Calendar struct {
@@ -48,6 +49,12 @@ func (cal *Calendar) AddEvent(newEvent Event) {
 	icsEvent.SetSummary(newEvent.Title)
 	icsEvent.SetStartAt(newEvent.StartDate)
 	icsEvent.SetEndAt(newEvent.EndDate)
+
+	if newEvent.Url != "" {
+		icsEvent.SetURL(newEvent.Url)
+		// Google Calendar ignores the URL property, so repeat it where every client shows it.
+		icsEvent.SetDescription(newEvent.Url)
+	}
 }
 
 func (cal *Calendar) Export() ([]byte, error) {

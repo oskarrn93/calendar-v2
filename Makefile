@@ -26,6 +26,10 @@ run-esport: build
 run-basketball: build
 	godotenv -f .env ./bin/basketball
 
+.PHONY: run-f1
+run-f1: build
+	godotenv -f .env ./bin/f1
+
 .PHONY: deploy
 deploy:
 	cd infra && terraform apply

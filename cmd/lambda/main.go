@@ -11,6 +11,7 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/basketball"
 	"github.com/oskarrn93/calendar-v2/internal/config"
 	"github.com/oskarrn93/calendar-v2/internal/esport"
+	"github.com/oskarrn93/calendar-v2/internal/f1"
 	"github.com/oskarrn93/calendar-v2/internal/football"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/nba"
@@ -40,6 +41,7 @@ func handler(ctx context.Context, event json.RawMessage) error {
 		"NBA":        nba.NewHandler(rapidApi, storage, logger).Handler,
 		"Esport":     esport.NewHandler(rapidApi, storage, logger).Handler,
 		"Basketball": basketball.NewHandler(rapidApi, storage, logger).Handler,
+		"F1":         f1.NewHandler(resty.New(), appConfig.F1, storage, logger).Handler,
 	}
 
 	wg := util.NewWaitGroup()
