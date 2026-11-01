@@ -2,7 +2,6 @@ package nba
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log/slog"
 	"strconv"
@@ -10,6 +9,7 @@ import (
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 )
 
@@ -72,16 +72,9 @@ func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (GamesRespo
 
 	apiUrl := fmt.Sprintf("%s/games", h.rapidApi.Config.NBA.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
+	data, err := httpclient.GetJSON[GamesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), apiUrl)
 	if err != nil {
 		return GamesResponse{}, fmt.Errorf("request failed to retrieve NBA games: %w", err)
-	}
-
-	h.logger.Debug("NBA Api response", "response", response)
-
-	var data GamesResponse
-	if err := json.Unmarshal(response.Body(), &data); err != nil {
-		return GamesResponse{}, fmt.Errorf("failed to unmarshall NBA games: %w", err)
 	}
 
 	return data, nil

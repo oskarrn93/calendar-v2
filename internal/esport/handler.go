@@ -2,7 +2,6 @@ package esport
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log/slog"
 	"slices"
@@ -12,6 +11,7 @@ import (
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 )
 
@@ -98,16 +98,9 @@ func (h *Handler) getEventsBySport(ctx context.Context, sportID int) (EventsResp
 
 	apiUrl := fmt.Sprintf("%s/kit/v1/markets", h.rapidApi.Config.Esport.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
+	data, err := httpclient.GetJSON[EventsResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), apiUrl)
 	if err != nil {
 		return EventsResponse{}, fmt.Errorf("request failed to retrieve Esport games: %w", err)
-	}
-
-	h.logger.Debug("Esport Api response", "response", response)
-
-	var data EventsResponse
-	if err := json.Unmarshal(response.Body(), &data); err != nil {
-		return EventsResponse{}, fmt.Errorf("failed to unmarshall Esport games: %w", err)
 	}
 
 	return data, nil

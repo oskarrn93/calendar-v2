@@ -2,7 +2,6 @@ package football
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log/slog"
 	"strconv"
@@ -10,6 +9,7 @@ import (
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 )
 
@@ -92,16 +92,9 @@ func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (FixturesRe
 
 	apiUrl := fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl)
 
-	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
+	data, err := httpclient.GetJSON[FixturesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), apiUrl)
 	if err != nil {
 		return FixturesResponse{}, fmt.Errorf("request failed to retrieve Football games: %w", err)
-	}
-
-	h.logger.Debug("Football Api response", "response", response)
-
-	var data FixturesResponse
-	if err := json.Unmarshal(response.Body(), &data); err != nil {
-		return FixturesResponse{}, fmt.Errorf("failed to unmarshall Football games: %w", err)
 	}
 
 	return data, nil
