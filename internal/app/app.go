@@ -17,6 +17,7 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/nba"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
+	"github.com/oskarrn93/calendar-v2/internal/shutdown"
 )
 
 type Handler func(context.Context) error
@@ -46,7 +47,9 @@ func Handlers(ctx context.Context, logger *slog.Logger) (map[string]Handler, err
 
 // RunCommand runs a single handler, for the per-sport binaries in cmd/.
 func RunCommand(name string) {
-	ctx := context.Background()
+	ctx, stop := shutdown.Context(context.Background())
+	defer stop()
+
 	logger := logging.New()
 
 	logger.Info(name + " command")
