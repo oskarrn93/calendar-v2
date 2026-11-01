@@ -2,3 +2,8 @@ bin/
 infra/
 .vscode/
 .env
+.git/
+.github/
+**/__snapshots__/
+**/*_test.go
+internal/testdata/

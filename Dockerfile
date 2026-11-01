@@ -14,8 +14,6 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o ./bin/lambda ./cmd/lambda
 
 FROM alpine:3.24
 
-RUN apk add --no-cache ca-certificates
-
 WORKDIR /asset
 
 COPY --from=builder /app/bin/lambda ./bootstrap

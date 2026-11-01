@@ -5,40 +5,24 @@ import (
 	"io"
 	"testing"
 
-	"github.com/oskarrn93/calendar-v2/internal/config"
+	"github.com/go-resty/resty/v2"
+	"github.com/jarcoal/httpmock"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/testdata"
 )
 
-func GetMockAppConfig(t *testing.T) config.App {
+const FakeApiKey = "fake-api-key" // #nosec G101 -- test placeholder, not a real credential
+
+// NewMockHttpClient returns a configured client whose requests go to httpmock's
+// responders; unregistered URLs fail the request.
+func NewMockHttpClient(t *testing.T) *resty.Client {
 	t.Helper()
 
-	mockConfig := config.App{
-		RapidApi: config.RapidApi{
-			NBA: config.RapidApiResource{
-				BaseUrl: "https://example-nba.com",
-			},
-			Football: config.RapidApiResource{
-				BaseUrl: "https://example-football.com",
-			},
-			Basketball: config.RapidApiResource{
-				BaseUrl: "https://example-basketball.com",
-			},
-			Esport: config.RapidApiResource{
-				BaseUrl: "https://example-esport.com",
-			},
-			ApiKey: "fake-api-key", // #nosec G101 -- test placeholder, not a real credential
-		},
-		F1: config.F1Api{
-			BaseUrl: "https://example-f1.com",
-		},
-		S3Bucket: "fake-s3-bucket",
-	}
+	httpClient := httpclient.New()
+	httpmock.ActivateNonDefault(httpClient.GetClient())
+	t.Cleanup(httpmock.DeactivateAndReset)
 
-	if err := mockConfig.Validate(); err != nil {
-		t.Fatalf("invalid mock app config: %v", err)
-	}
-
-	return mockConfig
+	return httpClient
 }
 
 // ReadTestData returns a saved api response so tests don't need to make an external request.
@@ -57,13 +41,6 @@ func ReadTestData(t *testing.T, path string) []byte {
 	}
 
 	return data
-}
-
-// NoopStorage satisfies awsutil.Storage for tests that never upload.
-type NoopStorage struct{}
-
-func (NoopStorage) Upload(_ context.Context, _ string, _ []byte) error {
-	return nil
 }
 
 // MemoryStorage records uploads so tests can inspect the generated files.

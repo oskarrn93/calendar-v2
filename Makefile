@@ -6,29 +6,9 @@ install:
 build:
 	go build -o ./bin ./...
 
-.PHONY: run-lambda
-run-lambda: build
-	godotenv -f .env ./bin/lambda
-
-.PHONY: run-nba
-run-nba: build
-	godotenv -f .env ./bin/nba
-
-.PHONY: run-football
-run-football: build
-	godotenv -f .env ./bin/football
-
-.PHONY: run-esport
-run-esport: build
-	godotenv -f .env ./bin/esport
-
-.PHONY: run-basketball
-run-basketball: build
-	godotenv -f .env ./bin/basketball
-
-.PHONY: run-f1
-run-f1: build
-	godotenv -f .env ./bin/f1
+# e.g. make run-nba; the lambda binary only runs inside the Lambda runtime.
+run-%: build
+	godotenv -f .env ./bin/$*
 
 .PHONY: deploy
 deploy:
@@ -36,11 +16,11 @@ deploy:
 
 .PHONY: test
 test:
-	godotenv -f .env.test go test -v ./...
+	go test -v ./...
 
 .PHONY: test-ci
 test-ci:
-	godotenv -f .env.test go test --failfast ./...
+	go test -failfast ./...
 
 .PHONY: lint
 lint:

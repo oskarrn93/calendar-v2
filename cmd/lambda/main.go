@@ -3,20 +3,14 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"sync"
 
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/go-resty/resty/v2"
-	"github.com/oskarrn93/calendar-v2/internal/awsutil"
-	"github.com/oskarrn93/calendar-v2/internal/basketball"
-	"github.com/oskarrn93/calendar-v2/internal/config"
-	"github.com/oskarrn93/calendar-v2/internal/esport"
-	"github.com/oskarrn93/calendar-v2/internal/f1"
-	"github.com/oskarrn93/calendar-v2/internal/football"
+	"github.com/oskarrn93/calendar-v2/internal/app"
+	"github.com/oskarrn93/calendar-v2/internal/calendar"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
-	"github.com/oskarrn93/calendar-v2/internal/nba"
-	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
-	"github.com/oskarrn93/calendar-v2/internal/util"
 )
 
 func handler(ctx context.Context, event json.RawMessage) error {
@@ -24,39 +18,37 @@ func handler(ctx context.Context, event json.RawMessage) error {
 
 	logger.Info("Received Event", "event", event)
 
-	appConfig, err := config.Initialize()
+	handlers, err := app.Handlers(ctx, logger)
 	if err != nil {
 		return err
 	}
 
-	storage, err := awsutil.NewS3Storage(ctx, appConfig.S3Bucket, logger)
-	if err != nil {
-		return fmt.Errorf("failed to create S3 storage: %w", err)
-	}
-
-	rapidApi := rapidapi.New(resty.New(), appConfig.RapidApi)
-
-	handlers := map[string]func(context.Context) error{
-		"Football":   football.NewHandler(rapidApi, storage, logger).Handler,
-		"NBA":        nba.NewHandler(rapidApi, storage, logger).Handler,
-		"Esport":     esport.NewHandler(rapidApi, storage, logger).Handler,
-		"Basketball": basketball.NewHandler(rapidApi, storage, logger).Handler,
-		"F1":         f1.NewHandler(resty.New(), appConfig.F1, storage, logger).Handler,
-	}
-
-	wg := util.NewWaitGroup()
+	// Collect every handler's error rather than cancel on the first, so one
+	// failing source doesn't stop the other calendars from updating.
+	var (
+		wg   sync.WaitGroup
+		mu   sync.Mutex
+		errs []error
+	)
 
 	for name, sportHandler := range handlers {
-		wg.Run(func() error {
-			if err := sportHandler(ctx); err != nil {
-				return fmt.Errorf("%s handler failed: %w", name, err)
+		wg.Go(func() {
+			err := sportHandler(ctx)
+			if errors.Is(err, calendar.ErrNoEvents) {
+				logger.Warn("No events found, keeping previous calendar", "handler", name, "error", err)
+				return
 			}
-
-			return nil
+			if err != nil {
+				mu.Lock()
+				errs = append(errs, fmt.Errorf("%s handler failed: %w", name, err))
+				mu.Unlock()
+			}
 		})
 	}
 
-	if err := wg.Wait(); err != nil {
+	wg.Wait()
+
+	if err := errors.Join(errs...); err != nil {
 		logger.Error("One or more handlers failed", "error", err)
 		return fmt.Errorf("one or more handlers failed: %w", err)
 	}

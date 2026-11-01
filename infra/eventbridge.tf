@@ -1,7 +1,6 @@
 resource "aws_cloudwatch_event_rule" "calendar_schedule" {
   name                = "calendar-v2-calendarv2bucketlambdaschedule08649407-eyhzsTQyr1QR"
   schedule_expression = "cron(0 6 * * ? *)"
-  state               = "ENABLED"
 }
 
 resource "aws_cloudwatch_event_target" "calendar_schedule" {

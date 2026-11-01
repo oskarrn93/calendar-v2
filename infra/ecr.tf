@@ -1,10 +1,5 @@
 resource "aws_ecr_repository" "calendar" {
-  name                 = "calendar-v2"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = false
-  }
+  name = "calendar-v2"
 
   encryption_configuration {
     encryption_type = "AES256"

@@ -2,21 +2,19 @@ package football
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"log/slog"
 	"strconv"
 	"time"
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 )
 
 type Handler struct {
 	rapidApi rapidapi.RapidApi
 	storage  awsutil.Storage
-	logger   *slog.Logger
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
@@ -25,19 +23,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return err
 	}
 
-	h.logger.Debug("Football games", "games", games)
-
-	calendar := h.createCalendar(games)
-	calendarData, err := calendar.Export()
-	if err != nil {
-		return fmt.Errorf("failed to export Football calendar: %w", err)
-	}
-
-	if err := h.storage.Upload(ctx, "football.ics", calendarData); err != nil {
-		return fmt.Errorf("failed to upload Football file: %w", err)
-	}
-
-	return nil
+	return createCalendar(games).Upload(ctx, h.storage, "football.ics")
 }
 
 type Team struct {
@@ -59,8 +45,6 @@ type Fixture struct {
 }
 
 type FixturesResponse struct {
-	Get      string    `json:"get"`
-	Results  int       `json:"results"`
 	Response []Fixture `json:"response"`
 }
 
@@ -68,46 +52,29 @@ func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Fixture, er
 	games := []Fixture{}
 
 	for _, teamId := range teamIds {
-		response, err := h.getGamesByTeam(ctx, teamId)
+		teamGames, err := h.getGamesByTeam(ctx, teamId)
 		if err != nil {
 			return nil, fmt.Errorf("failed to retrieve Football games for team id %d: %w", teamId, err)
 		}
 
-		h.logger.Debug("Retrieved football games", "teamId", teamId, "season", Season, "results", response.Results)
-		games = append(games, response.Response...)
+		games = append(games, teamGames...)
 	}
 
 	return games, nil
 }
 
-func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (FixturesResponse, error) {
-	/*
-		curl -X GET https://api-football-v1.p.rapidapi.com/v3/fixtures?team=541&season=2025 \
-			--header 'x-rapidapi-key: REPLACE_ME' | jq .
-	*/
+func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Fixture, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
 		"season": strconv.Itoa(Season),
 	}
 
-	apiUrl := fmt.Sprintf("%s/v3/fixtures", h.rapidApi.Config.Football.BaseUrl)
+	data, err := httpclient.GetJSON[FixturesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/v3/fixtures")
 
-	response, err := h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams).Get(apiUrl)
-	if err != nil {
-		return FixturesResponse{}, fmt.Errorf("request failed to retrieve Football games: %w", err)
-	}
-
-	h.logger.Debug("Football Api response", "response", response)
-
-	var data FixturesResponse
-	if err := json.Unmarshal(response.Body(), &data); err != nil {
-		return FixturesResponse{}, fmt.Errorf("failed to unmarshall Football games: %w", err)
-	}
-
-	return data, nil
+	return data.Response, err
 }
 
-func (h *Handler) createCalendar(games []Fixture) *calendar.Calendar {
+func createCalendar(games []Fixture) *calendar.Calendar {
 	cal := calendar.New("Football")
 	for _, game := range games {
 
@@ -125,10 +92,9 @@ func (h *Handler) createCalendar(games []Fixture) *calendar.Calendar {
 	return cal
 }
 
-func NewHandler(rapidApi rapidapi.RapidApi, storage awsutil.Storage, logger *slog.Logger) *Handler {
+func NewHandler(rapidApi rapidapi.RapidApi, storage awsutil.Storage) *Handler {
 	return &Handler{
 		rapidApi: rapidApi,
 		storage:  storage,
-		logger:   logger,
 	}
 }

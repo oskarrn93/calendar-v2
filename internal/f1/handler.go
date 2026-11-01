@@ -2,8 +2,6 @@ package f1
 
 import (
 	"context"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"log/slog"
 	"time"
@@ -11,12 +9,12 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
-	"github.com/oskarrn93/calendar-v2/internal/config"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 )
 
 const (
-	requestTimeout = 10 * time.Second
-	websiteUrl     = "https://www.formula1.com"
+	BaseUrl    = "https://api.jolpi.ca"
+	websiteUrl = "https://www.formula1.com"
 )
 
 type Session struct {
@@ -45,7 +43,6 @@ type racesResponse struct {
 
 type Handler struct {
 	httpClient *resty.Client
-	config     config.F1Api
 	storage    awsutil.Storage
 	logger     *slog.Logger
 }
@@ -59,23 +56,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return err
 	}
 
-	// In January the new season may not be published yet. Keep the previous file
-	// rather than upload an empty one.
-	if len(races) == 0 {
-		return errors.New("no F1 races returned")
-	}
-
-	calendar := h.createCalendar(races)
-	calendarData, err := calendar.Export()
-	if err != nil {
-		return fmt.Errorf("failed to export F1 calendar: %w", err)
-	}
-
-	if err := h.storage.Upload(ctx, "f1.ics", calendarData); err != nil {
-		return fmt.Errorf("failed to upload F1 file: %w", err)
-	}
-
-	return nil
+	return h.createCalendar(races).Upload(ctx, h.storage, "f1.ics")
 }
 
 func (h *Handler) GetRaces(ctx context.Context, seasons []int) ([]Race, error) {
@@ -94,18 +75,11 @@ func (h *Handler) GetRaces(ctx context.Context, seasons []int) ([]Race, error) {
 
 // API docs https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
 func (h *Handler) getRacesBySeason(ctx context.Context, season int) ([]Race, error) {
-	apiUrl := fmt.Sprintf("%s/ergast/f1/%d/races/", h.config.BaseUrl, season)
+	apiUrl := fmt.Sprintf("%s/ergast/f1/%d/races/", BaseUrl, season)
 
-	response, err := h.httpClient.R().SetContext(ctx).SetQueryParam("limit", "100").Get(apiUrl)
+	data, err := httpclient.GetJSON[racesResponse](h.httpClient.R().SetContext(ctx).SetQueryParam("limit", "100"), apiUrl)
 	if err != nil {
-		return nil, fmt.Errorf("request failed to retrieve F1 races: %w", err)
-	}
-
-	h.logger.Debug("F1 Api response", "season", season, "response", response)
-
-	var data racesResponse
-	if err := json.Unmarshal(response.Body(), &data); err != nil {
-		return nil, fmt.Errorf("failed to unmarshall F1 races: %w", err)
+		return nil, err
 	}
 
 	return data.MRData.RaceTable.Races, nil
@@ -151,21 +125,9 @@ func (h *Handler) createCalendar(races []Race) *calendar.Calendar {
 	return cal
 }
 
-func NewHandler(httpClient *resty.Client, config config.F1Api, storage awsutil.Storage, logger *slog.Logger) *Handler {
-	httpClient.SetTimeout(requestTimeout)
-
-	// Same reason as in rapidapi.New: an error body would otherwise unmarshal into
-	// an empty response.
-	httpClient.OnAfterResponse(func(_ *resty.Client, response *resty.Response) error {
-		if response.IsError() {
-			return fmt.Errorf("unexpected status %s from %s", response.Status(), response.Request.URL)
-		}
-		return nil
-	})
-
+func NewHandler(httpClient *resty.Client, storage awsutil.Storage, logger *slog.Logger) *Handler {
 	return &Handler{
 		httpClient: httpClient,
-		config:     config,
 		storage:    storage,
 		logger:     logger,
 	}
