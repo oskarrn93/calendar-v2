@@ -2,16 +2,18 @@ package app
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 
-	"github.com/go-resty/resty/v2"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/basketball"
+	"github.com/oskarrn93/calendar-v2/internal/calendar"
 	"github.com/oskarrn93/calendar-v2/internal/config"
 	"github.com/oskarrn93/calendar-v2/internal/esport"
 	"github.com/oskarrn93/calendar-v2/internal/f1"
 	"github.com/oskarrn93/calendar-v2/internal/football"
+	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/nba"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
@@ -30,14 +32,15 @@ func Handlers(ctx context.Context, logger *slog.Logger) (map[string]Handler, err
 		return nil, fmt.Errorf("failed to create S3 storage: %w", err)
 	}
 
-	rapidApi := rapidapi.New(resty.New(), appConfig.RapidApi)
+	httpClient := httpclient.New()
+	rapidApi := rapidapi.New(httpClient, appConfig.RapidApiKey)
 
 	return map[string]Handler{
-		"Football":   football.NewHandler(rapidApi, storage, logger).Handler,
-		"NBA":        nba.NewHandler(rapidApi, storage, logger).Handler,
+		"Football":   football.NewHandler(rapidApi, storage).Handler,
+		"NBA":        nba.NewHandler(rapidApi, storage).Handler,
 		"Esport":     esport.NewHandler(rapidApi, storage, logger).Handler,
-		"Basketball": basketball.NewHandler(rapidApi, storage, logger).Handler,
-		"F1":         f1.NewHandler(resty.New(), appConfig.F1, storage, logger).Handler,
+		"Basketball": basketball.NewHandler(rapidApi, storage).Handler,
+		"F1":         f1.NewHandler(httpClient, storage, logger).Handler,
 	}, nil
 }
 
@@ -58,7 +61,12 @@ func RunCommand(name string) {
 		panic(fmt.Errorf("unknown handler %q", name))
 	}
 
-	if err := handler(ctx); err != nil {
+	err = handler(ctx)
+	if errors.Is(err, calendar.ErrNoEvents) {
+		logger.Warn("No events found, keeping previous calendar", "handler", name, "error", err)
+		return
+	}
+	if err != nil {
 		panic(fmt.Errorf("%s handler failed: %w", name, err))
 	}
 

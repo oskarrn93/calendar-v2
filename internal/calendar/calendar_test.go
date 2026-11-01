@@ -7,6 +7,7 @@ import (
 
 	ics "github.com/arran4/golang-ical"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
+	"github.com/oskarrn93/calendar-v2/internal/testutil"
 	"github.com/stretchr/testify/require"
 )
 
@@ -56,4 +57,11 @@ func TestAddEventSetsUrl(t *testing.T) {
 
 	require.Nil(t, events[1].GetProperty(ics.ComponentPropertyUrl))
 	require.Nil(t, events[1].GetProperty(ics.ComponentPropertyDescription))
+}
+
+func TestUploadRefusesEmptyCalendar(t *testing.T) {
+	storage := &testutil.MemoryStorage{}
+
+	require.ErrorIs(t, calendar.New("Test").Upload(t.Context(), storage, "test.ics"), calendar.ErrNoEvents)
+	require.Empty(t, storage.Files)
 }

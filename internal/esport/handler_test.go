@@ -3,7 +3,6 @@ package esport_test
 import (
 	"bytes"
 	"fmt"
-	"net/url"
 	"slices"
 	"strings"
 	"testing"
@@ -19,34 +18,18 @@ import (
 )
 
 func TestGetGames(t *testing.T) {
-	// Arrange
 	httpClient := testutil.NewMockHttpClient(t)
 
-	mockConfig := testutil.GetMockAppConfig(t)
+	rapidApi := rapidapi.New(httpClient, testutil.FakeApiKey)
 
-	rapidApi := rapidapi.New(httpClient, mockConfig.RapidApi)
+	handler := esport.NewHandler(rapidApi, &testutil.MemoryStorage{}, logging.New())
 
-	handler := esport.NewHandler(rapidApi, testutil.NoopStorage{}, logging.New())
+	expectedUrl := fmt.Sprintf("%s/kit/v1/markets?sport_id=%d", esport.BaseUrl, esport.EsportSportID)
+	httpmock.RegisterResponder("GET", expectedUrl,
+		httpmock.NewBytesResponder(200, testutil.ReadTestData(t, "esport/markets.json")))
 
-	gamesTestData := string(testutil.ReadTestData(t, "esport/markets.json"))
-
-	// Mock http request
-
-	expectedUrl, err := url.Parse(mockConfig.RapidApi.Esport.BaseUrl)
+	result, err := handler.GetEvents(t.Context())
 	require.NoError(t, err)
-	expectedUrl.Path += "/kit/v1/markets"
-	query := expectedUrl.Query()
-	query.Set("sport_id", fmt.Sprintf("%d", esport.EsportSportID))
-	expectedUrl.RawQuery = query.Encode()
-
-	httpmock.RegisterResponder("GET", expectedUrl.String(),
-		httpmock.NewStringResponder(200, gamesTestData))
-
-	// Act
-	result, err := handler.GetEvents(t.Context(), []esport.SportID{esport.EsportSportID})
-	require.NoError(t, err)
-
-	// Assert
 
 	snaps.MatchSnapshot(t, result)
 }
@@ -54,11 +37,10 @@ func TestGetGames(t *testing.T) {
 func TestHandlerUploadsFilteredCalendar(t *testing.T) {
 	httpClient := testutil.NewMockHttpClient(t)
 
-	mockConfig := testutil.GetMockAppConfig(t)
 	storage := &testutil.MemoryStorage{}
-	handler := esport.NewHandler(rapidapi.New(httpClient, mockConfig.RapidApi), storage, logging.New())
+	handler := esport.NewHandler(rapidapi.New(httpClient, testutil.FakeApiKey), storage, logging.New())
 
-	httpmock.RegisterResponder("GET", mockConfig.RapidApi.Esport.BaseUrl+"/kit/v1/markets",
+	httpmock.RegisterResponder("GET", esport.BaseUrl+"/kit/v1/markets",
 		httpmock.NewBytesResponder(200, testutil.ReadTestData(t, "esport/markets.json")))
 
 	require.NoError(t, handler.Handler(t.Context()))

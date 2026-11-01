@@ -3,12 +3,16 @@ package calendar
 import (
 	"bytes"
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
 	ics "github.com/arran4/golang-ical"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 )
+
+// ErrNoEvents is expected in the off-season; callers should warn rather than fail.
+var ErrNoEvents = errors.New("calendar has no events")
 
 type Event struct {
 	Id        string
@@ -67,7 +71,13 @@ func (cal *Calendar) Export() ([]byte, error) {
 	return data.Bytes(), nil
 }
 
+// Upload skips an empty calendar so subscribers keep the last good file, e.g.
+// one that still lists the end of last season.
 func (cal *Calendar) Upload(ctx context.Context, storage awsutil.Storage, filename string) error {
+	if len(cal.eventIDs) == 0 {
+		return fmt.Errorf("skipped uploading %s: %w", filename, ErrNoEvents)
+	}
+
 	data, err := cal.Export()
 	if err != nil {
 		return fmt.Errorf("failed to export %s: %w", filename, err)

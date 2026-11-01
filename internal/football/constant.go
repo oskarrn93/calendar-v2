@@ -3,11 +3,7 @@ package football
 type TeamID int
 
 // API docs https://www.api-football.com/documentation-v3
-
-/*
-	curl -X GET https://api-football-v1.p.rapidapi.com/v2/teams/search/real_madrid \
-		--header 'x-rapidapi-key: REPLACE_ME' | jq .
-*/
+const BaseUrl = "https://api-football-v1.p.rapidapi.com"
 
 const (
 	RealMadrid        TeamID = 541

@@ -1,18 +1,9 @@
 package esport
 
-type SportID int
-
 // API docs https://rapidapi.com/tipsters/api/pinnacle-odds
+const BaseUrl = "https://pinnacle-odds.p.rapidapi.com"
 
-/*
-	curl --request GET
-	--url https://pinnacle-odds.p.rapidapi.com/kit/v1/sports
-	--header 'x-rapidapi-key: REPLACE_ME'
-*/
-
-const (
-	EsportSportID SportID = 10
-)
+const EsportSportID = 10
 
 var TeamsOfInterest = []string{
 	"fnatic",

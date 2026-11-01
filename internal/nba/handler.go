@@ -3,7 +3,6 @@ package nba
 import (
 	"context"
 	"fmt"
-	"log/slog"
 	"strconv"
 	"time"
 
@@ -34,15 +33,12 @@ type Game struct {
 }
 
 type GamesResponse struct {
-	Get      string `json:"get"`
-	Results  int    `json:"results"`
 	Response []Game `json:"response"`
 }
 
 type Handler struct {
 	rapidApi rapidapi.RapidApi
 	storage  awsutil.Storage
-	logger   *slog.Logger
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
@@ -51,40 +47,35 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return err
 	}
 
-	return h.createCalendar(games).Upload(ctx, h.storage, "nba.ics")
+	return createCalendar(games).Upload(ctx, h.storage, "nba.ics")
 }
 
-func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) (GamesResponse, error) {
+func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Game, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
 		"season": strconv.Itoa(Season),
 	}
 
-	apiUrl := fmt.Sprintf("%s/games", h.rapidApi.Config.NBA.BaseUrl)
+	data, err := httpclient.GetJSON[GamesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/games")
 
-	data, err := httpclient.GetJSON[GamesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), apiUrl)
-	if err != nil {
-		return GamesResponse{}, fmt.Errorf("request failed to retrieve NBA games: %w", err)
-	}
-
-	return data, nil
+	return data.Response, err
 }
 
 func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Game, error) {
 	games := []Game{}
 
 	for _, teamId := range teamIds {
-		data, err := h.getGamesByTeam(ctx, teamId)
+		teamGames, err := h.getGamesByTeam(ctx, teamId)
 		if err != nil {
 			return nil, fmt.Errorf("failed to retrieve NBA games for team id %d: %w", teamId, err)
 		}
-		games = append(games, data.Response...)
+		games = append(games, teamGames...)
 	}
 
 	return games, nil
 }
 
-func (h *Handler) createCalendar(games []Game) *calendar.Calendar {
+func createCalendar(games []Game) *calendar.Calendar {
 	cal := calendar.New("NBA")
 
 	for _, game := range games {
@@ -99,10 +90,9 @@ func (h *Handler) createCalendar(games []Game) *calendar.Calendar {
 	return cal
 }
 
-func NewHandler(rapidApi rapidapi.RapidApi, storage awsutil.Storage, logger *slog.Logger) *Handler {
+func NewHandler(rapidApi rapidapi.RapidApi, storage awsutil.Storage) *Handler {
 	return &Handler{
 		rapidApi: rapidApi,
 		storage:  storage,
-		logger:   logger,
 	}
 }

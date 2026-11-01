@@ -10,9 +10,8 @@ import (
 
 const requestTimeout = 10 * time.Second
 
-// Configure takes the client as an argument so tests can pass one hooked up to httpmock.
-func Configure(httpClient *resty.Client) *resty.Client {
-	httpClient.SetTimeout(requestTimeout)
+func New() *resty.Client {
+	httpClient := resty.New().SetTimeout(requestTimeout)
 
 	// resty doesn't treat non-2xx as an error. Without this, an error body (rate
 	// limit, bad key) unmarshals into an empty response and the handler uploads

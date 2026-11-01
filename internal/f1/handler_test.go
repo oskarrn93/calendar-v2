@@ -9,6 +9,7 @@ import (
 	ics "github.com/arran4/golang-ical"
 	"github.com/gkampitakis/go-snaps/snaps"
 	"github.com/jarcoal/httpmock"
+	"github.com/oskarrn93/calendar-v2/internal/calendar"
 	"github.com/oskarrn93/calendar-v2/internal/f1"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
 	"github.com/oskarrn93/calendar-v2/internal/testutil"
@@ -24,14 +25,13 @@ func setup(t *testing.T, bodies map[int][]byte) (*f1.Handler, *testutil.MemorySt
 
 	httpClient := testutil.NewMockHttpClient(t)
 
-	mockConfig := testutil.GetMockAppConfig(t)
 	for season, body := range bodies {
-		url := fmt.Sprintf("%s/ergast/f1/%d/races/?limit=100", mockConfig.F1.BaseUrl, season)
+		url := fmt.Sprintf("%s/ergast/f1/%d/races/?limit=100", f1.BaseUrl, season)
 		httpmock.RegisterResponder("GET", url, httpmock.NewBytesResponder(200, body))
 	}
 
 	storage := &testutil.MemoryStorage{}
-	return f1.NewHandler(httpClient, mockConfig.F1, storage, logging.New()), storage
+	return f1.NewHandler(httpClient, storage, logging.New()), storage
 }
 
 func TestGetRaces(t *testing.T) {
@@ -67,7 +67,7 @@ func TestHandlerDoesNotUploadEmptySchedule(t *testing.T) {
 		year + 1: []byte(unpublishedSeason),
 	})
 
-	require.Error(t, handler.Handler(t.Context()))
+	require.ErrorIs(t, handler.Handler(t.Context()), calendar.ErrNoEvents)
 	require.Empty(t, storage.Files)
 }
 

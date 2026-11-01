@@ -2,7 +2,6 @@ package f1
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log/slog"
 	"time"
@@ -10,11 +9,13 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
-	"github.com/oskarrn93/calendar-v2/internal/config"
 	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 )
 
-const websiteUrl = "https://www.formula1.com"
+const (
+	BaseUrl    = "https://api.jolpi.ca"
+	websiteUrl = "https://www.formula1.com"
+)
 
 type Session struct {
 	Date string `json:"date"`
@@ -42,7 +43,6 @@ type racesResponse struct {
 
 type Handler struct {
 	httpClient *resty.Client
-	config     config.F1Api
 	storage    awsutil.Storage
 	logger     *slog.Logger
 }
@@ -54,12 +54,6 @@ func (h *Handler) Handler(ctx context.Context) error {
 	races, err := h.GetRaces(ctx, []int{year, year + 1})
 	if err != nil {
 		return err
-	}
-
-	// In January the new season may not be published yet. Keep the previous file
-	// rather than upload an empty one.
-	if len(races) == 0 {
-		return errors.New("no F1 races returned")
 	}
 
 	return h.createCalendar(races).Upload(ctx, h.storage, "f1.ics")
@@ -81,11 +75,11 @@ func (h *Handler) GetRaces(ctx context.Context, seasons []int) ([]Race, error) {
 
 // API docs https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
 func (h *Handler) getRacesBySeason(ctx context.Context, season int) ([]Race, error) {
-	apiUrl := fmt.Sprintf("%s/ergast/f1/%d/races/", h.config.BaseUrl, season)
+	apiUrl := fmt.Sprintf("%s/ergast/f1/%d/races/", BaseUrl, season)
 
 	data, err := httpclient.GetJSON[racesResponse](h.httpClient.R().SetContext(ctx).SetQueryParam("limit", "100"), apiUrl)
 	if err != nil {
-		return nil, fmt.Errorf("request failed to retrieve F1 races: %w", err)
+		return nil, err
 	}
 
 	return data.MRData.RaceTable.Races, nil
@@ -131,10 +125,9 @@ func (h *Handler) createCalendar(races []Race) *calendar.Calendar {
 	return cal
 }
 
-func NewHandler(httpClient *resty.Client, config config.F1Api, storage awsutil.Storage, logger *slog.Logger) *Handler {
+func NewHandler(httpClient *resty.Client, storage awsutil.Storage, logger *slog.Logger) *Handler {
 	return &Handler{
-		httpClient: httpclient.Configure(httpClient),
-		config:     config,
+		httpClient: httpClient,
 		storage:    storage,
 		logger:     logger,
 	}

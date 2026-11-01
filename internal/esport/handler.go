@@ -22,12 +22,10 @@ type Handler struct {
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
-	events, err := h.GetEvents(ctx, []SportID{EsportSportID})
+	events, err := h.GetEvents(ctx)
 	if err != nil {
 		return err
 	}
-
-	h.logger.Debug("Esport events", "events", events)
 
 	return h.createCalendar(events).Upload(ctx, h.storage, "esport.ics")
 }
@@ -57,43 +55,15 @@ type EventsResponse struct {
 	Events []Event `json:"events"`
 }
 
-func (h *Handler) GetEvents(ctx context.Context, sportIDs []SportID) ([]Event, error) {
-	events := []Event{}
+func (h *Handler) GetEvents(ctx context.Context) ([]Event, error) {
+	request := h.rapidApi.BaseRequest(ctx).SetQueryParam("sport_id", strconv.Itoa(EsportSportID))
 
-	for _, sportID := range sportIDs {
-		response, err := h.getEventsBySport(ctx, int(sportID))
-		if err != nil {
-			return nil, err
-		}
-
-		h.logger.Debug("Retrieved Esport games", "sportID", sportID, "events", response.Events)
-		events = append(events, response.Events...)
-	}
-
-	return events, nil
-}
-
-func (h *Handler) getEventsBySport(ctx context.Context, sportID int) (EventsResponse, error) {
-	// API docs https://rapidapi.com/tipsters/api/pinnacle-odds
-
-	/*
-		curl --request GET
-		--url 'https://pinnacle-odds.p.rapidapi.com/kit/v1/markets?sport_id=10'
-		--header 'x-rapidapi-key: REPLACE_ME'
-	*/
-
-	queryParams := map[string]string{
-		"sport_id": strconv.Itoa(sportID),
-	}
-
-	apiUrl := fmt.Sprintf("%s/kit/v1/markets", h.rapidApi.Config.Esport.BaseUrl)
-
-	data, err := httpclient.GetJSON[EventsResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), apiUrl)
+	data, err := httpclient.GetJSON[EventsResponse](request, BaseUrl+"/kit/v1/markets")
 	if err != nil {
-		return EventsResponse{}, fmt.Errorf("request failed to retrieve Esport games: %w", err)
+		return nil, fmt.Errorf("failed to retrieve Esport events: %w", err)
 	}
 
-	return data, nil
+	return data.Events, nil
 }
 
 func (h *Handler) createCalendar(events []Event) *calendar.Calendar {

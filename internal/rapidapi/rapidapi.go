@@ -4,22 +4,20 @@ import (
 	"context"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/oskarrn93/calendar-v2/internal/config"
-	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 )
 
 type RapidApi struct {
-	HttpClient *resty.Client
-	Config     config.RapidApi
+	httpClient *resty.Client
+	apiKey     string
 }
 
 func (ra RapidApi) BaseRequest(ctx context.Context) *resty.Request {
-	return ra.HttpClient.R().SetContext(ctx).SetHeader("X-RapidAPI-Key", ra.Config.ApiKey)
+	return ra.httpClient.R().SetContext(ctx).SetHeader("X-RapidAPI-Key", ra.apiKey)
 }
 
-func New(httpClient *resty.Client, config config.RapidApi) RapidApi {
+func New(httpClient *resty.Client, apiKey string) RapidApi {
 	return RapidApi{
-		HttpClient: httpclient.Configure(httpClient),
-		Config:     config,
+		httpClient: httpClient,
+		apiKey:     apiKey,
 	}
 }

@@ -3,7 +3,6 @@ package basketball
 import (
 	"context"
 	"fmt"
-	"log/slog"
 	"time"
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
@@ -15,7 +14,6 @@ import (
 type Handler struct {
 	rapidApi rapidapi.RapidApi
 	storage  awsutil.Storage
-	logger   *slog.Logger
 }
 
 func (h *Handler) Handler(ctx context.Context) error {
@@ -24,15 +22,12 @@ func (h *Handler) Handler(ctx context.Context) error {
 		return err
 	}
 
-	h.logger.Debug("Basketball games", "games", games)
-
-	return h.createCalendar(games).Upload(ctx, h.storage, "basketball.ics")
+	return createCalendar(games).Upload(ctx, h.storage, "basketball.ics")
 }
 
 type EventTeam struct {
 	Name      string `json:"name"`
 	ShortName string `json:"shortName"`
-	Gender    string `json:"gender"`
 }
 
 func (e EventTeam) PrettyName() string {
@@ -67,10 +62,9 @@ func (h *Handler) GetGames(ctx context.Context, teamIDs []TeamID) ([]Event, erro
 		for page := 0; page < maxPages; page++ {
 			response, err := h.getEventsByTeam(ctx, int(teamID), page)
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("failed to retrieve Basketball games for team id %d page %d: %w", teamID, page, err)
 			}
 
-			h.logger.Debug("Retrieved Basketball games", "teamId", teamID, "page", page, "events", response.Events)
 			events = append(events, response.Events...)
 
 			if !response.HasNextPage {
@@ -83,23 +77,12 @@ func (h *Handler) GetGames(ctx context.Context, teamIDs []TeamID) ([]Event, erro
 }
 
 func (h *Handler) getEventsByTeam(ctx context.Context, teamId int, page int) (EventsResponse, error) {
-	/*
-		curl --request GET
-		--url https://sportapi7.p.rapidapi.com/api/v1/team/3540/events/next/0
-		--header 'x-rapidapi-key: REPLACE_ME'
-	*/
+	apiUrl := fmt.Sprintf("%s/api/v1/team/%d/events/next/%d", BaseUrl, teamId, page)
 
-	apiUrl := fmt.Sprintf("%s/api/v1/team/%d/events/next/%d", h.rapidApi.Config.Basketball.BaseUrl, teamId, page)
-
-	data, err := httpclient.GetJSON[EventsResponse](h.rapidApi.BaseRequest(ctx), apiUrl)
-	if err != nil {
-		return EventsResponse{}, fmt.Errorf("request failed to retrieve Basketball games: %w", err)
-	}
-
-	return data, nil
+	return httpclient.GetJSON[EventsResponse](h.rapidApi.BaseRequest(ctx), apiUrl)
 }
 
-func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
+func createCalendar(events []Event) *calendar.Calendar {
 	cal := calendar.New("Basketball")
 	for _, event := range events {
 
@@ -117,10 +100,9 @@ func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
 	return cal
 }
 
-func NewHandler(rapidApi rapidapi.RapidApi, storage awsutil.Storage, logger *slog.Logger) *Handler {
+func NewHandler(rapidApi rapidapi.RapidApi, storage awsutil.Storage) *Handler {
 	return &Handler{
 		rapidApi: rapidApi,
 		storage:  storage,
-		logger:   logger,
 	}
 }
