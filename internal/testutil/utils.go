@@ -28,6 +28,9 @@ func GetMockAppConfig(t *testing.T) config.App {
 			},
 			ApiKey: "fake-api-key", // #nosec G101 -- test placeholder, not a real credential
 		},
+		F1: config.F1Api{
+			BaseUrl: "https://example-f1.com",
+		},
 		S3Bucket: "fake-s3-bucket",
 	}
 

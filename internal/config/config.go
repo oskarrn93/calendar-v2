@@ -21,8 +21,13 @@ type RapidApi struct {
 	ApiKey     string           `validate:"required"`
 }
 
+type F1Api struct {
+	BaseUrl string `validate:"required"`
+}
+
 type App struct {
 	RapidApi RapidApi `validate:"required"`
+	F1       F1Api    `validate:"required"`
 	S3Bucket string   `validate:"required"`
 }
 
@@ -46,6 +51,9 @@ func Initialize() (App, error) {
 				BaseUrl: "https://pinnacle-odds.p.rapidapi.com",
 			},
 			ApiKey: os.Getenv("RAPIDAPI_KEY"),
+		},
+		F1: F1Api{
+			BaseUrl: "https://api.jolpi.ca",
 		},
 		S3Bucket: os.Getenv("S3_BUCKET_NAME"),
 	}
