@@ -1,18 +1,9 @@
 name: "Publish image to AWS ECR"
-description: "Publish image to AWS ECR"
+description: "Publish image to AWS ECR. Expects AWS credentials to already be configured."
 
 inputs:
   image_tag:
     description: "The image tag"
-    required: true
-  aws_role_arn:
-    description: "The AWS IAM role to assume"
-    required: true
-  aws_region:
-    description: "The AWS region"
-    required: true
-  aws_account_id:
-    description: "The AWS Account ID"
     required: true
   aws_ecr_repository:
     description: "The AWS ECR repository name"
@@ -21,32 +12,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v5.1.0
-      with:
-        role-to-assume: ${{ inputs.aws_role_arn }}
-        aws-region: ${{ inputs.aws_region }}
-
     - name: Log in to Amazon ECR
+      id: ecr-login
       uses: aws-actions/amazon-ecr-login@v2.0.1
 
-    - name: Build Docker image
-      shell: sh
-      run: |
-        docker build -t ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} .
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4.4.1
 
-    - name: Construct ECR Repository URI
-      id: construct-ecr-uri
-      uses: ./.github/actions/construct-ecr-repository-uri
+    - name: Build and push Docker image to ECR
+      uses: docker/build-push-action@v7.4.0
       with:
-        aws_account_id: ${{ inputs.aws_account_id }}
-        aws_region: ${{ inputs.aws_region }}
-        aws_ecr_repository: ${{ inputs.aws_ecr_repository }}
-
-    - name: Push Docker image to ECR
-      shell: sh
-      run: |
-        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:${{ inputs.image_tag }}
-        docker tag ${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }} ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:latest
-        docker push ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:${{ inputs.image_tag }}
-        docker push ${{ steps.construct-ecr-uri.outputs.ecr_repository_uri }}:latest
+        context: .
+        push: true
+        tags: |
+          ${{ steps.ecr-login.outputs.registry }}/${{ inputs.aws_ecr_repository }}:${{ inputs.image_tag }}
+          ${{ steps.ecr-login.outputs.registry }}/${{ inputs.aws_ecr_repository }}:latest
+        # Lambda rejects the OCI image index that buildx produces when it attaches provenance.
+        provenance: false

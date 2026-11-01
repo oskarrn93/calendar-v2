@@ -32,7 +32,6 @@ formatters:
     - gofmt
     - goimports
     - golines
-    - swaggo
   settings:
     golines:
       max-len: 250
