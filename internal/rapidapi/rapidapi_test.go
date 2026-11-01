@@ -3,7 +3,6 @@ package rapidapi_test
 import (
 	"testing"
 
-	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
 	"github.com/oskarrn93/calendar-v2/internal/testutil"
@@ -11,9 +10,7 @@ import (
 )
 
 func TestBaseRequestFailsOnErrorStatus(t *testing.T) {
-	httpClient := resty.New()
-	httpmock.ActivateNonDefault(httpClient.GetClient())
-	defer httpmock.DeactivateAndReset()
+	httpClient := testutil.NewMockHttpClient(t)
 
 	rapidApi := rapidapi.New(httpClient, testutil.GetMockAppConfig(t).RapidApi)
 

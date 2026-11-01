@@ -8,7 +8,6 @@ import (
 
 	ics "github.com/arran4/golang-ical"
 	"github.com/gkampitakis/go-snaps/snaps"
-	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
 	"github.com/oskarrn93/calendar-v2/internal/f1"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
@@ -23,9 +22,7 @@ const unpublishedSeason = `{"MRData":{"RaceTable":{"Races":[]}}}`
 func setup(t *testing.T, bodies map[int][]byte) (*f1.Handler, *testutil.MemoryStorage) {
 	t.Helper()
 
-	httpClient := resty.New()
-	httpmock.ActivateNonDefault(httpClient.GetClient())
-	t.Cleanup(httpmock.DeactivateAndReset)
+	httpClient := testutil.NewMockHttpClient(t)
 
 	mockConfig := testutil.GetMockAppConfig(t)
 	for season, body := range bodies {

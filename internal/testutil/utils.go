@@ -5,6 +5,8 @@ import (
 	"io"
 	"testing"
 
+	"github.com/go-resty/resty/v2"
+	"github.com/jarcoal/httpmock"
 	"github.com/oskarrn93/calendar-v2/internal/config"
 	"github.com/oskarrn93/calendar-v2/internal/testdata"
 )
@@ -39,6 +41,18 @@ func GetMockAppConfig(t *testing.T) config.App {
 	}
 
 	return mockConfig
+}
+
+// NewMockHttpClient returns a client whose requests go to httpmock's
+// responders; unregistered URLs fail the request.
+func NewMockHttpClient(t *testing.T) *resty.Client {
+	t.Helper()
+
+	httpClient := resty.New()
+	httpmock.ActivateNonDefault(httpClient.GetClient())
+	t.Cleanup(httpmock.DeactivateAndReset)
+
+	return httpClient
 }
 
 // ReadTestData returns a saved api response so tests don't need to make an external request.

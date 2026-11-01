@@ -10,7 +10,6 @@ import (
 
 	ics "github.com/arran4/golang-ical"
 	"github.com/gkampitakis/go-snaps/snaps"
-	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
 	"github.com/oskarrn93/calendar-v2/internal/esport"
 	"github.com/oskarrn93/calendar-v2/internal/logging"
@@ -21,11 +20,7 @@ import (
 
 func TestGetGames(t *testing.T) {
 	// Arrange
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
-
-	httpClient := resty.New()
-	httpmock.ActivateNonDefault(httpClient.GetClient())
+	httpClient := testutil.NewMockHttpClient(t)
 
 	mockConfig := testutil.GetMockAppConfig(t)
 
@@ -57,9 +52,7 @@ func TestGetGames(t *testing.T) {
 }
 
 func TestHandlerUploadsFilteredCalendar(t *testing.T) {
-	httpClient := resty.New()
-	httpmock.ActivateNonDefault(httpClient.GetClient())
-	defer httpmock.DeactivateAndReset()
+	httpClient := testutil.NewMockHttpClient(t)
 
 	mockConfig := testutil.GetMockAppConfig(t)
 	storage := &testutil.MemoryStorage{}
