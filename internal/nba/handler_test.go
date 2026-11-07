@@ -36,6 +36,18 @@ func TestGetGames(t *testing.T) {
 	snaps.MatchSnapshot(t, result)
 }
 
+func TestGetGamesFailsOnApiError(t *testing.T) {
+	httpClient := testutil.NewMockHttpClient(t)
+
+	nbaHandler := nba.NewHandler(rapidapi.New(httpClient, testutil.FakeApiKey), &testutil.MemoryStorage{})
+
+	httpmock.RegisterNoResponder(httpmock.NewStringResponder(200,
+		`{"errors":{"token":"Error/Missing application key"},"response":[]}`))
+
+	_, err := nbaHandler.GetGames(t.Context(), []nba.TeamID{nba.BostonCeltics})
+	require.ErrorContains(t, err, "application key")
+}
+
 func TestSeason(t *testing.T) {
 	require.Equal(t, 2026, nba.Season(time.Date(2027, time.June, 30, 0, 0, 0, 0, time.UTC)))
 	require.Equal(t, 2027, nba.Season(time.Date(2027, time.July, 1, 0, 0, 0, 0, time.UTC)))

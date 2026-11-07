@@ -36,6 +36,18 @@ func TestGetGames(t *testing.T) {
 	snaps.MatchSnapshot(t, result)
 }
 
+func TestGetGamesFailsOnApiError(t *testing.T) {
+	httpClient := testutil.NewMockHttpClient(t)
+
+	handler := football.NewHandler(rapidapi.New(httpClient, testutil.FakeApiKey), &testutil.MemoryStorage{})
+
+	httpmock.RegisterNoResponder(httpmock.NewStringResponder(200,
+		`{"errors":{"requests":"You have reached the request limit for the day"},"response":[]}`))
+
+	_, err := handler.GetGames(t.Context(), []football.TeamID{football.RealMadrid})
+	require.ErrorContains(t, err, "request limit")
+}
+
 func TestSeason(t *testing.T) {
 	tests := []struct {
 		name string

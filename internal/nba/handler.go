@@ -1,7 +1,9 @@
 package nba
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"time"
@@ -33,7 +35,20 @@ type Game struct {
 }
 
 type GamesResponse struct {
-	Response []Game `json:"response"`
+	Errors   json.RawMessage `json:"errors"`
+	Response []Game          `json:"response"`
+}
+
+// API-Sports reports failures such as an exhausted quota or a bad key with a
+// 200 status and an empty response. errors is [] on success and an object
+// otherwise.
+func (r GamesResponse) err() error {
+	switch e := string(bytes.TrimSpace(r.Errors)); e {
+	case "", "null", "[]", "{}":
+		return nil
+	default:
+		return fmt.Errorf("api error: %s", e)
+	}
 }
 
 type Handler struct {
@@ -57,8 +72,11 @@ func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Game, er
 	}
 
 	data, err := httpclient.GetJSON[GamesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/games")
+	if err != nil {
+		return nil, err
+	}
 
-	return data.Response, err
+	return data.Response, data.err()
 }
 
 func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Game, error) {
