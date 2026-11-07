@@ -11,6 +11,7 @@ resource "aws_cloudfront_distribution" "calendar" {
   is_ipv6_enabled = true
   http_version    = "http2"
   price_class     = "PriceClass_100"
+  aliases         = [local.domain_name]
 
   origin {
     origin_id                = "origin1"
@@ -44,7 +45,8 @@ resource "aws_cloudfront_distribution" "calendar" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
-    minimum_protocol_version       = "TLSv1"
+    acm_certificate_arn      = aws_acm_certificate_validation.calendar.certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 }
