@@ -2,6 +2,10 @@ output "cloudfront_domain_name" {
   value = aws_cloudfront_distribution.calendar.domain_name
 }
 
+output "calendar_url" {
+  value = "https://${local.domain_name}"
+}
+
 output "ecr_repository_url" {
   value = aws_ecr_repository.calendar.repository_url
 }
