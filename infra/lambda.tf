@@ -48,7 +48,7 @@ resource "aws_lambda_function" "calendar" {
   package_type  = "Image"
   image_uri     = "${aws_ecr_repository.calendar.repository_url}:v1.7.0"
   architectures = ["x86_64"]
-  timeout       = 90
+  timeout       = 300
   memory_size   = 128
 
   environment {
@@ -63,4 +63,11 @@ resource "aws_lambda_function" "calendar" {
   lifecycle {
     ignore_changes = [image_uri]
   }
+}
+
+# The function already retries transient HTTP errors itself, and a Lambda retry
+# would re-run every job and burn RapidAPI quota on the ones that succeeded.
+resource "aws_lambda_function_event_invoke_config" "calendar" {
+  function_name          = aws_lambda_function.calendar.function_name
+  maximum_retry_attempts = 0
 }

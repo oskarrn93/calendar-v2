@@ -29,3 +29,29 @@ resource "aws_s3_bucket_policy" "calendar" {
     ]
   })
 }
+
+# Lets a bad upload be rolled back to the previous calendar.
+resource "aws_s3_bucket_versioning" "calendar" {
+  bucket = aws_s3_bucket.calendar.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "calendar" {
+  bucket = aws_s3_bucket.calendar.id
+
+  rule {
+    id     = "expire-old-versions"
+    status = "Enabled"
+
+    filter {}
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+
+  depends_on = [aws_s3_bucket_versioning.calendar]
+}

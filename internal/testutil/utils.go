@@ -4,6 +4,7 @@ import (
 	"context"
 	"io"
 	"testing"
+	"time"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/jarcoal/httpmock"
@@ -14,11 +15,12 @@ import (
 const FakeApiKey = "fake-api-key" // #nosec G101 -- test placeholder, not a real credential
 
 // NewMockHttpClient returns a configured client whose requests go to httpmock's
-// responders; unregistered URLs fail the request.
+// responders; unregistered URLs fail the request. Retries are kept but don't
+// wait, so failure-path tests stay fast.
 func NewMockHttpClient(t *testing.T) *resty.Client {
 	t.Helper()
 
-	httpClient := httpclient.New()
+	httpClient := httpclient.New().SetRetryWaitTime(time.Millisecond).SetRetryMaxWaitTime(time.Millisecond)
 	httpmock.ActivateNonDefault(httpClient.GetClient())
 	t.Cleanup(httpmock.DeactivateAndReset)
 

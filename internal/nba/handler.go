@@ -1,8 +1,11 @@
 package nba
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
+	"slices"
 	"strconv"
 	"time"
 
@@ -10,7 +13,11 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
 	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
+	"golang.org/x/sync/errgroup"
 )
+
+// Keeps concurrent requests under RapidAPI's per-second rate limit.
+const maxConcurrentRequests = 3
 
 type GameDate struct {
 	Start time.Time `json:"start"`
@@ -33,7 +40,20 @@ type Game struct {
 }
 
 type GamesResponse struct {
-	Response []Game `json:"response"`
+	Errors   json.RawMessage `json:"errors"`
+	Response []Game          `json:"response"`
+}
+
+// API-Sports reports failures such as an exhausted quota or a bad key with a
+// 200 status and an empty response. errors is [] on success and an object
+// otherwise.
+func (r GamesResponse) err() error {
+	switch e := string(bytes.TrimSpace(r.Errors)); e {
+	case "", "null", "[]", "{}":
+		return nil
+	default:
+		return fmt.Errorf("api error: %s", e)
+	}
 }
 
 type Handler struct {
@@ -53,26 +73,39 @@ func (h *Handler) Handler(ctx context.Context) error {
 func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Game, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
-		"season": strconv.Itoa(Season),
+		"season": strconv.Itoa(Season(time.Now())),
 	}
 
 	data, err := httpclient.GetJSON[GamesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/games")
+	if err != nil {
+		return nil, err
+	}
 
-	return data.Response, err
+	return data.Response, data.err()
 }
 
 func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Game, error) {
-	games := []Game{}
+	teamGames := make([][]Game, len(teamIds))
 
-	for _, teamId := range teamIds {
-		teamGames, err := h.getGamesByTeam(ctx, teamId)
-		if err != nil {
-			return nil, fmt.Errorf("failed to retrieve NBA games for team id %d: %w", teamId, err)
-		}
-		games = append(games, teamGames...)
+	g, ctx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentRequests)
+
+	for i, teamId := range teamIds {
+		g.Go(func() error {
+			games, err := h.getGamesByTeam(ctx, teamId)
+			if err != nil {
+				return fmt.Errorf("failed to retrieve NBA games for team id %d: %w", teamId, err)
+			}
+			teamGames[i] = games
+			return nil
+		})
 	}
 
-	return games, nil
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+
+	return slices.Concat(teamGames...), nil
 }
 
 func createCalendar(games []Game) *calendar.Calendar {

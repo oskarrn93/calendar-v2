@@ -1,5 +1,7 @@
 package football
 
+import "time"
+
 type TeamID int
 
 // API docs https://www.api-football.com/documentation-v3
@@ -25,4 +27,17 @@ var TeamIDs = []TeamID{
 	Sweden,
 }
 
-const Season = 2026
+// API-Football names a season by the year it starts. European club seasons
+// start in late summer, while Allsvenskan and national teams follow the
+// calendar year.
+var calendarYearTeams = map[TeamID]bool{
+	MalmoFF: true,
+	Sweden:  true,
+}
+
+func Season(teamId TeamID, now time.Time) int {
+	if calendarYearTeams[teamId] || now.Month() >= time.July {
+		return now.Year()
+	}
+	return now.Year() - 1
+}

@@ -3,6 +3,7 @@ package football_test
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	"github.com/gkampitakis/go-snaps/snaps"
 	"github.com/jarcoal/httpmock"
@@ -19,7 +20,7 @@ func TestGetGames(t *testing.T) {
 
 	handler := football.NewHandler(rapidApi, &testutil.MemoryStorage{})
 
-	expectedUrl := fmt.Sprintf("%s/v3/fixtures?season=%d&team=%d", football.BaseUrl, football.Season, football.RealMadrid)
+	expectedUrl := fmt.Sprintf("%s/v3/fixtures?season=%d&team=%d", football.BaseUrl, football.Season(football.RealMadrid, time.Now()), football.RealMadrid)
 	httpmock.RegisterResponder("GET", expectedUrl,
 		httpmock.NewBytesResponder(200, testutil.ReadTestData(t, "football/fixtures/real_madrid.json")))
 
@@ -33,4 +34,35 @@ func TestGetGames(t *testing.T) {
 	}
 
 	snaps.MatchSnapshot(t, result)
+}
+
+func TestGetGamesFailsOnApiError(t *testing.T) {
+	httpClient := testutil.NewMockHttpClient(t)
+
+	handler := football.NewHandler(rapidapi.New(httpClient, testutil.FakeApiKey), &testutil.MemoryStorage{})
+
+	httpmock.RegisterNoResponder(httpmock.NewStringResponder(200,
+		`{"errors":{"requests":"You have reached the request limit for the day"},"response":[]}`))
+
+	_, err := handler.GetGames(t.Context(), []football.TeamID{football.RealMadrid})
+	require.ErrorContains(t, err, "request limit")
+}
+
+func TestSeason(t *testing.T) {
+	tests := []struct {
+		name string
+		team football.TeamID
+		now  time.Time
+		want int
+	}{
+		{"club before summer is last year's season", football.RealMadrid, time.Date(2027, time.March, 1, 0, 0, 0, 0, time.UTC), 2026},
+		{"club from July is this year's season", football.RealMadrid, time.Date(2027, time.July, 1, 0, 0, 0, 0, time.UTC), 2027},
+		{"calendar year team", football.MalmoFF, time.Date(2027, time.March, 1, 0, 0, 0, 0, time.UTC), 2027},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			require.Equal(t, tt.want, football.Season(tt.team, tt.now))
+		})
+	}
 }
