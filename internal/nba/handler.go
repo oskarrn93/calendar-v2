@@ -53,7 +53,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Game, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
-		"season": strconv.Itoa(Season),
+		"season": strconv.Itoa(Season(time.Now())),
 	}
 
 	data, err := httpclient.GetJSON[GamesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/games")

@@ -66,7 +66,7 @@ func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Fixture, er
 func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Fixture, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
-		"season": strconv.Itoa(Season),
+		"season": strconv.Itoa(Season(teamId, time.Now())),
 	}
 
 	data, err := httpclient.GetJSON[FixturesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/v3/fixtures")

@@ -1,5 +1,7 @@
 package nba
 
+import "time"
+
 type TeamID int
 
 const BaseUrl = "https://api-nba-v1.p.rapidapi.com"
@@ -11,4 +13,11 @@ const (
 
 var TeamIDs = []TeamID{BostonCeltics, LosAngelesLakers}
 
-const Season = 2026
+// The API names a season by the year it starts. The regular season starts in
+// October and the playoffs end in June, so July is the switch.
+func Season(now time.Time) int {
+	if now.Month() >= time.July {
+		return now.Year()
+	}
+	return now.Year() - 1
+}
