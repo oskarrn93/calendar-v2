@@ -6,9 +6,11 @@ install:
 build:
 	go build -o ./bin ./...
 
-# e.g. make run-nba; the lambda binary only runs inside the Lambda runtime.
-run-%: build
-	godotenv -f .env ./bin/$*
+# Runs all jobs; select specific ones with e.g. make run JOBS=nba,f1.
+# The lambda binary only runs inside the Lambda runtime.
+.PHONY: run
+run: build
+	godotenv -f .env ./bin/calendar $(if $(JOBS),-jobs=$(JOBS))
 
 .PHONY: deploy
 deploy:
