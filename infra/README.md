@@ -1,6 +1,6 @@
 # Infrastructure
 
-Terraform configuration for the calendar-v2 AWS resources (S3 bucket, CloudFront distribution, ECR repository, Lambda function, EventBridge schedule, and the GitHub Actions OIDC deployment role).
+Terraform configuration for the calendar-v2 AWS resources (S3 bucket, CloudFront distribution, ECR repository, Lambda function, EventBridge schedule, failure alarm, and the GitHub Actions OIDC deployment role).
 
 State is stored remotely in the `oskarrosen-terraform` S3 bucket (`eu-north-1`), with native S3 locking.
 
