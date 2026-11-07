@@ -16,9 +16,6 @@ func Initialize() (App, error) {
 		S3Bucket:    os.Getenv("S3_BUCKET_NAME"),
 	}
 
-	if config.RapidApiKey == "" {
-		return App{}, errors.New("RAPIDAPI_KEY is not set")
-	}
 	if config.S3Bucket == "" {
 		return App{}, errors.New("S3_BUCKET_NAME is not set")
 	}
