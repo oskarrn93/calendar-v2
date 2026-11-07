@@ -4,12 +4,14 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"slices"
 	"time"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
 	"github.com/oskarrn93/calendar-v2/internal/httpclient"
+	"golang.org/x/sync/errgroup"
 )
 
 const (
@@ -60,17 +62,26 @@ func (h *Handler) Handler(ctx context.Context) error {
 }
 
 func (h *Handler) GetRaces(ctx context.Context, seasons []int) ([]Race, error) {
-	races := []Race{}
+	seasonRaces := make([][]Race, len(seasons))
 
-	for _, season := range seasons {
-		seasonRaces, err := h.getRacesBySeason(ctx, season)
-		if err != nil {
-			return nil, fmt.Errorf("failed to retrieve F1 races for season %d: %w", season, err)
-		}
-		races = append(races, seasonRaces...)
+	g, ctx := errgroup.WithContext(ctx)
+
+	for i, season := range seasons {
+		g.Go(func() error {
+			races, err := h.getRacesBySeason(ctx, season)
+			if err != nil {
+				return fmt.Errorf("failed to retrieve F1 races for season %d: %w", season, err)
+			}
+			seasonRaces[i] = races
+			return nil
+		})
 	}
 
-	return races, nil
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+
+	return slices.Concat(seasonRaces...), nil
 }
 
 // API docs https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md

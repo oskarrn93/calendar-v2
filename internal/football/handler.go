@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"slices"
 	"strconv"
 	"time"
 
@@ -12,7 +13,11 @@ import (
 	"github.com/oskarrn93/calendar-v2/internal/calendar"
 	"github.com/oskarrn93/calendar-v2/internal/httpclient"
 	"github.com/oskarrn93/calendar-v2/internal/rapidapi"
+	"golang.org/x/sync/errgroup"
 )
+
+// Keeps concurrent requests under RapidAPI's per-second rate limit.
+const maxConcurrentRequests = 3
 
 type Handler struct {
 	rapidApi rapidapi.RapidApi
@@ -64,18 +69,27 @@ func (r FixturesResponse) err() error {
 }
 
 func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Fixture, error) {
-	games := []Fixture{}
+	teamGames := make([][]Fixture, len(teamIds))
 
-	for _, teamId := range teamIds {
-		teamGames, err := h.getGamesByTeam(ctx, teamId)
-		if err != nil {
-			return nil, fmt.Errorf("failed to retrieve Football games for team id %d: %w", teamId, err)
-		}
+	g, ctx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentRequests)
 
-		games = append(games, teamGames...)
+	for i, teamId := range teamIds {
+		g.Go(func() error {
+			games, err := h.getGamesByTeam(ctx, teamId)
+			if err != nil {
+				return fmt.Errorf("failed to retrieve Football games for team id %d: %w", teamId, err)
+			}
+			teamGames[i] = games
+			return nil
+		})
 	}
 
-	return games, nil
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+
+	return slices.Concat(teamGames...), nil
 }
 
 func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Fixture, error) {
