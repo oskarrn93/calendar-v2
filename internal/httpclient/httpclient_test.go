@@ -1,6 +1,7 @@
 package httpclient_test
 
 import (
+	"net/http"
 	"testing"
 
 	"github.com/jarcoal/httpmock"
@@ -19,4 +20,29 @@ func TestNewFailsOnErrorStatus(t *testing.T) {
 
 	_, err = httpClient.R().Get("https://example.com/limited")
 	require.ErrorContains(t, err, "429")
+}
+
+func TestNewRetriesServerErrors(t *testing.T) {
+	httpClient := testutil.NewMockHttpClient(t)
+
+	httpmock.RegisterResponder("GET", "https://example.com/flaky", httpmock.ResponderFromMultipleResponses(
+		[]*http.Response{
+			httpmock.NewStringResponse(503, `{}`),
+			httpmock.NewStringResponse(200, `{}`),
+		},
+	))
+
+	_, err := httpClient.R().Get("https://example.com/flaky")
+	require.NoError(t, err)
+	require.Equal(t, 2, httpmock.GetTotalCallCount())
+}
+
+func TestNewDoesNotRetryClientErrors(t *testing.T) {
+	httpClient := testutil.NewMockHttpClient(t)
+
+	httpmock.RegisterResponder("GET", "https://example.com/unauthorized", httpmock.NewStringResponder(401, `{}`))
+
+	_, err := httpClient.R().Get("https://example.com/unauthorized")
+	require.ErrorContains(t, err, "401")
+	require.Equal(t, 1, httpmock.GetTotalCallCount())
 }

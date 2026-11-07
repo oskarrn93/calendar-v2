@@ -3,15 +3,28 @@ package httpclient
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/go-resty/resty/v2"
 )
 
-const requestTimeout = 10 * time.Second
+const (
+	requestTimeout = 10 * time.Second
+	retryCount     = 2
+	retryWaitTime  = time.Second
+	retryMaxWait   = 5 * time.Second
+)
 
 func New() *resty.Client {
-	httpClient := resty.New().SetTimeout(requestTimeout)
+	httpClient := resty.New().
+		SetTimeout(requestTimeout).
+		SetRetryCount(retryCount).
+		SetRetryWaitTime(retryWaitTime).
+		SetRetryMaxWaitTime(retryMaxWait).
+		// Once a condition is set it alone decides whether to retry, which also
+		// overrides resty's default of never retrying OnAfterResponse errors.
+		AddRetryCondition(isTransient)
 
 	// resty doesn't treat non-2xx as an error. Without this, an error body (rate
 	// limit, bad key) unmarshals into an empty response and the handler uploads
@@ -24,6 +37,15 @@ func New() *resty.Client {
 	})
 
 	return httpClient
+}
+
+// isTransient retries network failures, rate limits and server errors, but not
+// other 4xx such as a bad API key, which will fail the same way again.
+func isTransient(response *resty.Response, err error) bool {
+	if response == nil || response.RawResponse == nil {
+		return err != nil
+	}
+	return response.StatusCode() == http.StatusTooManyRequests || response.StatusCode() >= http.StatusInternalServerError
 }
 
 // GetJSON unmarshals the body explicitly instead of using resty's SetResult,
