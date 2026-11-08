@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"slices"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/oskarrn93/calendar-v2/internal/awsutil"
@@ -33,10 +34,24 @@ type GameTeams struct {
 	Home     Team `json:"home"`
 }
 
+type GameStatus struct {
+	Long string `json:"long"`
+}
+
 type Game struct {
-	Id    int       `json:"id"`
-	Date  GameDate  `json:"date"`
-	Teams GameTeams `json:"teams"`
+	Id     int        `json:"id"`
+	Date   GameDate   `json:"date"`
+	Status GameStatus `json:"status"`
+	Teams  GameTeams  `json:"teams"`
+}
+
+func (g Game) isCancelled() bool {
+	switch strings.ToLower(g.Status.Long) {
+	case "postponed", "canceled", "cancelled":
+		return true
+	default:
+		return false
+	}
 }
 
 type GamesResponse struct {
@@ -105,6 +120,18 @@ func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Game, error
 		return nil, err
 	}
 
+	// A team can come back empty with no error. Fail so the previous file is
+	// kept, unless every team is empty, which is just the off-season.
+	var emptyTeams []TeamID
+	for i, games := range teamGames {
+		if len(games) == 0 {
+			emptyTeams = append(emptyTeams, teamIds[i])
+		}
+	}
+	if len(emptyTeams) > 0 && len(emptyTeams) < len(teamIds) {
+		return nil, fmt.Errorf("no NBA games returned for team ids %v while other teams have games", emptyTeams)
+	}
+
 	return slices.Concat(teamGames...), nil
 }
 
@@ -112,6 +139,10 @@ func createCalendar(games []Game) *calendar.Calendar {
 	cal := calendar.New("NBA")
 
 	for _, game := range games {
+		if game.isCancelled() {
+			continue
+		}
+
 		cal.AddEvent(calendar.Event{
 			Id:        fmt.Sprintf("nba-%d", game.Id),
 			Title:     fmt.Sprintf("%s - %s", game.Teams.Home.Name, game.Teams.Visitors.Name),
