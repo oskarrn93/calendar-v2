@@ -34,6 +34,28 @@ func TestGetGames(t *testing.T) {
 	snaps.MatchSnapshot(t, result)
 }
 
+func TestHandlerSkipsLiveDuplicatesAndAcademyTeams(t *testing.T) {
+	httpClient := testutil.NewMockHttpClient(t)
+
+	storage := &testutil.MemoryStorage{}
+	handler := esport.NewHandler(rapidapi.New(httpClient, testutil.FakeApiKey), storage, logging.New())
+
+	httpmock.RegisterResponder("GET", esport.BaseUrl+"/kit/v1/markets", httpmock.NewStringResponder(200, `{"events":[
+		{"event_id":1,"parent_id":null,"league_name":"CS2 - IEM","starts":"2025-11-03T04:30:00","home":"mouz","away":"Spirit"},
+		{"event_id":2,"parent_id":1,"league_name":"CS2 - IEM","starts":"2025-11-03T04:36:00","home":"mouz","away":"Spirit"},
+		{"event_id":3,"parent_id":null,"league_name":"CS2 - CCT","starts":"2025-11-03T09:00:00","home":"MOUZ NXT","away":"Sprout"}
+	]}`))
+
+	require.NoError(t, handler.Handler(t.Context()))
+
+	cal, err := ics.ParseCalendar(bytes.NewReader(storage.Files["esport.ics"]))
+	require.NoError(t, err)
+
+	events := cal.Events()
+	require.Len(t, events, 1)
+	require.Equal(t, "esport-1", events[0].Id())
+}
+
 func TestHandlerUploadsFilteredCalendar(t *testing.T) {
 	httpClient := testutil.NewMockHttpClient(t)
 
