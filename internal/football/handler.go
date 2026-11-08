@@ -47,8 +47,30 @@ type Fixture struct {
 	Fixture struct {
 		Id        int64 `json:"id"`
 		Timestamp int64 `json:"timestamp"`
+		Status    struct {
+			Short string `json:"short"`
+		} `json:"status"`
 	} `json:"fixture"`
 	Team FixtureTeam `json:"teams"`
+}
+
+func (f Fixture) isCancelled() bool {
+	switch f.Fixture.Status.Short {
+	case "PST", "CANC", "ABD":
+		return true
+	default:
+		return false
+	}
+}
+
+// The API gives TBD fixtures a placeholder kickoff time, so the title warns
+// that the time shown isn't real.
+func (f Fixture) title() string {
+	title := fmt.Sprintf("%s - %s", f.Team.Home.Name, f.Team.Away.Name)
+	if f.Fixture.Status.Short == "TBD" {
+		return title + " (TBD)"
+	}
+	return title
 }
 
 type FixturesResponse struct {
@@ -89,13 +111,39 @@ func (h *Handler) GetGames(ctx context.Context, teamIds []TeamID) ([]Fixture, er
 		return nil, err
 	}
 
+	// A team can come back empty with no error. Fail so the previous file is
+	// kept, unless every team is empty, which is just the off-season.
+	var emptyTeams []TeamID
+	for i, games := range teamGames {
+		if len(games) == 0 {
+			emptyTeams = append(emptyTeams, teamIds[i])
+		}
+	}
+	if len(emptyTeams) > 0 && len(emptyTeams) < len(teamIds) {
+		return nil, fmt.Errorf("no Football games returned for team ids %v while other teams have games", emptyTeams)
+	}
+
 	return slices.Concat(teamGames...), nil
 }
 
 func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Fixture, error) {
+	var games []Fixture
+
+	for _, season := range Seasons(teamId, time.Now()) {
+		seasonGames, err := h.getGamesBySeason(ctx, teamId, season)
+		if err != nil {
+			return nil, err
+		}
+		games = append(games, seasonGames...)
+	}
+
+	return games, nil
+}
+
+func (h *Handler) getGamesBySeason(ctx context.Context, teamId TeamID, season int) ([]Fixture, error) {
 	queryParams := map[string]string{
 		"team":   strconv.Itoa(int(teamId)),
-		"season": strconv.Itoa(Season(teamId, time.Now())),
+		"season": strconv.Itoa(season),
 	}
 
 	data, err := httpclient.GetJSON[FixturesResponse](h.rapidApi.BaseRequest(ctx).SetQueryParams(queryParams), BaseUrl+"/v3/fixtures")
@@ -109,12 +157,15 @@ func (h *Handler) getGamesByTeam(ctx context.Context, teamId TeamID) ([]Fixture,
 func createCalendar(games []Fixture) *calendar.Calendar {
 	cal := calendar.New("Football")
 	for _, game := range games {
+		if game.isCancelled() {
+			continue
+		}
 
 		startTime := time.Unix(game.Fixture.Timestamp, 0)
 
 		newEvent := calendar.Event{
 			Id:        fmt.Sprintf("football-%d", game.Fixture.Id),
-			Title:     fmt.Sprintf("%s - %s", game.Team.Home.Name, game.Team.Away.Name),
+			Title:     game.title(),
 			StartDate: startTime,
 			EndDate:   startTime.Add(2 * time.Hour),
 		}
