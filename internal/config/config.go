@@ -6,14 +6,16 @@ import (
 )
 
 type App struct {
-	RapidApiKey string
-	S3Bucket    string
+	RapidApiKey          string
+	RapidApiKeyParameter string
+	S3Bucket             string
 }
 
 func Initialize() (App, error) {
 	config := App{
-		RapidApiKey: os.Getenv("RAPIDAPI_KEY"),
-		S3Bucket:    os.Getenv("S3_BUCKET_NAME"),
+		RapidApiKey:          os.Getenv("RAPIDAPI_KEY"),
+		RapidApiKeyParameter: os.Getenv("RAPIDAPI_KEY_PARAMETER"),
+		S3Bucket:             os.Getenv("S3_BUCKET_NAME"),
 	}
 
 	if config.S3Bucket == "" {
