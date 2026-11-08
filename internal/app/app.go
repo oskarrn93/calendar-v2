@@ -90,7 +90,8 @@ func (f1Job) build(d deps) (job, error) {
 	return f1.NewHandler(d.httpClient, d.storage, d.logger).Handler, nil
 }
 
-// The keys are the job names accepted by the CLI's -jobs flag.
+// The keys are the job names accepted by the CLI's -jobs flag. New jobs also
+// need adding to the no_events alarm in infra/alarms.tf.
 var jobs = map[string]jobBuilder{
 	"football":   footballJob{},
 	"nba":        nbaJob{},
@@ -152,7 +153,8 @@ func runJobs(ctx context.Context, logger *slog.Logger, jobs map[string]job) erro
 		wg.Go(func() {
 			err := run(ctx)
 			if errors.Is(err, calendar.ErrNoEvents) {
-				logger.Warn("No events found, keeping previous calendar", "job", name, "error", err)
+				// The event field is what the no_events alarm in infra/alarms.tf filters on.
+				logger.Warn("No events found, keeping previous calendar", "event", "no_events", "job", name, "error", err)
 				return
 			}
 			if err != nil {
