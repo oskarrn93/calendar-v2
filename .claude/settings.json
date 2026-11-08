@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Edit(./.env)",
+      "Read(./infra/terraform.tfvars)",
+      "Edit(./infra/terraform.tfvars)"
+    ],
+    "ask": [
+      "Bash(make deploy*)",
+      "Bash(terraform apply*)",
+      "Bash(terraform destroy*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *.go) golangci-lint fmt \"$f\";; esac; exit 0"
+          }
+        ]
+      }
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "oskarrn93-plugins": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/oskarrn93/claude-plugins.git"
+      }
+    }
+  }
+}
