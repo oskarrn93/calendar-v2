@@ -32,6 +32,7 @@ func (h *Handler) Handler(ctx context.Context) error {
 
 type Event struct {
 	ID         int    `json:"event_id"`
+	ParentID   *int   `json:"parent_id"`
 	LeagueName string `json:"league_name"`
 	Starts     string `json:"starts"`
 	Home       string `json:"home"`
@@ -42,9 +43,9 @@ func (e *Event) IsCS2() bool {
 	return strings.Contains(strings.ToLower(e.LeagueName), "cs2")
 }
 
+// HasTeam matches the whole name so academy sides such as "MOUZ NXT" are excluded.
 func (e *Event) HasTeam(team string) bool {
-	team = strings.ToLower(team)
-	return strings.Contains(strings.ToLower(e.Home), team) || strings.Contains(strings.ToLower(e.Away), team)
+	return strings.EqualFold(e.Home, team) || strings.EqualFold(e.Away, team)
 }
 
 func (e *Event) HasTeams(teams []string) bool {
@@ -69,6 +70,12 @@ func (h *Handler) GetEvents(ctx context.Context) ([]Event, error) {
 func (h *Handler) createCalendar(events []Event) *calendar.Calendar {
 	cal := calendar.New("Esport")
 	for _, event := range events {
+		// A match that has gone live is listed again under a new ID, pointing back
+		// at the original through parent_id.
+		if event.ParentID != nil {
+			continue
+		}
+
 		if !event.IsCS2() {
 			continue
 		}
