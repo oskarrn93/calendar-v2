@@ -6,13 +6,13 @@ A Lambda function runs daily as a scheduled job to generate and upload the `.ics
 
 ## Deployment
 
-### Build Image
+### Release
 
-Images are built when a new tagged version is published (e.g. `v1.2.3`) and is published to AWS ECR.
+Pushing a version tag (e.g. `v1.2.3`) runs the [Continuous Deployment workflow](https://github.com/oskarrn93/calendar-v2/actions/workflows/continuous-deployment.yaml), which builds the image, publishes it to AWS ECR and deploys it to Lambda.
 
-### Deploy
+### Deploy an existing version
 
-Manually invoke the [Deploy Github Actions workflow](https://github.com/oskarrn93/calendar-v2/actions/workflows/publish.yaml) and specify the tagged version (e.g. `v1.2.3`) where the image has been published.
+Manually invoke the [Deploy Github Actions workflow](https://github.com/oskarrn93/calendar-v2/actions/workflows/deploy.yaml) and specify the tagged version (e.g. `v1.2.3`) where the image has been published.
 
 ### Infrastructure
 
