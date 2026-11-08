@@ -42,12 +42,21 @@ type EventTournament struct {
 	Name string `json:"name"`
 }
 
+type EventStatus struct {
+	Type string `json:"type"`
+}
+
 type Event struct {
 	ID             int64           `json:"id"`
+	Status         EventStatus     `json:"status"`
 	Tournament     EventTournament `json:"tournament"`
 	HomeTeam       EventTeam       `json:"homeTeam"`
 	AwayTeam       EventTeam       `json:"awayTeam"`
 	StartTimestamp int64           `json:"startTimestamp"`
+}
+
+func (e Event) isCancelled() bool {
+	return e.Status.Type == "postponed" || e.Status.Type == "canceled"
 }
 
 type EventsResponse struct {
@@ -85,6 +94,9 @@ func (h *Handler) getEventsByTeam(ctx context.Context, teamId int, page int) (Ev
 func createCalendar(events []Event) *calendar.Calendar {
 	cal := calendar.New("Basketball")
 	for _, event := range events {
+		if event.isCancelled() {
+			continue
+		}
 
 		startTime := time.Unix(event.StartTimestamp, 0)
 

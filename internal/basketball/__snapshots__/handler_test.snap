@@ -3,6 +3,7 @@
 []basketball.Event{
     {
         ID:             1,
+        Status:         basketball.EventStatus{},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:""},
         AwayTeam:       basketball.EventTeam{Name:"Barcelona", ShortName:""},
@@ -10,6 +11,7 @@
     },
     {
         ID:             14210722,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Panathinaikos BC", ShortName:"Panathinaikos"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -17,6 +19,7 @@
     },
     {
         ID:             14210728,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"BC Dubai", ShortName:""},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -24,6 +27,7 @@
     },
     {
         ID:             14491524,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Fundación CB Granada", ShortName:"Granada"},
@@ -31,6 +35,7 @@
     },
     {
         ID:             14210738,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"KK Partizan Mozzart Bet", ShortName:"Partizan Mozzart"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -38,6 +43,7 @@
     },
     {
         ID:             14491540,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Unicaja Málaga", ShortName:"Unicaja"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -45,6 +51,7 @@
     },
     {
         ID:             14210751,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Bayern München", ShortName:"Bayern"},
@@ -52,6 +59,7 @@
     },
     {
         ID:             14210753,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Virtus Bologna", ShortName:"V. Bologna"},
@@ -59,6 +67,7 @@
     },
     {
         ID:             14491547,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Gran Canaria", ShortName:"Gran Canaria"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -66,6 +75,7 @@
     },
     {
         ID:             14206328,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Valencia Basket", ShortName:"Valencia"},
@@ -73,6 +83,7 @@
     },
     {
         ID:             14491560,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Força Lleida CE", ShortName:"Lleida"},
@@ -80,6 +91,7 @@
     },
     {
         ID:             14206349,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Kauno Žalgiris", ShortName:"Žalgiris"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -87,6 +99,7 @@
     },
     {
         ID:             14491567,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Barça Basket", ShortName:"Barça"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -94,6 +107,7 @@
     },
     {
         ID:             14206359,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Hapoel Tel-Aviv", ShortName:"Hapoel TA"},
@@ -101,6 +115,7 @@
     },
     {
         ID:             14210763,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Anadolu Efes", ShortName:"Anadolu Efes"},
@@ -108,6 +123,7 @@
     },
     {
         ID:             14491580,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Bàsquet Girona", ShortName:"Bàsquet Girona"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -115,6 +131,7 @@
     },
     {
         ID:             14210776,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Saski Baskonia", ShortName:"Baskonia"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -122,6 +139,7 @@
     },
     {
         ID:             14491598,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"MoraBanc Andorra", ShortName:"MB Andorra"},
@@ -129,6 +147,7 @@
     },
     {
         ID:             14210781,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Olympiacos BC", ShortName:"Olympiacos"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -136,6 +155,7 @@
     },
     {
         ID:             14210790,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Fenerbahçe Beko", ShortName:"Fenerbahçe"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -143,6 +163,7 @@
     },
     {
         ID:             14491610,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Hereda San Pablo Burgos", ShortName:"San Pablo"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -150,6 +171,7 @@
     },
     {
         ID:             14210803,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Euroleague"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"KK Crvena zvezda", ShortName:"Crvena zvezda"},
@@ -157,6 +179,7 @@
     },
     {
         ID:             14491622,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"La Laguna Tenerife", ShortName:"La Laguna Tenerife"},
@@ -164,6 +187,7 @@
     },
     {
         ID:             14491638,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Valencia Basket", ShortName:"Valencia"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -171,6 +195,7 @@
     },
     {
         ID:             14491646,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"UCAM Murcia", ShortName:"UCAM Murcia"},
@@ -178,6 +203,7 @@
     },
     {
         ID:             14491655,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Río Breogán", ShortName:"Breogán"},
@@ -185,6 +211,7 @@
     },
     {
         ID:             14491669,
+        Status:         basketball.EventStatus{Type:"postponed"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Surne Bilbao Basket", ShortName:"Bilbao Basket"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -192,6 +219,7 @@
     },
     {
         ID:             14662389,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Surne Bilbao Basket", ShortName:"Bilbao Basket"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
@@ -199,6 +227,7 @@
     },
     {
         ID:             14491675,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Club Joventut de Badalona", ShortName:"Joventut"},
@@ -206,6 +235,7 @@
     },
     {
         ID:             14491685,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
         AwayTeam:       basketball.EventTeam{Name:"Saski Baskonia", ShortName:"Baskonia"},
@@ -213,6 +243,7 @@
     },
     {
         ID:             14491692,
+        Status:         basketball.EventStatus{Type:"notstarted"},
         Tournament:     basketball.EventTournament{Name:"Liga ACB"},
         HomeTeam:       basketball.EventTeam{Name:"BAXI Manresa", ShortName:"Manresa"},
         AwayTeam:       basketball.EventTeam{Name:"Real Madrid", ShortName:"Real Madrid"},
