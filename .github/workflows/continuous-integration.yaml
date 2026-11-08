@@ -10,18 +10,9 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Set up Go
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version-file: go.mod
-
-      - name: Run tests
-        run: go test -race ./...
+    uses: oskarrn93/github-actions/.github/workflows/go-test.yml@da698a589fd694fa38175bc7af7404b4a509faab # v1
+    with:
+      race: true
 
   linter:
     runs-on: ubuntu-latest
@@ -39,7 +30,10 @@ jobs:
         with:
           version-file: .golangci-lint-version
 
+  actionlint:
+    uses: oskarrn93/github-actions/.github/workflows/actionlint.yml@da698a589fd694fa38175bc7af7404b4a509faab # v1
+
   terraform:
-    uses: oskarrn93/github-actions/.github/workflows/terraform.yml@25ebbfc2f12e80e79d882094c04f605b9fe05e93 # v1
+    uses: oskarrn93/github-actions/.github/workflows/terraform.yml@da698a589fd694fa38175bc7af7404b4a509faab # v1
     with:
       working-directory: infra
