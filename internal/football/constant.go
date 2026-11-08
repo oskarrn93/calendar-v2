@@ -35,9 +35,15 @@ var calendarYearTeams = map[TeamID]bool{
 	Sweden:  true,
 }
 
-func Season(teamId TeamID, now time.Time) int {
-	if calendarYearTeams[teamId] || now.Month() >= time.July {
-		return now.Year()
+func Seasons(teamId TeamID, now time.Time) []int {
+	if now.Month() >= time.July {
+		return []int{now.Year()}
 	}
-	return now.Year() - 1
+	// European and international games are filed under the year the competition
+	// started, so calendar year teams need last year's season as well until
+	// July, e.g. Malmö's 2024 Europa League ran to the end of January 2025.
+	if calendarYearTeams[teamId] {
+		return []int{now.Year() - 1, now.Year()}
+	}
+	return []int{now.Year() - 1}
 }
