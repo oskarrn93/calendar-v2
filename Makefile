@@ -26,7 +26,12 @@ test-ci:
 
 .PHONY: lint
 lint:
+	@golangci-lint version --short | grep -qxF "$$(cat .golangci-lint-version)" || { echo "golangci-lint $$(golangci-lint version --short) does not match .golangci-lint-version ($$(cat .golangci-lint-version))"; exit 1; }
 	golangci-lint run ./...
+
+.PHONY: install-lint
+install-lint:
+	curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b $(HOME)/.local/bin "v$$(cat .golangci-lint-version)"
 
 .PHONY: update
 update:
