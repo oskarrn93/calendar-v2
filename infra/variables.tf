@@ -2,6 +2,13 @@ variable "rapidapi_key" {
   description = "RapidAPI key used by the Lambda function to fetch schedule data"
   type        = string
   sensitive   = true
+  ephemeral   = true
+}
+
+variable "rapidapi_key_version" {
+  description = "Increment to store a new rapidapi_key value in SSM"
+  type        = number
+  default     = 1
 }
 
 variable "github_repository" {

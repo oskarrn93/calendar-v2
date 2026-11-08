@@ -1,3 +1,12 @@
+# Write-only so the key stays out of Terraform state, and in SSM so the deploy
+# role, which can read the function's configuration, can't read it.
+resource "aws_ssm_parameter" "rapidapi_key" {
+  name             = "/calendar-v2/rapidapi-key"
+  type             = "SecureString"
+  value_wo         = var.rapidapi_key
+  value_wo_version = var.rapidapi_key_version
+}
+
 resource "aws_iam_role" "lambda" {
   name = "calendar-v2-calendarv2bucketlambdaServiceRoleA6AC3D-rtvNQ3WMvDJg"
 
@@ -30,6 +39,11 @@ resource "aws_iam_role_policy" "lambda_default" {
       },
       {
         Effect   = "Allow"
+        Action   = "ssm:GetParameter"
+        Resource = aws_ssm_parameter.rapidapi_key.arn
+      },
+      {
+        Effect   = "Allow"
         Action   = ["ecr:BatchCheckLayerAvailability", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage"]
         Resource = aws_ecr_repository.calendar.arn
       },
@@ -53,8 +67,8 @@ resource "aws_lambda_function" "calendar" {
 
   environment {
     variables = {
-      RAPIDAPI_KEY   = var.rapidapi_key
-      S3_BUCKET_NAME = aws_s3_bucket.calendar.id
+      RAPIDAPI_KEY_PARAMETER = aws_ssm_parameter.rapidapi_key.name
+      S3_BUCKET_NAME         = aws_s3_bucket.calendar.id
     }
   }
 

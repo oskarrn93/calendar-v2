@@ -119,9 +119,19 @@ func Run(ctx context.Context, logger *slog.Logger, names []string) error {
 		return fmt.Errorf("failed to create S3 storage: %w", err)
 	}
 
+	// The Lambda reads the key from SSM so it isn't visible in the function's
+	// configuration; local runs set RAPIDAPI_KEY directly.
+	rapidApiKey := appConfig.RapidApiKey
+	if rapidApiKey == "" && appConfig.RapidApiKeyParameter != "" {
+		rapidApiKey, err = awsutil.GetSecureParameter(ctx, appConfig.RapidApiKeyParameter)
+		if err != nil {
+			return fmt.Errorf("failed to load RapidAPI key: %w", err)
+		}
+	}
+
 	d := deps{
 		httpClient:  httpclient.New(),
-		rapidApiKey: appConfig.RapidApiKey,
+		rapidApiKey: rapidApiKey,
 		storage:     storage,
 		logger:      logger,
 	}
